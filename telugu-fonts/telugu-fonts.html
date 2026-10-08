@@ -214,6 +214,22 @@ main{gap:9px;padding:11px 10px}
 .import-btn:active,.refresh-btn:active{transform:scale(.98)}
 .import-status{font-size:11px;color:#5a6274;line-height:1.45;padding:3px 13px 5px}
 @media(max-width:350px){.import-btn,.refresh-btn{font-size:10px;padding:9px 6px}}
+
+/* v12: genuine font-first cards, download and share; retain existing bottom nav */
+#list{gap:10px}
+.card{gap:7px;padding:12px 14px;border-radius:16px}
+.card-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.f-name{font-size:.96rem;line-height:1.32}
+.f-style{color:#77777e;font-size:.75rem;white-space:nowrap}
+.preview{font-size:1.45rem;line-height:1.55;min-height:1.55em;padding:2px 0 0;overflow-wrap:anywhere}
+.card-foot{border-top:0;padding-top:4px;display:flex;gap:8px}
+.btn-share{height:39px;min-width:96px;background:#e7effb;color:#1265ac;border:0;border-radius:12px;font-weight:800;font-size:.79rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
+.btn-share:active{transform:scale(.96)}
+.btn-dl{height:39px;flex:1;max-width:none;border-radius:12px;box-shadow:none}
+.highlight-target{border-color:#0a85ff!important;box-shadow:0 0 0 2px rgba(0,122,255,.16)}
+.highlight-target::before{content:none}
+#catalogInfo{line-height:1.5}
+@media(max-width:350px){.card{padding:10px}.btn-share{min-width:76px}.preview{font-size:1.23rem}}
 </style>
 </head>
 <body>
@@ -260,7 +276,7 @@ main{gap:9px;padding:11px 10px}
     <div id="list" aria-live="polite"></div>
     <div class="state" id="stateEmpty">No fonts match your search</div>
     <div class="state" id="stateError">Could not load fonts.<br><span style="font-weight:600;font-size:.78rem">Check your connection and try again.</span><br><span id="errDetail" style="font-weight:600;font-size:.7rem;color:#FF3B30"></span><br><button type="button" id="btnRetry">Retry</button></div>
-    <div class="foot-note">Direct TTF/OTF files served from GitHub. GIST files appear publicly only if their distribution rights are confirmed. Import your own ZIP/TTF locally for private preview.</div>
+    <div class="foot-note">Preview &amp; direct TTF/OTF files from GitHub. Only fonts with redistribution permission are publicly mirrored. For privately owned GIST fonts, import the ZIP or TTF on your phone; they are not uploaded.</div>
   </main>
 
   <div class="bottom-dock">
@@ -315,9 +331,10 @@ function styleLabel(f){return f.style==='Regular'?'':f.style;}
 function cardHTML(f){
  const txt=escapeHTML(f.name), st=escapeHTML(styleLabel(f));
  const sub=st?'<span class="f-style">'+st+'</span>':'';
- const icon='fa-download';
- const subtitle='Download';
- return '<div class="card-head"><div class="f-name">'+txt+'</div>'+sub+'</div><div class="card-foot"><button class="btn-dl" type="button" data-download="'+escapeHTML(f.id)+'" aria-label="'+subtitle+' '+txt+'"><i class="fas '+icon+'"></i> '+subtitle+'</button></div>'+(f.verified?'<div class="preview loading"></div>':'');
+ return '<div class="card-head"><div class="f-name">'+txt+'</div>'+sub+'</div>'+
+  '<div class="preview loading" aria-label="Font preview"></div>'+
+  '<div class="card-foot"><button class="btn-share" type="button" data-share="'+escapeHTML(f.id)+'" aria-label="Share link for '+txt+'"><i class="fas fa-share-nodes"></i> Share</button>'+
+  '<button class="btn-dl" type="button" data-download="'+escapeHTML(f.id)+'" aria-label="Download '+txt+'"><i class="fas fa-download"></i> Download</button></div>';
 }
 async function applyFace(f,el){
  if(!f.verified)return;
@@ -330,12 +347,36 @@ async function applyFace(f,el){
   pv.textContent=liveSample();pv.classList.remove('loading');
  }catch(e){el.classList.add('failed-preview');const pv=$('.preview',el);if(pv){pv.classList.remove('loading');pv.textContent='Preview unavailable for this font';pv.setAttribute('aria-label','Preview unavailable');}}
 }
+const requested=new URLSearchParams(location.search).get('font');
+let jumped=false;
+function revealRequested(){
+ if(!requested||jumped)return;
+ const target=FONTS.find(f=>f.id===requested && f.verified);
+ if(!target)return;
+ if(category!=='all'||query){category='all';query='';input.value='';searchClear.classList.remove('show');
+  document.querySelectorAll('.chip').forEach(t=>{const active=t.dataset.cat==='all';t.classList.toggle('active',active);t.setAttribute('aria-pressed',String(active));});return render();}
+ const el=Array.from(list.querySelectorAll('.card')).find(c=>c.dataset.id===target.id);
+ if(!el)return;
+ jumped=true;el.classList.add('highlight-target');
+ requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'center'}));
+}
+function fontShareUrl(f){const u=new URL(location.href);u.search='';u.hash='';u.searchParams.set('font',f.id);return u.href;}
+async function shareFont(f){
+ const url=fontShareUrl(f);
+ try{
+  if(navigator.share){await navigator.share({title:f.name+' — Telugu Font',text:f.name+(f.style && f.style!=='Regular'?' '+f.style:'')+' — Telugu font preview & direct download',url});return;}
+  if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(url);toast('Font deep link copied');return;}
+  const field=document.createElement('input');field.value=url;field.style.position='fixed';field.style.left='-9999px';document.body.appendChild(field);field.select();
+  const ok=document.execCommand('copy');field.remove();if(!ok)throw Error('copy unavailable');toast('Font deep link copied');
+ }catch(e){if(e.name!=='AbortError')toast('Share unavailable — try again');}
+}
 function render(){
  if(observer){observer.disconnect();observer=null;}
  list.innerHTML='';
  const rows=visible(), frag=document.createDocumentFragment();
  rows.forEach(f=>{const item=document.createElement('article');item.className='card'+(f.verified?' can-preview':' no-preview');item.dataset.id=f.id;item.innerHTML=cardHTML(f);const p=$('.preview',item);if(p)p.textContent=liveSample();frag.appendChild(item);});
  list.appendChild(frag);badge.textContent=String(rows.length);
+ if(requested&&!jumped)requestAnimationFrame(revealRequested);
  state.textContent=category==='gist'?'GIST direct files not published yet. Import your ZIP/TTF above for private preview and individual download. Public links appear only after authorized files are published.':category==='local'?'Choose Import ZIP / TTF / OTF to preview your own font files privately.':'Matching downloadable files not found';state.classList.toggle('show',rows.length===0);
  catalogInfo.textContent=category==='gist'?'GIST: Published direct downloads only. Import your ZIP for private instant preview':
    category==='all'?rows.length+' directly downloadable font files • file hosting is off InfinityFree':
@@ -361,7 +402,7 @@ async function download(f,button){
   toast('Download failed — retry later or choose another font.');
  }finally{button.disabled=false;button.innerHTML='<i class="fas fa-download"></i> Download';}
 }
-list.addEventListener('click',e=>{const b=e.target.closest('[data-download]');if(!b)return;const f=FONTS.find(x=>x.id===b.dataset.download);if(f)download(f,b);});
+list.addEventListener('click',e=>{const share=e.target.closest('[data-share]');if(share){const f=FONTS.find(x=>x.id===share.dataset.share);if(f)shareFont(f);return;}const b=e.target.closest('[data-download]');if(!b)return;const f=FONTS.find(x=>x.id===b.dataset.download);if(f)download(f,b);});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;category=b.dataset.cat;document.querySelectorAll('.chip').forEach(t=>{const yes=t===b;t.classList.toggle('active',yes);t.setAttribute('aria-pressed',String(yes));});render();});
 searchBtn.addEventListener('click',()=>{const open=header.classList.toggle('searching');searchBtn.innerHTML=open?'<i class="fas fa-xmark"></i>':'<i class="fas fa-search"></i>';if(open){input.focus();}else{input.value='';query='';searchClear.classList.remove('show');render();}});
 input.addEventListener('input',()=>{query=input.value.trim().toLowerCase();searchClear.classList.toggle('show',Boolean(query));render();});
@@ -440,8 +481,6 @@ $('#fontImport').addEventListener('change',async e=>{
 $('#refreshCatalog').addEventListener('click',()=>{statusNode.textContent='Checking GitHub catalog…';loadHostedFonts();});
 window.addEventListener('pagehide',()=>{for(const url of localUrls)URL.revokeObjectURL(url);});
 
-const requested=new URLSearchParams(location.search).get('font');
-if(requested){const found=FONTS.find(f=>f.id===requested);if(found && found.verified){category='all';}}
 render();
 loadHostedFonts();
 })();
