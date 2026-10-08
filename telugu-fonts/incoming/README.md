@@ -1,0 +1,1 @@
+Place redistribution-authorized .zip files here. Register every archive in permissions.json with archive path, license (OFL-1.1 or redistribution-authorized), and a public permission_evidence URL. Never upload fonts without rights to distribute.

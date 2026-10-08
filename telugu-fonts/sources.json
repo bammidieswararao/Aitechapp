@@ -1,0 +1,282 @@
+[
+  {
+    "name": "Akaya Telivigala",
+    "style": "Regular",
+    "file": "AkayaTelivigala-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/akayatelivigala/AkayaTelivigala-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/akayatelivigala/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Anek Telugu",
+    "style": "Variable • Multi Weight",
+    "file": "AnekTelugu[wdth,wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Baloo Tammudu 2",
+    "style": "Variable • Multi Weight",
+    "file": "BalooTammudu2[wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/BalooTammudu2%5Bwght%5D.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Chathura",
+    "style": "Thin",
+    "file": "Chathura-Thin.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Thin.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Chathura",
+    "style": "Light",
+    "file": "Chathura-Light.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Light.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Chathura",
+    "style": "Regular",
+    "file": "Chathura-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Chathura",
+    "style": "Bold",
+    "file": "Chathura-Bold.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Bold.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Chathura",
+    "style": "ExtraBold",
+    "file": "Chathura-ExtraBold.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-ExtraBold.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Dhurjati",
+    "style": "Regular",
+    "file": "Dhurjati-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/dhurjati/Dhurjati-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/dhurjati/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Gidugu",
+    "style": "Regular",
+    "file": "Gidugu-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/gidugu/Gidugu-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gidugu/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Gurajada",
+    "style": "Regular",
+    "file": "Gurajada-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/gurajada/Gurajada-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gurajada/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Hind Guntur",
+    "style": "Light",
+    "file": "HindGuntur-Light.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Light.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Hind Guntur",
+    "style": "Regular",
+    "file": "HindGuntur-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Hind Guntur",
+    "style": "Medium",
+    "file": "HindGuntur-Medium.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Medium.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Hind Guntur",
+    "style": "SemiBold",
+    "file": "HindGuntur-SemiBold.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-SemiBold.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Hind Guntur",
+    "style": "Bold",
+    "file": "HindGuntur-Bold.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Bold.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Lakki Reddy",
+    "style": "Regular",
+    "file": "LakkiReddy-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/lakkireddy/LakkiReddy-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lakkireddy/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Mallanna",
+    "style": "Regular",
+    "file": "Mallanna-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/mallanna/Mallanna-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/mallanna/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Mandali",
+    "style": "Regular",
+    "file": "Mandali-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/mandali/Mandali-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/mandali/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Noto Sans Telugu",
+    "style": "Variable • Multi Weight",
+    "file": "NotoSansTelugu[wdth,wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Noto Serif Telugu",
+    "style": "Variable • Multi Weight",
+    "file": "NotoSerifTelugu[wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notoseriftelugu/NotoSerifTelugu%5Bwght%5D.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notoseriftelugu/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "NTR",
+    "style": "Regular",
+    "file": "NTR-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/ntr/NTR-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ntr/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Peddana",
+    "style": "Regular",
+    "file": "Peddana-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/peddana/Peddana-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/peddana/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Ponnala",
+    "style": "Regular",
+    "file": "Ponnala-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/ponnala/Ponnala-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ponnala/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Ramabhadra",
+    "style": "Regular",
+    "file": "Ramabhadra-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/ramabhadra/Ramabhadra-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ramabhadra/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Ramaraja",
+    "style": "Regular",
+    "file": "Ramaraja-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/ramaraja/Ramaraja-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ramaraja/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Ravi Prakash",
+    "style": "Regular",
+    "file": "RaviPrakash-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/raviprakash/RaviPrakash-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/raviprakash/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Sree Krushnadevaraya",
+    "style": "Regular",
+    "file": "SreeKrushnadevaraya-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sreekrushnadevaraya/SreeKrushnadevaraya-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/sreekrushnadevaraya/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Sirivennela",
+    "style": "Regular",
+    "file": "Sirivennela-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sirivennela/Sirivennela-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/sirivennela/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Suranna",
+    "style": "Regular",
+    "file": "Suranna-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/suranna/Suranna-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/suranna/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Suravaram",
+    "style": "Regular",
+    "file": "Suravaram-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/suravaram/Suravaram-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/suravaram/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Tenali Ramakrishna",
+    "style": "Regular",
+    "file": "TenaliRamakrishna-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/tenaliramakrishna/TenaliRamakrishna-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/tenaliramakrishna/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Timmana",
+    "style": "Regular",
+    "file": "Timmana-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/timmana/Timmana-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/timmana/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Tiro Telugu",
+    "style": "Regular",
+    "file": "TiroTelugu-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/tirotelugu/TiroTelugu-Regular.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/tirotelugu/OFL.txt",
+    "license": "OFL-1.1"
+  },
+  {
+    "name": "Tiro Telugu",
+    "style": "Italic",
+    "file": "TiroTelugu-Italic.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/tirotelugu/TiroTelugu-Italic.ttf",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/tirotelugu/OFL.txt",
+    "license": "OFL-1.1"
+  }
+]

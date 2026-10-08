@@ -1,0 +1,37 @@
+name: Publish Telugu Fonts
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'telugu-fonts/sources.json'
+      - 'telugu-fonts/incoming/**'
+      - 'telugu-fonts/tools/**'
+      - '.github/workflows/telugu-fonts.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-telugu-fonts
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fontTools
+        run: python -m pip install 'fonttools>=4.58,<5'
+      - name: Validate, download, extract and generate manifest
+        run: python telugu-fonts/tools/build_library.py
+      - name: Publish licensed binaries and JSON
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add telugu-fonts/public/
+          if ! git diff --staged --quiet; then
+            git commit -m 'Publish licensed Telugu fonts'
+            git push
+          fi
