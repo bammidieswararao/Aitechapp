@@ -230,6 +230,16 @@ main{gap:9px;padding:11px 10px}
 .highlight-target::before{content:none}
 #catalogInfo{line-height:1.5}
 @media(max-width:350px){.card{padding:10px}.btn-share{min-width:76px}.preview{font-size:1.23rem}}
+
+/* v12 fix: prior grid overrides must not squeeze font name or share buttons */
+.card{display:flex;flex-direction:column;align-items:stretch;min-height:0;gap:5px}
+.card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;overflow:visible}
+.card .f-name{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;flex:1;font-size:14px}
+.card .f-style{display:block;white-space:normal;text-align:right;flex:none;margin-top:0;max-width:115px;font-size:11px}
+.card .preview{grid-column:auto;grid-row:auto;margin:0;padding:3px 0;min-height:30px;height:auto;font-size:19px;line-height:1.45;white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word}
+.card .card-foot{grid-column:auto;grid-row:auto;min-width:0;width:100%;display:flex;justify-content:space-between;gap:9px;margin:0;padding-top:5px;border-top:1px solid var(--ios-border)}
+.card .btn-dl{min-width:0;width:auto;flex:1;height:38px;border-radius:12px;font-size:.79rem}
+.card .btn-share{height:38px;min-width:96px;border-radius:12px}
 </style>
 </head>
 <body>
