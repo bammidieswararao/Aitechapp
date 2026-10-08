@@ -240,6 +240,18 @@ main{gap:9px;padding:11px 10px}
 .card .card-foot{grid-column:auto;grid-row:auto;min-width:0;width:100%;display:flex;justify-content:space-between;gap:9px;margin:0;padding-top:5px;border-top:1px solid var(--ios-border)}
 .card .btn-dl{min-width:0;width:auto;flex:1;height:38px;border-radius:12px;font-size:.79rem}
 .card .btn-share{height:38px;min-width:96px;border-radius:12px}
+
+/* v13: Font-first previews – never hide the most important information. */
+#list .card{gap:8px;padding:12px 13px;border-radius:16px}
+#list .card .preview{display:block!important;position:relative;min-height:72px;height:auto;padding:10px 12px;background:#F7F9FE;border:1px solid #E6ECF8;border-radius:12px;color:#18181B;font-size:29px;line-height:1.62;font-weight:normal;letter-spacing:normal;white-space:normal;word-break:normal;overflow-wrap:break-word;overflow:visible;text-overflow:clip;user-select:text;-webkit-user-select:text}
+#list .card .preview.loading{opacity:1;color:#697386;font-family:system-ui,sans-serif!important;font-size:13px;font-weight:650;min-height:62px;display:flex!important;align-items:center}
+#list .card .preview.preview-error{opacity:1;color:#A34D14;background:#FFF8F0;border-color:#F6DECA;font-family:system-ui,sans-serif!important;font-size:13px;font-weight:700;cursor:pointer;min-height:62px}
+#list .card .preview.preview-loaded{opacity:1}
+#list .card .card-foot{display:flex;gap:8px;width:100%;margin-top:2px}
+#list .card .f-name{font-size:14px;line-height:1.4}
+#list .card .f-style{font-size:11px;max-width:122px}
+#list .card .btn-share,#list .card .btn-dl{height:39px}
+@media(max-width:360px){#list .card .preview{font-size:25px;padding:9px 10px}#list .card .btn-share{min-width:78px}}
 </style>
 </head>
 <body>
@@ -334,7 +346,7 @@ const loaded=new Map();
 const statusNode=$('#importStatus');
 const visible=()=>FONTS.filter(f=>(category==='all'?f.verified:(category==='gist'?f.group==='gist':category==='hosted'?f.hosted===true:f.group===category)) && (!query || (f.name+' '+f.style+' '+f.file).toLowerCase().includes(query)));
 const escapeHTML=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const liveSample=()=>previewInput.value.trim() || 'తెలుగు అక్షరాలు అందమైన ఫాంట్స్';
+const liveSample=()=>previewInput.value.trim() || 'తెలుగు అక్షరాలు క్ష త్ర జ్ఞ';
 let toastTimer=0;
 function toast(msg){const node=$('#toast');node.textContent=msg;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('show'),3000);}
 function styleLabel(f){return f.style==='Regular'?'':f.style;}
@@ -347,16 +359,38 @@ function cardHTML(f){
   '<button class="btn-dl" type="button" data-download="'+escapeHTML(f.id)+'" aria-label="Download '+txt+'"><i class="fas fa-download"></i> Download</button></div>';
 }
 async function applyFace(f,el){
- if(!f.verified)return;
- try {
-  const fontFamily='preview_'+f.id.replace(/[^a-zA-Z0-9_-]/g,'_');
-  let p=loaded.get(f.url);
-  if(!p){const face=new FontFace(fontFamily,`url("${f.url}")`,{weight:'100 900'});p=face.load().then(t=>{document.fonts.add(t);return fontFamily});loaded.set(f.url,p);}
-  const family=await p;const pv=$('.preview',el); if(!pv)return;
-  pv.style.fontFamily='"'+family+'",sans-serif';
-  pv.textContent=liveSample();pv.classList.remove('loading');
- }catch(e){el.classList.add('failed-preview');const pv=$('.preview',el);if(pv){pv.classList.remove('loading');pv.textContent='Preview unavailable for this font';pv.setAttribute('aria-label','Preview unavailable');}}
+  if(!f.verified)return;
+  const pv=$('.preview',el); if(!pv)return;
+  if(el.dataset.previewState==='loading'||el.dataset.previewState==='loaded')return;
+  el.dataset.previewState='loading';
+  pv.classList.remove('preview-error','preview-loaded');pv.classList.add('loading');
+  pv.style.fontFamily='system-ui,sans-serif';pv.textContent='అసలు ఫాంట్ లోడ్ అవుతోంది…';
+  try{
+    const fontFamily='aitech_preview_'+f.id.replace(/[^a-zA-Z0-9_-]/g,'_');
+    let promise=loaded.get(f.url);
+    if(!promise){
+      promise=(async()=>{
+        const face=new FontFace(fontFamily, 'url('+JSON.stringify(f.url)+')');
+        const ready=await face.load();document.fonts.add(ready);return fontFamily;
+      })().catch(err=>{loaded.delete(f.url);throw err;});
+      loaded.set(f.url,promise);
+    }
+    const family=await promise;
+    if(!el.isConnected)return;
+    pv.style.fontFamily='"'+family+'",sans-serif';
+    pv.textContent=liveSample();
+    pv.classList.remove('loading');pv.classList.add('preview-loaded');
+    el.dataset.previewState='loaded';
+  }catch(err){
+    if(!el.isConnected)return;
+    el.dataset.previewState='failed';
+    pv.classList.remove('loading');pv.classList.add('preview-error');
+    pv.textContent='ప్రివ్యూ లోడ్ కాలేదు — ఇక్కడ నొక్కి మళ్లీ ప్రయత్నించండి';
+    pv.setAttribute('role','button');pv.setAttribute('tabindex','0');
+    console.warn('Real font preview unavailable',f.name,err);
+  }
 }
+
 const requested=new URLSearchParams(location.search).get('font');
 let jumped=false;
 function revealRequested(){
@@ -384,7 +418,7 @@ function render(){
  if(observer){observer.disconnect();observer=null;}
  list.innerHTML='';
  const rows=visible(), frag=document.createDocumentFragment();
- rows.forEach(f=>{const item=document.createElement('article');item.className='card'+(f.verified?' can-preview':' no-preview');item.dataset.id=f.id;item.innerHTML=cardHTML(f);const p=$('.preview',item);if(p)p.textContent=liveSample();frag.appendChild(item);});
+ rows.forEach(f=>{const item=document.createElement('article');item.className='card'+(f.verified?' can-preview':' no-preview');item.dataset.id=f.id;item.innerHTML=cardHTML(f);const p=$('.preview',item);if(p)p.textContent='అసలు ఫాంట్ లోడ్ అవుతోంది…';frag.appendChild(item);});
  list.appendChild(frag);badge.textContent=String(rows.length);
  if(requested&&!jumped)requestAnimationFrame(revealRequested);
  state.textContent=category==='gist'?'GIST direct files not published yet. Import your ZIP/TTF above for private preview and individual download. Public links appear only after authorized files are published.':category==='local'?'Choose Import ZIP / TTF / OTF to preview your own font files privately.':'Matching downloadable files not found';state.classList.toggle('show',rows.length===0);
@@ -412,13 +446,14 @@ async function download(f,button){
   toast('Download failed — retry later or choose another font.');
  }finally{button.disabled=false;button.innerHTML='<i class="fas fa-download"></i> Download';}
 }
-list.addEventListener('click',e=>{const share=e.target.closest('[data-share]');if(share){const f=FONTS.find(x=>x.id===share.dataset.share);if(f)shareFont(f);return;}const b=e.target.closest('[data-download]');if(!b)return;const f=FONTS.find(x=>x.id===b.dataset.download);if(f)download(f,b);});
+list.addEventListener('click',e=>{const failed=e.target.closest('.preview.preview-error');if(failed){const item=failed.closest('.card');const f=FONTS.find(x=>x.id===item?.dataset.id);if(f)applyFace(f,item);return;}const share=e.target.closest('[data-share]');if(share){const f=FONTS.find(x=>x.id===share.dataset.share);if(f)shareFont(f);return;}const b=e.target.closest('[data-download]');if(!b)return;const f=FONTS.find(x=>x.id===b.dataset.download);if(f)download(f,b);});
+list.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ') && e.target.matches('.preview.preview-error')){e.preventDefault();e.target.click();}});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;category=b.dataset.cat;document.querySelectorAll('.chip').forEach(t=>{const yes=t===b;t.classList.toggle('active',yes);t.setAttribute('aria-pressed',String(yes));});render();});
 searchBtn.addEventListener('click',()=>{const open=header.classList.toggle('searching');searchBtn.innerHTML=open?'<i class="fas fa-xmark"></i>':'<i class="fas fa-search"></i>';if(open){input.focus();}else{input.value='';query='';searchClear.classList.remove('show');render();}});
 input.addEventListener('input',()=>{query=input.value.trim().toLowerCase();searchClear.classList.toggle('show',Boolean(query));render();});
 searchClear.addEventListener('click',()=>{input.value='';query='';searchClear.classList.remove('show');render();input.focus();});
-let t=0;previewInput.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>{list.querySelectorAll('.preview').forEach(x=>x.textContent=liveSample());},120);});
-$('#btnPaste').addEventListener('click',()=>{if(!navigator.clipboard?.readText){previewInput.focus();toast('Long press to paste');return;}navigator.clipboard.readText().then(s=>{previewInput.value=s.slice(0,300);list.querySelectorAll('.preview').forEach(x=>x.textContent=liveSample());}).catch(()=>toast('Long press to paste'));});
+let t=0;previewInput.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>{list.querySelectorAll('.preview.preview-loaded').forEach(x=>x.textContent=liveSample());},120);});
+$('#btnPaste').addEventListener('click',()=>{if(!navigator.clipboard?.readText){previewInput.focus();toast('Long press to paste');return;}navigator.clipboard.readText().then(s=>{previewInput.value=s.slice(0,300);list.querySelectorAll('.preview.preview-loaded').forEach(x=>x.textContent=liveSample());}).catch(()=>toast('Long press to paste'));});
 // Keep the previous card deep links working for available fonts.
 
 // Optional manifest. When a GitHub repository is created and the action runs,
