@@ -279,6 +279,15 @@ main{gap:9px;padding:10px 12px}
 .foot-note{display:none}
 .state{padding:20px 12px;font-size:12px}
 @media (max-width:380px){#list .card .btn-dl{width:78px!important;font-size:10px!important}#list .card .preview{font-size:18px!important}#list .card .f-name{font-size:12px!important}#list .card .btn-share{width:28px!important}}
+
+/* v15: restored whole historical 161-font inventory, preview first */
+#list .card.not-ready{min-height:61px!important;grid-template-rows:auto auto!important}
+#list .card.not-ready .card-foot{grid-row:2!important}
+#list .card .status-small{grid-column:1;grid-row:2;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;line-height:1.2;color:#8b8b95}
+#list .card .btn-dl.unavailable{background:#e6e6ed!important;color:#65656e!important;opacity:.85;cursor:default}
+#list .card .btn-dl.zip-link{background:#e2ebfa!important;color:#075dbe!important}
+#list .card .preview{font-optical-sizing:auto; font-synthesis:none}
+#catalogInfo{font-size:11px;font-weight:650}
 </style>
 </head>
 <body>
@@ -287,7 +296,7 @@ main{gap:9px;padding:10px 12px}
   <header class="app-header" id="appHeader">
     <a href="index.html" class="btn-icon-circle" aria-label="Back"><i class="fas fa-chevron-left"></i></a>
     <div class="header-center">
-      <div class="header-title"><h1>Telugu Fonts</h1><p>Direct TTF / OTF Fonts</p></div>
+      <div class="header-title"><h1>Telugu Fonts</h1><p>Telugu Font Preview & Downloads</p></div>
       <div class="header-search">
         <i class="fas fa-search"></i>
         <input id="searchInput" type="search" placeholder="Search font or author" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Search fonts">
@@ -311,14 +320,17 @@ main{gap:9px;padding:10px 12px}
 
     <nav class="chips" id="chips" aria-label="Font categories">
       <button class="chip active" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" data-cat="preview" aria-pressed="false">Preview Ready</button>
       <button class="chip" data-cat="variable" aria-pressed="false">Variable</button>
       <button class="chip" data-cat="styles" aria-pressed="false">More Styles</button>
       <button class="chip" data-cat="classic" aria-pressed="false">Classic</button>
       <button class="chip" data-cat="hosted" aria-pressed="false">Hosted</button>
+      <button class="chip" data-cat="zip" aria-pressed="false">ZIP</button>
+      <button class="chip" data-cat="other" aria-pressed="false">Other</button>
       <button class="chip" data-cat="gist" aria-pressed="false">GIST</button>
       <button class="chip" data-cat="local" aria-pressed="false">My Fonts</button>
     </nav>
-    <div class="quick-tools"><label class="import-btn" for="fontImport"><i class="fas fa-file-import"></i> Add ZIP/Font</label><input id="fontImport" type="file" accept=".zip,.ttf,.otf" multiple hidden><button type="button" class="refresh-btn" id="refreshCatalog"><i class="fas fa-rotate"></i> Sync</button></div>
+    <div class="quick-tools"><label class="import-btn" for="fontImport"><i class="fas fa-file-import"></i> My Font Import</label><input id="fontImport" type="file" accept=".zip,.ttf,.otf" multiple hidden><button type="button" class="refresh-btn" id="refreshCatalog"><i class="fas fa-rotate"></i> Sync</button></div>
     <div class="import-status" id="importStatus" role="status" aria-live="polite">మీ GIST ZIP/TTF ఫైల్‌ను Import చేస్తే ఇక్కడే preview, download చేయవచ్చు. ఫోన్ నుంచి upload చేయబడదు.</div>
     <div id="catalogInfo" class="audit-note" role="status" aria-live="polite">Direct official TTF downloads; public GitHub font catalog loads automatically after publication.</div>
 
@@ -371,7 +383,10 @@ let category='all', query='', observer=null;
 let localUrls=[]; const MAX_IMPORT_FILES=350, MAX_UNPACKED_BYTES=160*1024*1024;
 const loaded=new Map();
 const statusNode=$('#importStatus');
-const visible=()=>FONTS.filter(f=>(category==='all'?f.verified:(category==='gist'?f.group==='gist':category==='hosted'?f.hosted===true:f.group===category)) && (!query || (f.name+' '+f.style+' '+f.file).toLowerCase().includes(query)));
+const visible=()=>FONTS.filter(f=>{
+ const ok = category==='all' || (category==='preview'&&f.verified) || (category==='zip'&&f.type==='zip') || (category==='other'&&f.group==='other') || (category==='gist'&&f.group==='gist') || (category==='hosted'&&f.hosted===true) || (category==='local'&&f.group==='local') || (category==='variable'&&f.group==='variable') || (category==='styles'&&f.group==='styles') || (category==='classic'&&f.group==='classic');
+ return ok && (!query || (f.name+' '+f.style+' '+(f.file||'')).toLowerCase().includes(query));
+}).sort((a,b)=>Number(!!b.verified)-Number(!!a.verified) || (a.name||'').localeCompare(b.name||'') || (a.style||'').localeCompare(b.style||''));
 const escapeHTML=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const liveSample=()=>previewInput.value.trim() || 'తెలుగు అక్షరాలు క్ష త్ర జ్ఞ';
 let toastTimer=0;
@@ -380,10 +395,13 @@ function styleLabel(f){return f.style==='Regular'?'':f.style;}
 function cardHTML(f){
  const txt=escapeHTML(f.name), st=escapeHTML(styleLabel(f));
  const sub=st?'<span class="f-style">'+st+'</span>':'';
- return '<div class="card-head"><div class="f-name">'+txt+'</div>'+sub+'</div>'+
-  '<div class="preview loading" aria-label="Font preview"></div>'+
-  '<div class="card-foot"><button class="btn-share" type="button" data-share="'+escapeHTML(f.id)+'" aria-label="Share link for '+txt+'"><i class="fas fa-share-nodes"></i> </button>'+
-  '<button class="btn-dl" type="button" data-download="'+escapeHTML(f.id)+'" aria-label="Download '+txt+'"><i class="fas fa-download"></i> Download</button></div>';
+ const capable=f.verified===true && !!f.url;
+ const zip=f.type==='zip' && !!f.downloadUrl;
+ const action=capable?'<button class="btn-dl" type="button" data-download="'+escapeHTML(f.id)+'"><i class="fas fa-download"></i> Download</button>':zip?'<button class="btn-dl zip-link" type="button" data-download="'+escapeHTML(f.id)+'"><i class="fas fa-file-zipper"></i> ZIP</button>':'<button class="btn-dl unavailable" disabled title="TTF/OTF file not available">File pending</button>';
+ const meta=capable?'<div class="preview loading" aria-label="True font preview">Loading original font…</div>':
+   '<div class="status-small">'+(zip?'ZIP download • font preview pending':'Original TTF/OTF needed for preview')+'</div>';
+ return '<div class="card-head"><div class="f-name">'+txt+'</div>'+sub+'</div>'+meta+
+   '<div class="card-foot"><button class="btn-share" type="button" data-share="'+escapeHTML(f.id)+'" title="Share font card"><i class="fas fa-share-nodes"></i></button>'+action+'</div>';
 }
 async function applyFace(f,el){
   if(!f.verified)return;
@@ -405,6 +423,8 @@ async function applyFace(f,el){
     const family=await promise;
     if(!el.isConnected)return;
     pv.style.fontFamily='"'+family+'",sans-serif';
+  pv.style.fontWeight=String(f.weight||400);
+  const wdth=Number(f.width||100);pv.style.fontVariationSettings='\"wght\" '+(f.weight||400)+(wdth!==100?', \"wdth\" '+wdth:'');
     pv.textContent=liveSample();
     pv.classList.remove('loading');pv.classList.add('preview-loaded');
     el.dataset.previewState='loaded';
@@ -445,13 +465,11 @@ function render(){
  if(observer){observer.disconnect();observer=null;}
  list.innerHTML='';
  const rows=visible(), frag=document.createDocumentFragment();
- rows.forEach(f=>{const item=document.createElement('article');item.className='card'+(f.verified?' can-preview':' no-preview');item.dataset.id=f.id;item.innerHTML=cardHTML(f);const p=$('.preview',item);if(p)p.textContent='అసలు ఫాంట్ లోడ్ అవుతోంది…';frag.appendChild(item);});
+ rows.forEach(f=>{const item=document.createElement('article');item.className='card'+(f.verified?' can-preview':' no-preview not-ready');item.dataset.id=f.id;item.innerHTML=cardHTML(f);const p=$('.preview',item);if(p)p.textContent='అసలు ఫాంట్ లోడ్ అవుతోంది…';frag.appendChild(item);});
  list.appendChild(frag);badge.textContent=String(rows.length);
  if(requested&&!jumped)requestAnimationFrame(revealRequested);
- state.textContent=category==='gist'?'GIST TTF/OTF files not hosted yet. Import ZIP/TTF to preview.':category==='local'?'Choose Import ZIP / TTF / OTF to preview your own font files privately.':'Matching downloadable files not found';state.classList.toggle('show',rows.length===0);
- catalogInfo.textContent=category==='gist'?'GIST: no published TTF/OTF files yet':
-   category==='all'?rows.length+' fonts • TTF/OTF direct downloads':
-   rows.length+' downloadable font files';
+ state.textContent='No matching fonts in this category';state.classList.toggle('show',rows.length===0);
+ catalogInfo.textContent=FONTS.filter(f=>f.verified).length+' font styles with preview • '+FONTS.filter(f=>f.type==='zip').length+' ZIP entries • '+FONTS.filter(f=>f.group==='gist').length+' GIST entries • '+FONTS.length+' total';
  if('IntersectionObserver' in window){observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){observer.unobserve(e.target);const f=FONTS.find(x=>x.id===e.target.dataset.id);if(f)applyFace(f,e.target);}}),{rootMargin:'450px'});list.querySelectorAll('.can-preview').forEach(c=>observer.observe(c));}
  else list.querySelectorAll('.can-preview').forEach(c=>{const f=FONTS.find(x=>x.id===c.dataset.id);if(f)applyFace(f,c)});
 }
@@ -460,6 +478,7 @@ async function download(f,button){
  if(button.disabled)return;
  button.disabled=true;button.textContent='Loading…';
  try{
+  if(f.type==='zip' && f.downloadUrl){window.location.assign(f.downloadUrl);toast('ZIP download requested');return;}
   const r=await fetch(f.url,{mode:'cors',redirect:'follow'});
   if(!r.ok)throw Error('HTTP '+r.status);
   const b=await r.blob(); if(b.size<1000||b.size>30000000)throw Error('Unexpected file size');
@@ -471,7 +490,7 @@ async function download(f,button){
   // Never open an external site or an HTML error page when a font download fails.
   console.warn('Font download failed',f.file,e);
   toast('Download failed — retry later or choose another font.');
- }finally{button.disabled=false;button.innerHTML='<i class="fas fa-download"></i> Download';}
+ }finally{button.disabled=false;button.innerHTML=f.type==='zip'?'<i class="fas fa-file-zipper"></i> ZIP':'<i class="fas fa-download"></i> Download';}
 }
 list.addEventListener('click',e=>{const failed=e.target.closest('.preview.preview-error');if(failed){const item=failed.closest('.card');const f=FONTS.find(x=>x.id===item?.dataset.id);if(f)applyFace(f,item);return;}const share=e.target.closest('[data-share]');if(share){const f=FONTS.find(x=>x.id===share.dataset.share);if(f)shareFont(f);return;}const b=e.target.closest('[data-download]');if(!b)return;const f=FONTS.find(x=>x.id===b.dataset.download);if(f)download(f,b);});
 list.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ') && e.target.matches('.preview.preview-error')){e.preventDefault();e.target.click();}});
@@ -553,8 +572,39 @@ $('#fontImport').addEventListener('change',async e=>{
 $('#refreshCatalog').addEventListener('click',()=>{statusNode.textContent='Checking GitHub catalog…';loadHostedFonts();});
 window.addEventListener('pagehide',()=>{for(const url of localUrls)URL.revokeObjectURL(url);});
 
+
+/* v15 recover old 161 catalog entries (compressed historic inventory hosted on GitHub).
+   Categories keep non-preview GIST names visible without faking a font face. */
+async function recoverHistoricalFonts(){
+ try{
+  const root='https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/telugu-fonts/legacy/catalog-161.b64';
+  const res=await fetch(root+'?v=15',{mode:'cors',cache:'no-store'});
+  if(!res.ok)throw Error('Historical catalog HTTP '+res.status);
+  const txt=(await res.text()).split(/\s+/).filter(Boolean).pop();
+  if(!/^[A-Za-z0-9+/=]+$/.test(txt))throw Error('Invalid catalog encoding');
+  const gz=Uint8Array.from(atob(txt),c=>c.charCodeAt(0));
+  const expanded=await new Response(new Blob([gz]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  const data=JSON.parse(expanded);if(!Array.isArray(data)||data.length!==161)throw Error('Bad historic catalog count');
+  const historic=data.map(x=>{
+   const [id,name,style,weight,width,format,group,file,previewUrl,downloadUrl]=x;
+   const canPreview=(format==='ttf'||format==='otf')&&Boolean(previewUrl);
+   const type=canPreview?format:format==='zip'?'zip':'pending';
+   const g=group==='anek'?'variable':group==='multi'?'styles':group==='legacy'?'gist':group==='telugufonts'?'zip':group==='requested'&&!canPreview?'other':'classic';
+   return {id,name,style,weight,width,file:file||'',url:canPreview?previewUrl:'',
+    downloadUrl:format==='zip'?downloadUrl:'',group:g,type,verified:canPreview,
+    license:canPreview?'OFL-1.1':'check-rights',historical:true};
+  });
+  const rememberedIds=new Set(historic.map(x=>x.id));
+  const rememberedFiles=new Set(historic.map(x=>(x.file||'').toLowerCase()).filter(Boolean));
+  const extras=FONTS.filter(f=>!rememberedIds.has(f.id)&&!rememberedFiles.has((f.file||'').toLowerCase()));
+  FONTS=historic.concat(extras);
+  statusNode.textContent='Historic 161-entry font catalog restored';
+  render();
+ }catch(error){console.warn('Historic catalog could not load:',error);statusNode.textContent='Historic catalog unavailable; showing directly hosted fonts only';}
+}
+
 render();
-loadHostedFonts();
+recoverHistoricalFonts().then(loadHostedFonts);
 })();
 </script>
 </body>
