@@ -21,6 +21,7 @@ on:
       - "scripts/ingest_external_fonts.py"
       - "scripts/sync_client_fallback.py"
       - "scripts/check_telugu_fonts_ui.py"
+      - "scripts/build_deployment_zip.py"
       - ".github/workflows/ingest-external-telugu-fonts.yml"
 
 permissions:
@@ -111,13 +112,18 @@ jobs:
           AFTER="$(sha256sum telugu-fonts.html | awk '{print $1}')"
           test "$BEFORE" = "$AFTER" || { echo "ERROR: telugu-fonts.html changed"; exit 1; }
 
+      - name: Build production deployment ZIP
+        run: |
+          python scripts/build_deployment_zip.py \
+            --output downloads/AiTechApp-Telugu-Fonts-Final.zip
+
       - name: Commit generated catalogue and approved binaries
         shell: bash
         run: |
           git config user.name "AiTechApp Font Bot"
           git config user.email "font-bot@users.noreply.github.com"
 
-          git add -A fonts-catalog.json telugu-fonts-client.js font-ingest
+          git add -A fonts-catalog.json telugu-fonts-client.js font-ingest downloads/AiTechApp-Telugu-Fonts-Final.zip
           [[ -d fonts/gist ]] && git add -A fonts/gist
           [[ -d fonts/unicode ]] && git add -A fonts/unicode
 
