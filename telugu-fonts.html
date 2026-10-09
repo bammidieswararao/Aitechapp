@@ -1,48 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="te">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Telugu Fonts – Direct TTF/OTF Download | AiTechApp</title>
-<meta name="description" content="Live Telugu font preview with direct TTF/OTF download.">
-<meta name="theme-color" content="#f2f2f7">
+<title>Telugu Fonts Free Direct TTF OTF Download | AiTechApp</title>
+<meta name="description" content="121 Telugu font styles with live preview and direct TTF/OTF download.">
+<meta name="theme-color" content="#F2F2F7">
+<link rel="canonical" href="https://aitechapp.in/telugu-fonts.html">
+<link rel="icon" href="/logo.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-:root{--b:#0a84ff;--bg:#f2f2f7;--card:#fff;--t:#1c1c1e;--m:#8e8e93;--bd:rgba(60,60,67,.12)}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Telugu",sans-serif}
-.app{max-width:480px;margin:auto;min-height:100vh;padding-bottom:18px}
-header{position:sticky;top:0;z-index:5;height:64px;padding:10px 14px;display:flex;align-items:center;gap:10px;background:rgba(242,242,247,.94);backdrop-filter:blur(16px);border-bottom:.5px solid var(--bd)}
-.back{width:42px;height:42px;border:0;border-radius:50%;background:rgba(118,118,128,.12);font-size:28px;text-decoration:none;color:var(--t);display:grid;place-items:center}
-.title{flex:1}.title h1{font-size:20px;margin:0}.title p{font-size:10px;margin:2px 0 0;color:#087ccc;font-weight:900;letter-spacing:.6px}
-#count{min-width:50px;padding:7px 10px;border-radius:16px;background:rgba(175,82,222,.12);color:#af52de;text-align:center;font-weight:900}
-main{padding:8px}
-.label{font-size:9px;font-weight:900;color:var(--m);margin:0 4px 3px;text-transform:uppercase;letter-spacing:.4px}
-#previewInput{width:100%;height:41px;border:1px solid var(--bd);border-radius:14px;background:#fff;padding:8px 12px;resize:none;outline:none;font-size:16px;overflow:hidden;white-space:nowrap}
-#list{display:flex;flex-direction:column;gap:5px;margin-top:7px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:13px;padding:6px 7px 5px;box-shadow:0 2px 9px rgba(0,0,0,.045)}
-.line1{display:flex;align-items:center;gap:6px;font-size:12px;min-height:22px;white-space:nowrap;overflow:hidden}
-.line1 strong{overflow:hidden;text-overflow:ellipsis}.line1 span:last-child{color:var(--m);overflow:hidden;text-overflow:ellipsis}
-.serial{flex:none;min-width:30px;height:21px;border-radius:8px;display:grid;place-items:center;background:rgba(10,132,255,.09);color:#0780db;font-size:10px;font-weight:950}
-.preview{height:27px;display:flex;align-items:center;padding:0 3px;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.download{width:100%;height:27px;border:0;border-radius:9px;background:var(--b);color:#fff;font-size:11px;font-weight:900}
-.download:disabled{opacity:.6}
-.note{font-size:10px;color:var(--m);text-align:center;padding:10px 6px}
+:root{
+ --ios-blue:#007AFF;--ios-green:#34C759;--ios-red:#FF3B30;--ios-orange:#FF9500;
+ --ios-purple:#AF52DE;--ios-indigo:#5E5CE6;--ios-bg:#F2F2F7;--ios-card:#FFFFFF;
+ --ios-text:#1C1C1E;--ios-text-muted:#8E8E93;--ios-border:rgba(60,60,67,.12);
+ --shadow-soft:0 4px 16px rgba(0,0,0,.04);--shadow-dock:0 -4px 20px rgba(0,0,0,.05)
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--ios-bg);color:var(--ios-text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter','Segoe UI',Roboto,'Noto Sans Telugu',sans-serif}
+button,input,textarea{font-family:inherit}
+button{touch-action:manipulation}
+.app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--ios-bg);padding-bottom:calc(122px + env(safe-area-inset-bottom,0px));box-shadow:0 0 40px rgba(0,0,0,.05);position:relative}
+
+/* Header */
+.app-header{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(242,242,247,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid var(--ios-border)}
+.btn-icon-circle{width:44px;height:44px;flex:none;border-radius:50%;background:rgba(0,0,0,.06);color:var(--ios-text);display:flex;align-items:center;justify-content:center;font-size:1rem;border:none;cursor:pointer;text-decoration:none;transition:.15s}
+.btn-icon-circle:active{transform:scale(.92);background:rgba(0,0,0,.12)}
+.header-center{position:relative;flex:1;min-width:0;height:44px}
+.header-title{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;min-width:0;transition:opacity .22s,transform .22s}
+.header-title h1{margin:0;font-size:1.16rem;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-title p{margin:2px 0 0;font-size:.62rem;color:var(--ios-blue);font-weight:900;letter-spacing:.8px;white-space:nowrap}
+.header-search{position:absolute;inset:0;display:flex;align-items:center;gap:7px;padding:0 7px 0 11px;background:rgba(118,118,128,.14);border-radius:14px;opacity:0;transform:translateX(16px);pointer-events:none;transition:.22s}
+.header-search>i{color:var(--ios-text-muted);font-size:.85rem}
+.header-search input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;font-size:16px;color:var(--ios-text)}
+.search-clear{width:26px;height:26px;border:0;border-radius:50%;background:rgba(60,60,67,.28);color:#fff;display:none;place-items:center}
+.search-clear.show{display:grid}
+.app-header.searching .header-title{opacity:0;transform:translateX(-16px);pointer-events:none}
+.app-header.searching .header-search{opacity:1;transform:none;pointer-events:auto}
+.header-right{display:flex;align-items:center;gap:8px}
+.count-pill{min-width:54px;text-align:center;background:rgba(175,82,222,.13);color:var(--ios-purple);font-size:.9rem;font-weight:900;padding:8px 12px;border-radius:16px}
+.app-header.searching .count-pill{display:none}
+
+/* Preview + filters */
+main{padding:10px 12px 16px}
+.section-label{font-size:.66rem;font-weight:850;color:var(--ios-text-muted);letter-spacing:.35px;text-transform:uppercase;margin:2px 6px 5px}
+.preview-box{display:flex;background:#fff;border:1px solid var(--ios-border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-soft)}
+.preview-box textarea{flex:1;min-width:0;height:56px;padding:13px 14px;border:0;outline:0;resize:none;overflow:hidden;background:transparent;font-size:1.05rem;line-height:1.7;color:var(--ios-text)}
+.float-paste{width:50px;border:0;background:rgba(0,122,255,.08);color:var(--ios-blue);font-size:1rem}
+.chips{display:flex;gap:7px;overflow-x:auto;margin:9px -12px 8px;padding:1px 12px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:.5px solid var(--ios-border);background:#fff;color:var(--ios-text);font-weight:800;font-size:.77rem;padding:8px 13px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.035);white-space:nowrap}
+.chip.active{background:var(--ios-blue);border-color:var(--ios-blue);color:#fff;box-shadow:0 4px 11px rgba(0,122,255,.24)}
+.chip[data-cat="thirdparty"].active{background:linear-gradient(135deg,#007AFF,#5E5CE6);border-color:transparent}
+
+/* Slim font cards */
+#list{display:flex;flex-direction:column;gap:6px}
+.card{background:#fff;border:1px solid var(--ios-border);border-radius:17px;padding:8px 9px 7px;box-shadow:0 3px 13px rgba(0,0,0,.045);scroll-margin-top:85px}
+.card.highlight{animation:flash 1s ease 3;border-color:rgba(52,199,89,.65)}
+@keyframes flash{50%{box-shadow:0 0 0 5px rgba(52,199,89,.18)}}
+.card-top{display:flex;align-items:flex-start;gap:7px}
+.serial{flex:none;min-width:38px;height:28px;border-radius:11px;display:grid;place-items:center;background:rgba(0,122,255,.09);color:#0780db;font-size:.72rem;font-weight:950}
+.name-wrap{flex:1;min-width:0}
+.font-name{font-size:.89rem;font-weight:900;line-height:1.18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.font-name span{color:var(--ios-text-muted);font-weight:750}
+.font-meta{display:flex;align-items:center;gap:5px;min-height:17px;margin-top:2px;color:var(--ios-text-muted);font-size:.58rem;font-weight:750;white-space:nowrap;overflow:hidden}
+.font-meta>span:last-child{overflow:hidden;text-overflow:ellipsis}
+.tag{flex:none;padding:2px 6px;border-radius:999px;font-size:.52rem;font-weight:900}
+.tag.third{background:rgba(175,82,222,.12);color:var(--ios-purple)}
+.width-badge{flex:none;padding:2px 6px;border-radius:999px;background:rgba(0,122,255,.08);color:var(--ios-blue);font-size:.52rem;font-weight:900}
+.preview{height:35px;display:flex;align-items:center;padding:1px 2px;font-size:1.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:.5px solid var(--ios-border)}
+.card-actions{display:flex;align-items:center;gap:6px;padding-top:6px}
+.mini{height:34px;min-width:42px;border:0;border-radius:12px;background:rgba(118,118,128,.09);color:var(--ios-text);display:flex;align-items:center;justify-content:center;gap:4px;font-size:.72rem;font-weight:900}
+.mini.link{color:var(--ios-blue)}
+.mini.liked{background:rgba(255,59,48,.1);color:var(--ios-red)}
+.download{flex:1;height:34px;border:0;border-radius:999px;background:var(--ios-blue);color:#fff;font-size:.76rem;font-weight:900;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 3px 10px rgba(0,122,255,.24)}
+.download b{font-size:.56rem;background:rgba(255,255,255,.2);padding:2px 6px;border-radius:6px}
+.download.busy{opacity:.65;pointer-events:none}
+.state{text-align:center;color:var(--ios-text-muted);font-weight:800;padding:44px 12px;display:none}
+.state.show{display:block}
+.toast{position:fixed;left:50%;bottom:calc(108px + env(safe-area-inset-bottom,0px));transform:translate(-50%,18px);background:rgba(28,28,30,.94);color:#fff;font-size:.76rem;font-weight:750;padding:9px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.2s;z-index:70;max-width:88%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.foot-note{text-align:center;color:var(--ios-text-muted);font-size:.58rem;font-weight:650;padding:10px 6px}
+
+/* ── ORIGINAL Bottom dock — restored unchanged in structure/style ── */
+.bottom-dock{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:40;background:rgba(242,242,247,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:.5px solid var(--ios-border);padding:8px 6px env(safe-area-inset-bottom,8px) 6px;box-shadow:var(--shadow-dock)}
+.action-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;align-items:center}
+.btn-fab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:none;background:transparent;cursor:pointer;text-decoration:none;padding:0}
+.fab-circle{width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,#007AFF,#5E5CE6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;box-shadow:0 6px 18px rgba(0,122,255,.42);transition:transform .15s cubic-bezier(.2,.8,.2,1)}
+.btn-fab:active .fab-circle{transform:scale(.9)}
+.fab-label{font-weight:800;font-size:.62rem;color:#1C1C1E;letter-spacing:-.2px;margin-top:3px}
+.btn-action{position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px 2px;border-radius:14px;border:none;background:var(--ios-card);box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .15s cubic-bezier(.2,.8,.2,1);cursor:pointer;min-height:65px;text-decoration:none}
+.btn-action:active{transform:scale(.94)}
+.btn-action.active{background:rgba(175,82,222,.1);box-shadow:inset 0 0 0 1.5px rgba(175,82,222,.55)}
+.btn-action i{font-size:1.15rem;margin-bottom:2px}
+.btn-action-title{font-weight:800;font-size:.65rem;color:#1C1C1E;letter-spacing:-.2px}
+.btn-action-sub{font-size:.45rem;font-weight:600;text-align:center;line-height:1.1;color:#8E8E93}
+.btn-action-badge{position:absolute;top:0;right:0;color:#fff;font-size:.45rem;font-weight:800;padding:2px 5px;border-bottom-left-radius:8px;letter-spacing:.2px}
+.badge-1{background:var(--ios-blue)}.badge-2{background:var(--ios-orange)}.badge-3{background:var(--ios-purple)}.badge-4{background:var(--ios-green)}
 </style>
-<style id="dynamicFontFaces"></style>
 </head>
 <body>
 <div class="app">
-<header>
-  <a class="back" href="index.html" aria-label="Back">‹</a>
-  <div class="title"><h1>Telugu Fonts</h1><p>FREE DIRECT TTF / OTF</p></div>
-  <div id="count">—</div>
-</header>
-<main>
-  <div class="label">Type Telugu text to preview</div>
-  <textarea id="previewInput" maxlength="220" spellcheck="false">తెలుగు అక్షరాలు అందమైన ఫాంట్స్</textarea>
-  <section id="list" aria-live="polite"></section>
-  <div class="note">Direct TTF/OTF only · no GitHub page redirect · no ZIP preview cards</div>
-</main>
+  <header class="app-header" id="appHeader">
+    <a href="index.html" class="btn-icon-circle" aria-label="Back"><i class="fas fa-chevron-left"></i></a>
+    <div class="header-center">
+      <div class="header-title"><h1>Telugu Fonts</h1><p>FREE DIRECT TTF / OTF</p></div>
+      <div class="header-search">
+        <i class="fas fa-search"></i>
+        <input id="searchInput" type="search" placeholder="Search font or style" autocomplete="off" spellcheck="false" aria-label="Search fonts">
+        <button class="search-clear" id="searchClear" type="button" aria-label="Clear"><i class="fas fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="count-pill" id="countPill">–</span>
+      <button id="btnHeaderSearch" class="btn-icon-circle" type="button" aria-label="Search"><i class="fas fa-search"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-label">Type Telugu text to preview</div>
+    <div class="preview-box">
+      <textarea id="previewInput" rows="1" maxlength="300" spellcheck="false">తెలుగు అక్షరాలు అందమైన ఫాంట్స్</textarea>
+      <button class="float-paste" id="btnPaste" type="button" aria-label="Paste"><i class="fas fa-clipboard"></i></button>
+    </div>
+
+    <nav class="chips" id="chips" aria-label="Font categories">
+      <button class="chip active" type="button" data-cat="all" aria-pressed="true">All Fonts</button>
+      <button class="chip" type="button" data-cat="anek" aria-pressed="false">Anek Widths</button>
+      <button class="chip" type="button" data-cat="multi" aria-pressed="false">Multi Weight</button>
+      <button class="chip" type="button" data-cat="classic" aria-pressed="false">Classic</button>
+      <button class="chip" type="button" data-cat="thirdparty" aria-pressed="false">Third-party TTF/OTF</button>
+    </nav>
+
+    <div id="list" aria-live="polite"></div>
+    <div class="state" id="stateEmpty">No matching direct TTF/OTF fonts</div>
+    <div class="state" id="stateError">Could not load the font catalogue.</div>
+    <div class="foot-note">Live preview uses direct TTF/OTF binaries. Download stays on this page — no GitHub UI redirect.</div>
+  </main>
+
+  <div class="bottom-dock">
+    <div class="action-grid">
+      <a href="index.html?action=fonts" class="btn-action">
+        <span class="btn-action-badge badge-1">FREE</span>
+        <i class="fas fa-magic" style="color:var(--ios-blue)"></i>
+        <span class="btn-action-title">Preview</span><span class="btn-action-sub">Anu Fonts</span>
+      </a>
+      <a href="/plp/" class="btn-action">
+        <span class="btn-action-badge badge-2">FREE</span>
+        <i class="fas fa-folder-open" style="color:var(--ios-orange)"></i>
+        <span class="btn-action-title">PLP Files</span><span class="btn-action-sub">Templates</span>
+      </a>
+      <a href="/ai-hub.php" class="btn-fab" title="AI Hub">
+        <span class="fab-circle"><i class="fas fa-plus"></i></span>
+        <span class="fab-label">AI Hub</span>
+      </a>
+      <a href="telugu-fonts.html" class="btn-action active" aria-current="page">
+        <span class="btn-action-badge badge-3">FREE</span>
+        <i class="fas fa-font" style="color:var(--ios-purple)"></i>
+        <span class="btn-action-title">Telugu Fonts</span><span class="btn-action-sub">Download</span>
+      </a>
+      <a href="index.html?action=chat" class="btn-action">
+        <span class="btn-action-badge badge-4">FREE</span>
+        <i class="fas fa-comment-dots" style="color:var(--ios-green)"></i>
+        <span class="btn-action-title">Anu Chat</span><span class="btn-action-sub">Ask Anyone</span>
+      </a>
+    </div>
+  </div>
 </div>
-<script src="telugu-fonts-client.js"></script>
+<div class="toast" id="toast" role="status"></div>
+<script src="/telugu-fonts-client.js"></script>
 </body>
 </html>
