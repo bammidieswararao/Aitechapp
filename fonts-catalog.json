@@ -1,4 +1,11 @@
 {
+  "schema_version": 2,
+  "generated_from": {
+    "baseline_count": 84,
+    "third_party_binary_source": "sandeepmiriyala03/RatnalabalaVercel/public/Fonts",
+    "rule": "TTF preferred over OTF for the same family/style/weight"
+  },
+  "total": 121,
   "fonts": [
     {
       "id": "ponnala",
@@ -14,7 +21,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 1
+      "serial": 1,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "sree-krushnadevaraya",
@@ -30,7 +42,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 2
+      "serial": 2,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "suravaram",
@@ -46,7 +63,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 3
+      "serial": 3,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "timmana",
@@ -62,7 +84,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 4
+      "serial": 4,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "ravi-prakash",
@@ -78,7 +105,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 5
+      "serial": 5,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "dhurjati",
@@ -94,7 +126,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 6
+      "serial": 6,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "gidugu",
@@ -110,7 +147,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 7
+      "serial": 7,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "gurajada",
@@ -126,7 +168,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 8
+      "serial": 8,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "lakki-reddy",
@@ -142,7 +189,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 9
+      "serial": 9,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "mallanna",
@@ -158,7 +210,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 10
+      "serial": 10,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "mandali",
@@ -174,7 +231,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 11
+      "serial": 11,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "ntr",
@@ -190,7 +252,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 12
+      "serial": 12,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "peddana",
@@ -206,7 +273,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 13
+      "serial": 13,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "ramabhadra",
@@ -222,7 +294,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 14
+      "serial": 14,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "ramaraja",
@@ -238,7 +315,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 15
+      "serial": 15,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "suranna",
@@ -254,7 +336,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 16
+      "serial": 16,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "tenali-ramakrishna",
@@ -270,7 +357,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 17
+      "serial": 17,
+      "category": "Classic",
+      "categories": [
+        "Classic",
+        "Third-party"
+      ]
     },
     {
       "id": "tiro-telugu",
@@ -286,7 +378,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 18
+      "serial": 18,
+      "category": "Classic",
+      "categories": [
+        "Classic"
+      ]
     },
     {
       "id": "vemana2000",
@@ -302,7 +398,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 19
+      "serial": 19,
+      "category": "Classic",
+      "categories": [
+        "Classic"
+      ]
     },
     {
       "id": "pothana2000",
@@ -318,7 +418,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 20
+      "serial": 20,
+      "category": "Classic",
+      "categories": [
+        "Classic"
+      ]
     },
     {
       "id": "anek-telugu-condensed-100",
@@ -334,7 +438,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 21
+      "serial": 21,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-200",
@@ -350,7 +458,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 22
+      "serial": 22,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-300",
@@ -366,7 +478,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 23
+      "serial": 23,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-400",
@@ -382,7 +498,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 24
+      "serial": 24,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-500",
@@ -398,7 +518,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 25
+      "serial": 25,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-600",
@@ -414,7 +538,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 26
+      "serial": 26,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-700",
@@ -430,7 +558,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 27
+      "serial": 27,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-condensed-800",
@@ -446,7 +578,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 28
+      "serial": 28,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-100",
@@ -462,7 +598,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 29
+      "serial": 29,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-200",
@@ -478,7 +618,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 30
+      "serial": 30,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-300",
@@ -494,7 +638,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 31
+      "serial": 31,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-400",
@@ -510,7 +658,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 32
+      "serial": 32,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-500",
@@ -526,7 +678,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 33
+      "serial": 33,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-600",
@@ -542,7 +698,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 34
+      "serial": 34,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-700",
@@ -558,7 +718,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 35
+      "serial": 35,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semicondensed-800",
@@ -574,7 +738,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 36
+      "serial": 36,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-100",
@@ -590,7 +758,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 37
+      "serial": 37,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-200",
@@ -606,7 +778,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 38
+      "serial": 38,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-300",
@@ -622,7 +798,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 39
+      "serial": 39,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-400",
@@ -638,7 +818,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 40
+      "serial": 40,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-500",
@@ -654,7 +838,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 41
+      "serial": 41,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-600",
@@ -670,7 +858,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 42
+      "serial": 42,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-700",
@@ -686,7 +878,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 43
+      "serial": 43,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-normal-800",
@@ -702,7 +898,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 44
+      "serial": 44,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-100",
@@ -718,7 +918,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 45
+      "serial": 45,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-200",
@@ -734,7 +938,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 46
+      "serial": 46,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-300",
@@ -750,7 +958,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 47
+      "serial": 47,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-400",
@@ -766,7 +978,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 48
+      "serial": 48,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-500",
@@ -782,7 +998,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 49
+      "serial": 49,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-600",
@@ -798,7 +1018,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 50
+      "serial": 50,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-700",
@@ -814,7 +1038,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 51
+      "serial": 51,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-semiexpanded-800",
@@ -830,7 +1058,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 52
+      "serial": 52,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-100",
@@ -846,7 +1078,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 53
+      "serial": 53,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-200",
@@ -862,7 +1098,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 54
+      "serial": 54,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-300",
@@ -878,7 +1118,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 55
+      "serial": 55,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-400",
@@ -894,7 +1138,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 56
+      "serial": 56,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-500",
@@ -910,7 +1158,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 57
+      "serial": 57,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-600",
@@ -926,7 +1178,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 58
+      "serial": 58,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-700",
@@ -942,7 +1198,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 59
+      "serial": 59,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "anek-telugu-expanded-800",
@@ -958,7 +1218,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 60
+      "serial": 60,
+      "category": "Anek Widths",
+      "categories": [
+        "Anek Widths"
+      ]
     },
     {
       "id": "hind-guntur-300",
@@ -974,7 +1238,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 61
+      "serial": 61,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "hind-guntur-400",
@@ -990,7 +1258,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 62
+      "serial": 62,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "hind-guntur-500",
@@ -1006,7 +1278,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 63
+      "serial": 63,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "hind-guntur-600",
@@ -1022,7 +1298,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 64
+      "serial": 64,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "hind-guntur-700",
@@ -1038,7 +1318,11 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 65
+      "serial": 65,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "chathura-100",
@@ -1054,7 +1338,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 66
+      "serial": 66,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight",
+        "Third-party"
+      ]
     },
     {
       "id": "chathura-300",
@@ -1070,7 +1359,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 67
+      "serial": 67,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight",
+        "Third-party"
+      ]
     },
     {
       "id": "chathura-400",
@@ -1086,7 +1380,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 68
+      "serial": 68,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight",
+        "Third-party"
+      ]
     },
     {
       "id": "chathura-700",
@@ -1102,7 +1401,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 69
+      "serial": 69,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight",
+        "Third-party"
+      ]
     },
     {
       "id": "chathura-800",
@@ -1118,7 +1422,12 @@
       "preview_ready": true,
       "variable": false,
       "source": "seed",
-      "serial": 70
+      "serial": 70,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight",
+        "Third-party"
+      ]
     },
     {
       "id": "noto-sans-telugu-100",
@@ -1134,7 +1443,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 71
+      "serial": 71,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-200",
@@ -1150,7 +1463,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 72
+      "serial": 72,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-300",
@@ -1166,7 +1483,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 73
+      "serial": 73,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-400",
@@ -1182,7 +1503,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 74
+      "serial": 74,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-500",
@@ -1198,7 +1523,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 75
+      "serial": 75,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-600",
@@ -1214,7 +1543,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 76
+      "serial": 76,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-700",
@@ -1230,7 +1563,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 77
+      "serial": 77,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-800",
@@ -1246,7 +1583,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 78
+      "serial": 78,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "noto-sans-telugu-900",
@@ -1262,7 +1603,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 79
+      "serial": 79,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "baloo-tammudu-2-400",
@@ -1278,7 +1623,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 80
+      "serial": 80,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "baloo-tammudu-2-500",
@@ -1294,7 +1643,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 81
+      "serial": 81,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "baloo-tammudu-2-600",
@@ -1310,7 +1663,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 82
+      "serial": 82,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "baloo-tammudu-2-700",
@@ -1326,7 +1683,11 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 83
+      "serial": 83,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
     },
     {
       "id": "baloo-tammudu-2-800",
@@ -1342,7 +1703,936 @@
       "preview_ready": true,
       "variable": true,
       "source": "seed",
-      "serial": 84
+      "serial": 84,
+      "category": "Multi Weight",
+      "categories": [
+        "Multi Weight"
+      ]
+    },
+    {
+      "id": "annamayya-italic-400",
+      "name": "Annamayya",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/AnnamayyaItalic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "AnnamayyaItalic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/AnnamayyaItalic.otf",
+      "upstream_sha": "fb66ebb934be95212393a8328f03ffb8452c3bdf",
+      "upstream_size": 629476,
+      "serial": 85
+    },
+    {
+      "id": "annamayya-regular-400",
+      "name": "Annamayya",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Annamayya.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Annamayya.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Annamayya.otf",
+      "upstream_sha": "74923eae1157366514121bf0110b18784f23cc64",
+      "upstream_size": 599460,
+      "serial": 86
+    },
+    {
+      "id": "annamayya-bold-700",
+      "name": "Annamayya",
+      "style": "Bold",
+      "weight": 700,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/AnnamayyaBold.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "AnnamayyaBold.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/AnnamayyaBold.otf",
+      "upstream_sha": "dde57f6f14872a554045f5f83361bdbda6f1f098",
+      "upstream_size": 598180,
+      "serial": 87
+    },
+    {
+      "id": "annamayya-bold-italic-700",
+      "name": "Annamayya",
+      "style": "Bold Italic",
+      "weight": 700,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/AnnamayyaBoldItalic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "AnnamayyaBoldItalic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/AnnamayyaBoldItalic.otf",
+      "upstream_sha": "a24531a42f5dd62c49d19a1a7a81ba2fcbba8a63",
+      "upstream_size": 628448,
+      "serial": 88
+    },
+    {
+      "id": "bvsatyamurty-regular-400",
+      "name": "BVSatyamurty",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/BVSatyamurty.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "BVSatyamurty.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/BVSatyamurty.ttf",
+      "upstream_sha": "49bb2ad11e5e7c1ddd0e51c9f19f7f8c7aae66c9",
+      "upstream_size": 607768,
+      "serial": 89
+    },
+    {
+      "id": "dhurjati-italic-400",
+      "name": "Dhurjati",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Dhurjati-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Dhurjati-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Dhurjati-Italic.otf",
+      "upstream_sha": "d93ea5e32ad09cc29ce44e111bd5364863d6d0cc",
+      "upstream_size": 825292,
+      "serial": 90
+    },
+    {
+      "id": "gidugu-italic-400",
+      "name": "Gidugu",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Gidugu-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Gidugu-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Gidugu-Italic.otf",
+      "upstream_sha": "f3fb02d8fb41564fd5abf1ed18cdaee6926f910a",
+      "upstream_size": 244472,
+      "serial": 91
+    },
+    {
+      "id": "jims-italic-400",
+      "name": "JIMS",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/JIMSItalic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "JIMSItalic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/JIMSItalic.otf",
+      "upstream_sha": "c02c8984697ac8569cbd6304ad970aa13a3b6f56",
+      "upstream_size": 576680,
+      "serial": 92
+    },
+    {
+      "id": "jims-regular-400",
+      "name": "JIMS",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/JIMS.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "JIMS.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/JIMS.otf",
+      "upstream_sha": "8757b4b1938f2052f62d4ae04fa18bd645e737fa",
+      "upstream_size": 544100,
+      "serial": 93
+    },
+    {
+      "id": "kanakadurga-italic-400",
+      "name": "KanakaDurga",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/KanakaDurga-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "KanakaDurga-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/KanakaDurga-Italic.otf",
+      "upstream_sha": "e139d0544552b769700cf5046ec06f1a37f53860",
+      "upstream_size": 268320,
+      "serial": 94
+    },
+    {
+      "id": "kanakadurga-regular-400",
+      "name": "KanakaDurga",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/KanakaDurga.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "KanakaDurga.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/KanakaDurga.otf",
+      "upstream_sha": "f308caedecb3538557538525394d589bdc354a65",
+      "upstream_size": 234552,
+      "serial": 95
+    },
+    {
+      "id": "mallanna-italic-400",
+      "name": "Mallanna",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mallanna-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Mallanna-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Mallanna-Italic.otf",
+      "upstream_sha": "de838f14f077a112a55d45f6482c0dada3337b44",
+      "upstream_size": 461636,
+      "serial": 96
+    },
+    {
+      "id": "mandali-italic-400",
+      "name": "Mandali",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mandali-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Mandali-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Mandali-Italic.otf",
+      "upstream_sha": "d69b65f34af10b8f7467af9bc00a6a4414ec4bd1",
+      "upstream_size": 461244,
+      "serial": 97
+    },
+    {
+      "id": "mandali-bold-700",
+      "name": "Mandali",
+      "style": "Bold",
+      "weight": 700,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mandali-Bold.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Mandali-Bold.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Mandali-Bold.otf",
+      "upstream_sha": "ffe199a1e8aebdb8184c327390029c64ff607869",
+      "upstream_size": 439888,
+      "serial": 98
+    },
+    {
+      "id": "mandali-bold-italic-700",
+      "name": "Mandali",
+      "style": "Bold Italic",
+      "weight": 700,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mandali-Bold%20Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Mandali-Bold Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Mandali-Bold Italic.otf",
+      "upstream_sha": "73bbae1a9777bf697c380af83678a678f5786864",
+      "upstream_size": 472988,
+      "serial": 99
+    },
+    {
+      "id": "nandakam-italic-400",
+      "name": "Nandakam",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Nandakam-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Nandakam-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Nandakam-Italic.otf",
+      "upstream_sha": "d4d8eab4d5c740dbebc196616c849caa925f9098",
+      "upstream_size": 685352,
+      "serial": 100
+    },
+    {
+      "id": "nandakam-regular-400",
+      "name": "Nandakam",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Nandakam.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Nandakam.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Nandakam.otf",
+      "upstream_sha": "800ecbdb6b11a5fb8a3b7fd6d80942e34f3792cd",
+      "upstream_size": 855400,
+      "serial": 101
+    },
+    {
+      "id": "nats-italic-400",
+      "name": "NATS",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/NATS-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "NATS-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/NATS-Italic.otf",
+      "upstream_sha": "854624d568c340237f2929a0a09460265a83f412",
+      "upstream_size": 238832,
+      "serial": 102
+    },
+    {
+      "id": "nats-regular-400",
+      "name": "NATS",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/NATS.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "NATS.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/NATS.otf",
+      "upstream_sha": "7c21de9a9d4d92e205588b5408243cf5d6644808",
+      "upstream_size": 222020,
+      "serial": 103
+    },
+    {
+      "id": "potti-sreeramulu-regular-400",
+      "name": "Potti Sreeramulu",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Potti%20Sreeramulu.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Potti Sreeramulu.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Potti Sreeramulu.otf",
+      "upstream_sha": "1641bf07d4f1e1a6763a84dcccbf9a5c40f3a724",
+      "upstream_size": 468320,
+      "serial": 104
+    },
+    {
+      "id": "purushothamaa-italic-400",
+      "name": "Purushothamaa",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Purushothamaa-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Purushothamaa-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Purushothamaa-Italic.otf",
+      "upstream_sha": "765236127622952486af6d8e4a411aa6262fbdfe",
+      "upstream_size": 441552,
+      "serial": 105
+    },
+    {
+      "id": "purushothamaa-regular-400",
+      "name": "Purushothamaa",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Purushothamaa.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Purushothamaa.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Purushothamaa.otf",
+      "upstream_sha": "e72d1830bc820d8d314310fa3a586a8ff604a658",
+      "upstream_size": 419528,
+      "serial": 106
+    },
+    {
+      "id": "pv-narasimha-rao-regular-400",
+      "name": "PV Narasimha Rao",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/PVNR.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "PVNR.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/PVNR.otf",
+      "upstream_sha": "ec861d58cda076e32f60b0842a5c3114f10101f6",
+      "upstream_size": 3256172,
+      "serial": 107
+    },
+    {
+      "id": "ramabhadra-italic-400",
+      "name": "Ramabhadra",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Ramabhadra-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Ramabhadra-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Ramabhadra-Italic.otf",
+      "upstream_sha": "33fe3efd6d043e5217ac92112dc6e3cd698443dc",
+      "upstream_size": 402316,
+      "serial": 108
+    },
+    {
+      "id": "ramaneeya-regular-400",
+      "name": "Ramaneeya",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/RamaneeyaWin.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "RamaneeyaWin.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/RamaneeyaWin.ttf",
+      "upstream_sha": "ef00cf1048c9b33a88e8cc48c096e39925434a7d",
+      "upstream_size": 449976,
+      "serial": 109
+    },
+    {
+      "id": "seela-veerraju-regular-400",
+      "name": "Seela Veerraju",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/SeelaVeerraju.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "SeelaVeerraju.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/SeelaVeerraju.ttf",
+      "upstream_sha": "44197f6691c28407a6ef12e5b47cff64e9b2b090",
+      "upstream_size": 953572,
+      "serial": 110
+    },
+    {
+      "id": "sirivennela-regular-400",
+      "name": "Sirivennela",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Sirivennela.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Sirivennela.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Sirivennela.ttf",
+      "upstream_sha": "1fe9f11ac51251656ab5f34446cb8cee56eeed5d",
+      "upstream_size": 669304,
+      "serial": 111
+    },
+    {
+      "id": "sp-balasubrahmanyam-regular-400",
+      "name": "SP Balasubrahmanyam",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/SPBalasubrahmanyam.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "SPBalasubrahmanyam.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/SPBalasubrahmanyam.ttf",
+      "upstream_sha": "a0e1bbbba90fa41c610eb457e9b35d271eb96345",
+      "upstream_size": 577644,
+      "serial": 112
+    },
+    {
+      "id": "sree-krushnadevaraya-italic-400",
+      "name": "Sree Krushnadevaraya",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Sree%20Krushnadevaraya-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Sree Krushnadevaraya-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Sree Krushnadevaraya-Italic.otf",
+      "upstream_sha": "8904a73433da09fab9ba9645b1fc46a186693b85",
+      "upstream_size": 586792,
+      "serial": 113
+    },
+    {
+      "id": "suranna-italic-400",
+      "name": "Suranna",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suranna-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Suranna-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Suranna-Italic.otf",
+      "upstream_sha": "88f311dd677d462d8d1cb6aeb4c3e777b3cd7b17",
+      "upstream_size": 467936,
+      "serial": 114
+    },
+    {
+      "id": "suranna-bold-700",
+      "name": "Suranna",
+      "style": "Bold",
+      "weight": 700,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suranna%20Bold.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Suranna Bold.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Suranna Bold.otf",
+      "upstream_sha": "55933cf2fbf56a599ae67c970455b760c97a2697",
+      "upstream_size": 441540,
+      "serial": 115
+    },
+    {
+      "id": "suranna-bold-italic-700",
+      "name": "Suranna",
+      "style": "Bold Italic",
+      "weight": 700,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suranna%20Bold%20Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Suranna Bold Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Suranna Bold Italic.otf",
+      "upstream_sha": "b5b76a991cf6b3241a57a3f2985e0b779662fccf",
+      "upstream_size": 467704,
+      "serial": 116
+    },
+    {
+      "id": "suravaram-italic-400",
+      "name": "Suravaram",
+      "style": "Italic",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suravaram-Italic.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Suravaram-Italic.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Suravaram-Italic.otf",
+      "upstream_sha": "b9017fcef958c430ce123e3dd75c91c71592f5be",
+      "upstream_size": 242124,
+      "serial": 117
+    },
+    {
+      "id": "syamala-ramana-regular-400",
+      "name": "Syamala Ramana",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Syamala%20Ramana.otf",
+      "download_type": "OTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Syamala Ramana.otf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Syamala Ramana.otf",
+      "upstream_sha": "4e0b44315cf4de40064246059ec34f76d816d03e",
+      "upstream_size": 455080,
+      "serial": 118
+    },
+    {
+      "id": "tana-regular-400",
+      "name": "TANA",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/TANA.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "TANA.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/TANA.ttf",
+      "upstream_sha": "994cd26b2f8a35d467f34f4147f1fca451351125",
+      "upstream_size": 1383732,
+      "serial": 119
+    },
+    {
+      "id": "tiro-sundara-telugu-regular-400",
+      "name": "Tiro Sundara Telugu",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/TiroSundaraTelugu-Regular.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "TiroSundaraTelugu-Regular.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/TiroSundaraTelugu-Regular.ttf",
+      "upstream_sha": "9f8be73361f41fcfca8df9f9d4054684e6e746c3",
+      "upstream_size": 1040792,
+      "serial": 120
+    },
+    {
+      "id": "veturi-regular-400",
+      "name": "Veturi",
+      "style": "Regular",
+      "weight": 400,
+      "width": 100,
+      "group": "third-party",
+      "category": "Third-party",
+      "categories": [
+        "Third-party"
+      ],
+      "author": "External GitHub source",
+      "license": "See upstream source terms",
+      "font_raw_url": "https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Veturi.ttf",
+      "download_type": "TTF",
+      "preview_ready": true,
+      "variable": false,
+      "file_name": "Veturi.ttf",
+      "source": "RatnalabalaVercel",
+      "source_repository": "sandeepmiriyala03/RatnalabalaVercel",
+      "source_path": "public/Fonts/Veturi.ttf",
+      "upstream_sha": "50e7a24196f343d4eb5d5b9e3b97f67dd423fec7",
+      "upstream_size": 526372,
+      "serial": 121
     }
   ]
 }
