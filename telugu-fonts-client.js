@@ -1,106 +1,374 @@
 (() => {
-  "use strict";
-  const CATALOG_URL = "fonts-catalog.json";
-  const DEFAULT_TEXT = "తెలుగు అక్షరాలు అందమైన ఫాంట్స్";
-  const $ = (s, r=document) => r.querySelector(s);
-  const list = $("#list");
-  const previewInput = $("#previewInput");
-  const count = $("#count");
-  const dynamicStyle = $("#dynamicFontFaces") || (() => {
-    const s=document.createElement("style"); s.id="dynamicFontFaces"; document.head.appendChild(s); return s;
-  })();
-  const loaded = new Set();
-  const byId = new Map();
+"use strict";
 
-  function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
-  function text(){return (previewInput?.value||"").trim()||DEFAULT_TEXT;}
-  function family(f){return "AiTF_"+String(f.id).replace(/[^A-Za-z0-9_-]/g,"_");}
-  function fmt(t){return String(t).toUpperCase()==="OTF"?"opentype":"truetype";}
-  function style(f){return /italic|oblique/i.test(String(f.style||""))?"italic":"normal";}
+/*
+ * AiTechApp Telugu Fonts client
+ * - Loads /fonts-catalog.json, with an embedded 121-font fallback.
+ * - Only direct .TTF/.OTF URLs are accepted.
+ * - Dynamic FontFace preview, no GitHub UI redirect.
+ * - Direct fetch -> Blob -> native browser download.
+ * - No duplicate logical face cards.
+ */
 
-  function valid(f){
-    if(!f||!f.id||!f.name||!f.font_raw_url||f.preview_ready!==true)return false;
-    const t=String(f.download_type||"").toUpperCase();
-    if(t!=="TTF"&&t!=="OTF")return false;
-    let u=String(f.font_raw_url);
-    try{u=decodeURIComponent(u);}catch{}
-    return !/\/blob\//i.test(u)&&!/\.zip(?:\?|$)/i.test(u)&&/\.(ttf|otf)(?:\?|$)/i.test(u);
+const CATALOG_URL = "/fonts-catalog.json";
+const FALLBACK_FONTS = [{"id":"ponnala","name":"Ponnala","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/ponnala/Ponnala-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":1,"category":"Classic","categories":["Classic","Third-party"]},{"id":"sree-krushnadevaraya","name":"Sree Krushnadevaraya","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/sreekrushnadevaraya/SreeKrushnadevaraya-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":2,"category":"Classic","categories":["Classic","Third-party"]},{"id":"suravaram","name":"Suravaram","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/suravaram/Suravaram-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":3,"category":"Classic","categories":["Classic","Third-party"]},{"id":"timmana","name":"Timmana","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/timmana/Timmana-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":4,"category":"Classic","categories":["Classic","Third-party"]},{"id":"ravi-prakash","name":"Ravi Prakash","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/raviprakash/RaviPrakash-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":5,"category":"Classic","categories":["Classic","Third-party"]},{"id":"dhurjati","name":"Dhurjati","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/dhurjati/Dhurjati-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":6,"category":"Classic","categories":["Classic","Third-party"]},{"id":"gidugu","name":"Gidugu","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/gidugu/Gidugu-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":7,"category":"Classic","categories":["Classic","Third-party"]},{"id":"gurajada","name":"Gurajada","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/gurajada/Gurajada-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":8,"category":"Classic","categories":["Classic","Third-party"]},{"id":"lakki-reddy","name":"Lakki Reddy","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/lakkireddy/LakkiReddy-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":9,"category":"Classic","categories":["Classic","Third-party"]},{"id":"mallanna","name":"Mallanna","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/mallanna/Mallanna-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":10,"category":"Classic","categories":["Classic","Third-party"]},{"id":"mandali","name":"Mandali","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/mandali/Mandali-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":11,"category":"Classic","categories":["Classic","Third-party"]},{"id":"ntr","name":"NTR","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/ntr/NTR-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":12,"category":"Classic","categories":["Classic","Third-party"]},{"id":"peddana","name":"Peddana","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/peddana/Peddana-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":13,"category":"Classic","categories":["Classic","Third-party"]},{"id":"ramabhadra","name":"Ramabhadra","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/ramabhadra/Ramabhadra-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":14,"category":"Classic","categories":["Classic","Third-party"]},{"id":"ramaraja","name":"Ramaraja","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/ramaraja/Ramaraja-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":15,"category":"Classic","categories":["Classic","Third-party"]},{"id":"suranna","name":"Suranna","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/suranna/Suranna-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":16,"category":"Classic","categories":["Classic","Third-party"]},{"id":"tenali-ramakrishna","name":"Tenali Ramakrishna","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/tenaliramakrishna/TenaliRamakrishna-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":17,"category":"Classic","categories":["Classic","Third-party"]},{"id":"tiro-telugu","name":"Tiro Telugu","style":"Regular","weight":400,"width":100,"group":"classic","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/tirotelugu/TiroTelugu-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":18,"category":"Classic","categories":["Classic"]},{"id":"vemana2000","name":"Vemana2000","style":"Regular","weight":400,"width":100,"group":"classic","author":"Dr. Tirumala Krishna Desikacharyulu","license":"GPLv2+ with font exception","font_raw_url":"https://raw.githubusercontent.com/ONLYOFFICE/core-fonts/master/fonts-telu-extra/vemana2000.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":19,"category":"Classic","categories":["Classic"]},{"id":"pothana2000","name":"Pothana 2000","style":"Regular","weight":400,"width":100,"group":"classic","author":"Dr. Tirumala Krishna Desikacharyulu","license":"GPLv2+ with font exception","font_raw_url":"https://raw.githubusercontent.com/ONLYOFFICE/core-fonts/master/fonts-telu-extra/Pothana2000.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":20,"category":"Classic","categories":["Classic"]},{"id":"anek-telugu-condensed-100","name":"Anek Telugu Condensed","style":"Thin","weight":100,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":21,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-200","name":"Anek Telugu Condensed","style":"ExtraLight","weight":200,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":22,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-300","name":"Anek Telugu Condensed","style":"Light","weight":300,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":23,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-400","name":"Anek Telugu Condensed","style":"Regular","weight":400,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":24,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-500","name":"Anek Telugu Condensed","style":"Medium","weight":500,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":25,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-600","name":"Anek Telugu Condensed","style":"SemiBold","weight":600,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":26,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-700","name":"Anek Telugu Condensed","style":"Bold","weight":700,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":27,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-condensed-800","name":"Anek Telugu Condensed","style":"ExtraBold","weight":800,"width":75,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":28,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-100","name":"Anek Telugu SemiCondensed","style":"Thin","weight":100,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":29,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-200","name":"Anek Telugu SemiCondensed","style":"ExtraLight","weight":200,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":30,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-300","name":"Anek Telugu SemiCondensed","style":"Light","weight":300,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":31,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-400","name":"Anek Telugu SemiCondensed","style":"Regular","weight":400,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":32,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-500","name":"Anek Telugu SemiCondensed","style":"Medium","weight":500,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":33,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-600","name":"Anek Telugu SemiCondensed","style":"SemiBold","weight":600,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":34,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-700","name":"Anek Telugu SemiCondensed","style":"Bold","weight":700,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":35,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semicondensed-800","name":"Anek Telugu SemiCondensed","style":"ExtraBold","weight":800,"width":87.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":36,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-100","name":"Anek Telugu Normal","style":"Thin","weight":100,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":37,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-200","name":"Anek Telugu Normal","style":"ExtraLight","weight":200,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":38,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-300","name":"Anek Telugu Normal","style":"Light","weight":300,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":39,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-400","name":"Anek Telugu Normal","style":"Regular","weight":400,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":40,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-500","name":"Anek Telugu Normal","style":"Medium","weight":500,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":41,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-600","name":"Anek Telugu Normal","style":"SemiBold","weight":600,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":42,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-700","name":"Anek Telugu Normal","style":"Bold","weight":700,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":43,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-normal-800","name":"Anek Telugu Normal","style":"ExtraBold","weight":800,"width":100,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":44,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-100","name":"Anek Telugu SemiExpanded","style":"Thin","weight":100,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":45,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-200","name":"Anek Telugu SemiExpanded","style":"ExtraLight","weight":200,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":46,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-300","name":"Anek Telugu SemiExpanded","style":"Light","weight":300,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":47,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-400","name":"Anek Telugu SemiExpanded","style":"Regular","weight":400,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":48,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-500","name":"Anek Telugu SemiExpanded","style":"Medium","weight":500,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":49,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-600","name":"Anek Telugu SemiExpanded","style":"SemiBold","weight":600,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":50,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-700","name":"Anek Telugu SemiExpanded","style":"Bold","weight":700,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":51,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-semiexpanded-800","name":"Anek Telugu SemiExpanded","style":"ExtraBold","weight":800,"width":112.5,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":52,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-100","name":"Anek Telugu Expanded","style":"Thin","weight":100,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":53,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-200","name":"Anek Telugu Expanded","style":"ExtraLight","weight":200,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":54,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-300","name":"Anek Telugu Expanded","style":"Light","weight":300,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":55,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-400","name":"Anek Telugu Expanded","style":"Regular","weight":400,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":56,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-500","name":"Anek Telugu Expanded","style":"Medium","weight":500,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":57,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-600","name":"Anek Telugu Expanded","style":"SemiBold","weight":600,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":58,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-700","name":"Anek Telugu Expanded","style":"Bold","weight":700,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":59,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"anek-telugu-expanded-800","name":"Anek Telugu Expanded","style":"ExtraBold","weight":800,"width":125,"group":"anek","author":"Ek Type / Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/anektelugu/AnekTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":60,"category":"Anek Widths","categories":["Anek Widths"]},{"id":"hind-guntur-300","name":"Hind Guntur","style":"Light","weight":300,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Light.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":61,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"hind-guntur-400","name":"Hind Guntur","style":"Regular","weight":400,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":62,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"hind-guntur-500","name":"Hind Guntur","style":"Medium","weight":500,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Medium.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":63,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"hind-guntur-600","name":"Hind Guntur","style":"SemiBold","weight":600,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-SemiBold.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":64,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"hind-guntur-700","name":"Hind Guntur","style":"Bold","weight":700,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/hindguntur/HindGuntur-Bold.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":65,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"chathura-100","name":"Chathura","style":"Thin","weight":100,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Thin.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":66,"category":"Multi Weight","categories":["Multi Weight","Third-party"]},{"id":"chathura-300","name":"Chathura","style":"Light","weight":300,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Light.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":67,"category":"Multi Weight","categories":["Multi Weight","Third-party"]},{"id":"chathura-400","name":"Chathura","style":"Regular","weight":400,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":68,"category":"Multi Weight","categories":["Multi Weight","Third-party"]},{"id":"chathura-700","name":"Chathura","style":"Bold","weight":700,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-Bold.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":69,"category":"Multi Weight","categories":["Multi Weight","Third-party"]},{"id":"chathura-800","name":"Chathura","style":"ExtraBold","weight":800,"width":100,"group":"multi","author":"Google Fonts","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/chathura/Chathura-ExtraBold.ttf","download_type":"TTF","preview_ready":true,"variable":false,"source":"seed","serial":70,"category":"Multi Weight","categories":["Multi Weight","Third-party"]},{"id":"noto-sans-telugu-100","name":"Noto Sans Telugu","style":"Thin","weight":100,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":71,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-200","name":"Noto Sans Telugu","style":"ExtraLight","weight":200,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":72,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-300","name":"Noto Sans Telugu","style":"Light","weight":300,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":73,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-400","name":"Noto Sans Telugu","style":"Regular","weight":400,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":74,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-500","name":"Noto Sans Telugu","style":"Medium","weight":500,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":75,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-600","name":"Noto Sans Telugu","style":"SemiBold","weight":600,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":76,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-700","name":"Noto Sans Telugu","style":"Bold","weight":700,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":77,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-800","name":"Noto Sans Telugu","style":"ExtraBold","weight":800,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":78,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"noto-sans-telugu-900","name":"Noto Sans Telugu","style":"Black","weight":900,"width":100,"group":"multi","author":"Google / Noto","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstelugu/NotoSansTelugu%5Bwdth%2Cwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":79,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"baloo-tammudu-2-400","name":"Baloo Tammudu 2","style":"Regular","weight":400,"width":100,"group":"multi","author":"Ek Type","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/BalooTammudu2%5Bwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":80,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"baloo-tammudu-2-500","name":"Baloo Tammudu 2","style":"Medium","weight":500,"width":100,"group":"multi","author":"Ek Type","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/BalooTammudu2%5Bwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":81,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"baloo-tammudu-2-600","name":"Baloo Tammudu 2","style":"SemiBold","weight":600,"width":100,"group":"multi","author":"Ek Type","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/BalooTammudu2%5Bwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":82,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"baloo-tammudu-2-700","name":"Baloo Tammudu 2","style":"Bold","weight":700,"width":100,"group":"multi","author":"Ek Type","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/BalooTammudu2%5Bwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":83,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"baloo-tammudu-2-800","name":"Baloo Tammudu 2","style":"ExtraBold","weight":800,"width":100,"group":"multi","author":"Ek Type","license":"SIL OFL","font_raw_url":"https://raw.githubusercontent.com/google/fonts/main/ofl/balootammudu2/BalooTammudu2%5Bwght%5D.ttf","download_type":"TTF","preview_ready":true,"variable":true,"source":"seed","serial":84,"category":"Multi Weight","categories":["Multi Weight"]},{"id":"annamayya-italic-400","name":"Annamayya","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/AnnamayyaItalic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"AnnamayyaItalic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/AnnamayyaItalic.otf","upstream_sha":"fb66ebb934be95212393a8328f03ffb8452c3bdf","upstream_size":629476,"serial":85},{"id":"annamayya-regular-400","name":"Annamayya","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Annamayya.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Annamayya.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Annamayya.otf","upstream_sha":"74923eae1157366514121bf0110b18784f23cc64","upstream_size":599460,"serial":86},{"id":"annamayya-bold-700","name":"Annamayya","style":"Bold","weight":700,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/AnnamayyaBold.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"AnnamayyaBold.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/AnnamayyaBold.otf","upstream_sha":"dde57f6f14872a554045f5f83361bdbda6f1f098","upstream_size":598180,"serial":87},{"id":"annamayya-bold-italic-700","name":"Annamayya","style":"Bold Italic","weight":700,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/AnnamayyaBoldItalic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"AnnamayyaBoldItalic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/AnnamayyaBoldItalic.otf","upstream_sha":"a24531a42f5dd62c49d19a1a7a81ba2fcbba8a63","upstream_size":628448,"serial":88},{"id":"bvsatyamurty-regular-400","name":"BVSatyamurty","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/BVSatyamurty.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"BVSatyamurty.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/BVSatyamurty.ttf","upstream_sha":"49bb2ad11e5e7c1ddd0e51c9f19f7f8c7aae66c9","upstream_size":607768,"serial":89},{"id":"dhurjati-italic-400","name":"Dhurjati","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Dhurjati-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Dhurjati-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Dhurjati-Italic.otf","upstream_sha":"d93ea5e32ad09cc29ce44e111bd5364863d6d0cc","upstream_size":825292,"serial":90},{"id":"gidugu-italic-400","name":"Gidugu","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Gidugu-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Gidugu-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Gidugu-Italic.otf","upstream_sha":"f3fb02d8fb41564fd5abf1ed18cdaee6926f910a","upstream_size":244472,"serial":91},{"id":"jims-italic-400","name":"JIMS","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/JIMSItalic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"JIMSItalic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/JIMSItalic.otf","upstream_sha":"c02c8984697ac8569cbd6304ad970aa13a3b6f56","upstream_size":576680,"serial":92},{"id":"jims-regular-400","name":"JIMS","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/JIMS.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"JIMS.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/JIMS.otf","upstream_sha":"8757b4b1938f2052f62d4ae04fa18bd645e737fa","upstream_size":544100,"serial":93},{"id":"kanakadurga-italic-400","name":"KanakaDurga","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/KanakaDurga-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"KanakaDurga-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/KanakaDurga-Italic.otf","upstream_sha":"e139d0544552b769700cf5046ec06f1a37f53860","upstream_size":268320,"serial":94},{"id":"kanakadurga-regular-400","name":"KanakaDurga","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/KanakaDurga.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"KanakaDurga.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/KanakaDurga.otf","upstream_sha":"f308caedecb3538557538525394d589bdc354a65","upstream_size":234552,"serial":95},{"id":"mallanna-italic-400","name":"Mallanna","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mallanna-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Mallanna-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Mallanna-Italic.otf","upstream_sha":"de838f14f077a112a55d45f6482c0dada3337b44","upstream_size":461636,"serial":96},{"id":"mandali-italic-400","name":"Mandali","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mandali-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Mandali-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Mandali-Italic.otf","upstream_sha":"d69b65f34af10b8f7467af9bc00a6a4414ec4bd1","upstream_size":461244,"serial":97},{"id":"mandali-bold-700","name":"Mandali","style":"Bold","weight":700,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mandali-Bold.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Mandali-Bold.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Mandali-Bold.otf","upstream_sha":"ffe199a1e8aebdb8184c327390029c64ff607869","upstream_size":439888,"serial":98},{"id":"mandali-bold-italic-700","name":"Mandali","style":"Bold Italic","weight":700,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Mandali-Bold%20Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Mandali-Bold Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Mandali-Bold Italic.otf","upstream_sha":"73bbae1a9777bf697c380af83678a678f5786864","upstream_size":472988,"serial":99},{"id":"nandakam-italic-400","name":"Nandakam","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Nandakam-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Nandakam-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Nandakam-Italic.otf","upstream_sha":"d4d8eab4d5c740dbebc196616c849caa925f9098","upstream_size":685352,"serial":100},{"id":"nandakam-regular-400","name":"Nandakam","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Nandakam.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Nandakam.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Nandakam.otf","upstream_sha":"800ecbdb6b11a5fb8a3b7fd6d80942e34f3792cd","upstream_size":855400,"serial":101},{"id":"nats-italic-400","name":"NATS","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/NATS-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"NATS-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/NATS-Italic.otf","upstream_sha":"854624d568c340237f2929a0a09460265a83f412","upstream_size":238832,"serial":102},{"id":"nats-regular-400","name":"NATS","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/NATS.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"NATS.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/NATS.otf","upstream_sha":"7c21de9a9d4d92e205588b5408243cf5d6644808","upstream_size":222020,"serial":103},{"id":"potti-sreeramulu-regular-400","name":"Potti Sreeramulu","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Potti%20Sreeramulu.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Potti Sreeramulu.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Potti Sreeramulu.otf","upstream_sha":"1641bf07d4f1e1a6763a84dcccbf9a5c40f3a724","upstream_size":468320,"serial":104},{"id":"purushothamaa-italic-400","name":"Purushothamaa","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Purushothamaa-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Purushothamaa-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Purushothamaa-Italic.otf","upstream_sha":"765236127622952486af6d8e4a411aa6262fbdfe","upstream_size":441552,"serial":105},{"id":"purushothamaa-regular-400","name":"Purushothamaa","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Purushothamaa.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Purushothamaa.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Purushothamaa.otf","upstream_sha":"e72d1830bc820d8d314310fa3a586a8ff604a658","upstream_size":419528,"serial":106},{"id":"pv-narasimha-rao-regular-400","name":"PV Narasimha Rao","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/PVNR.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"PVNR.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/PVNR.otf","upstream_sha":"ec861d58cda076e32f60b0842a5c3114f10101f6","upstream_size":3256172,"serial":107},{"id":"ramabhadra-italic-400","name":"Ramabhadra","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Ramabhadra-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Ramabhadra-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Ramabhadra-Italic.otf","upstream_sha":"33fe3efd6d043e5217ac92112dc6e3cd698443dc","upstream_size":402316,"serial":108},{"id":"ramaneeya-regular-400","name":"Ramaneeya","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/RamaneeyaWin.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"RamaneeyaWin.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/RamaneeyaWin.ttf","upstream_sha":"ef00cf1048c9b33a88e8cc48c096e39925434a7d","upstream_size":449976,"serial":109},{"id":"seela-veerraju-regular-400","name":"Seela Veerraju","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/SeelaVeerraju.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"SeelaVeerraju.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/SeelaVeerraju.ttf","upstream_sha":"44197f6691c28407a6ef12e5b47cff64e9b2b090","upstream_size":953572,"serial":110},{"id":"sirivennela-regular-400","name":"Sirivennela","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Sirivennela.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"Sirivennela.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Sirivennela.ttf","upstream_sha":"1fe9f11ac51251656ab5f34446cb8cee56eeed5d","upstream_size":669304,"serial":111},{"id":"sp-balasubrahmanyam-regular-400","name":"SP Balasubrahmanyam","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/SPBalasubrahmanyam.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"SPBalasubrahmanyam.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/SPBalasubrahmanyam.ttf","upstream_sha":"a0e1bbbba90fa41c610eb457e9b35d271eb96345","upstream_size":577644,"serial":112},{"id":"sree-krushnadevaraya-italic-400","name":"Sree Krushnadevaraya","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Sree%20Krushnadevaraya-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Sree Krushnadevaraya-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Sree Krushnadevaraya-Italic.otf","upstream_sha":"8904a73433da09fab9ba9645b1fc46a186693b85","upstream_size":586792,"serial":113},{"id":"suranna-italic-400","name":"Suranna","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suranna-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Suranna-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Suranna-Italic.otf","upstream_sha":"88f311dd677d462d8d1cb6aeb4c3e777b3cd7b17","upstream_size":467936,"serial":114},{"id":"suranna-bold-700","name":"Suranna","style":"Bold","weight":700,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suranna%20Bold.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Suranna Bold.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Suranna Bold.otf","upstream_sha":"55933cf2fbf56a599ae67c970455b760c97a2697","upstream_size":441540,"serial":115},{"id":"suranna-bold-italic-700","name":"Suranna","style":"Bold Italic","weight":700,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suranna%20Bold%20Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Suranna Bold Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Suranna Bold Italic.otf","upstream_sha":"b5b76a991cf6b3241a57a3f2985e0b779662fccf","upstream_size":467704,"serial":116},{"id":"suravaram-italic-400","name":"Suravaram","style":"Italic","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Suravaram-Italic.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Suravaram-Italic.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Suravaram-Italic.otf","upstream_sha":"b9017fcef958c430ce123e3dd75c91c71592f5be","upstream_size":242124,"serial":117},{"id":"syamala-ramana-regular-400","name":"Syamala Ramana","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Syamala%20Ramana.otf","download_type":"OTF","preview_ready":true,"variable":false,"file_name":"Syamala Ramana.otf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Syamala Ramana.otf","upstream_sha":"4e0b44315cf4de40064246059ec34f76d816d03e","upstream_size":455080,"serial":118},{"id":"tana-regular-400","name":"TANA","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/TANA.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"TANA.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/TANA.ttf","upstream_sha":"994cd26b2f8a35d467f34f4147f1fca451351125","upstream_size":1383732,"serial":119},{"id":"tiro-sundara-telugu-regular-400","name":"Tiro Sundara Telugu","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/TiroSundaraTelugu-Regular.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"TiroSundaraTelugu-Regular.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/TiroSundaraTelugu-Regular.ttf","upstream_sha":"9f8be73361f41fcfca8df9f9d4054684e6e746c3","upstream_size":1040792,"serial":120},{"id":"veturi-regular-400","name":"Veturi","style":"Regular","weight":400,"width":100,"group":"third-party","category":"Third-party","categories":["Third-party"],"author":"External GitHub source","license":"See upstream source terms","font_raw_url":"https://raw.githubusercontent.com/sandeepmiriyala03/RatnalabalaVercel/main/public/Fonts/Veturi.ttf","download_type":"TTF","preview_ready":true,"variable":false,"file_name":"Veturi.ttf","source":"RatnalabalaVercel","source_repository":"sandeepmiriyala03/RatnalabalaVercel","source_path":"public/Fonts/Veturi.ttf","upstream_sha":"50e7a24196f343d4eb5d5b9e3b97f67dd423fec7","upstream_size":526372,"serial":121}];
+const DEFAULT_TEXT = "తెలుగు అక్షరాలు అందమైన ఫాంట్స్";
+const SITE = "https://aitechapp.in/telugu-fonts.html";
+
+const $ = (s,r=document) => r.querySelector(s);
+const $$ = (s,r=document) => Array.from(r.querySelectorAll(s));
+const list = $("#list");
+const input = $("#previewInput");
+const countPill = $("#countPill");
+const empty = $("#stateEmpty");
+const error = $("#stateError");
+const header = $("#appHeader");
+const searchInput = $("#searchInput");
+const searchClear = $("#searchClear");
+const searchButton = $("#btnHeaderSearch");
+
+const state = {
+  all: [],
+  filtered: [],
+  category: "all",
+  query: "",
+  loaded: new Set(),
+  observed: new Set(),
+  io: null
+};
+
+function esc(v){
+  return String(v == null ? "" : v).replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+  })[c]);
+}
+function canon(v){ return String(v||"").toLowerCase().replace(/[^a-z0-9]+/g,""); }
+function currentText(){ return (input.value||"").trim() || DEFAULT_TEXT; }
+function familyName(f){ return "AiTech_"+String(f.id).replace(/[^A-Za-z0-9_-]/g,"_"); }
+function typeOf(f){ return String(f.download_type||"").toUpperCase(); }
+function cssFormat(f){ return typeOf(f)==="OTF" ? "opentype" : "truetype"; }
+function isItalic(f){ return /italic|oblique/i.test(String(f.style||"")); }
+function styleValue(f){ return isItalic(f) ? "italic" : "normal"; }
+
+function validFont(f){
+  if(!f || !f.id || !f.name || f.preview_ready !== true || !f.font_raw_url) return false;
+  const typ=typeOf(f);
+  if(typ!=="TTF" && typ!=="OTF") return false;
+  let u=String(f.font_raw_url);
+  try{ u=decodeURIComponent(u); }catch(_){}
+  return !/\/blob\//i.test(u) && !/\.zip(?:\?|$)/i.test(u) && /\.(ttf|otf)(?:\?|$)/i.test(u);
+}
+
+function logicalKey(f){
+  return [
+    canon(f.name),
+    canon(f.style||"Regular"),
+    Number(f.weight||400),
+    Number(f.width||100)
+  ].join("|");
+}
+
+function normalize(rows){
+  const seen=new Set(), out=[];
+  for(const raw of rows||[]){
+    if(!validFont(raw)) continue;
+    const f={...raw};
+    f.style=f.style||"Regular";
+    f.weight=Number(f.weight)||400;
+    f.width=Number(f.width)||100;
+    f.categories=Array.isArray(f.categories) ? f.categories.slice() : [f.category||categoryFromGroup(f.group)];
+    f.categories=[...new Set(f.categories.filter(Boolean))];
+    f.category=f.category||f.categories[0]||"Other";
+    const k=logicalKey(f);
+    if(seen.has(k)) continue;
+    seen.add(k);
+    out.push(f);
   }
+  out.forEach((f,i)=>f.serial=i+1);
+  return out;
+}
 
-  async function register(f){
-    if(loaded.has(f.id))return;
-    const fam=family(f);
-    const url=String(f.font_raw_url).replace(/\\/g,"\\\\").replace(/"/g,'\\"');
-    const rule='@font-face{font-family:"'+fam+'";src:url("'+url+'") format("'+fmt(f.download_type)+'");font-style:'+style(f)+';font-weight:'+(Number(f.weight)||400)+';font-display:swap;}';
-    dynamicStyle.sheet.insertRule(rule,dynamicStyle.sheet.cssRules.length);
-    loaded.add(f.id);
-    try{await document.fonts.load(style(f)+" "+(Number(f.weight)||400)+' 18px "'+fam+'"',text());}catch{}
-  }
+function categoryFromGroup(group){
+  if(group==="anek") return "Anek Widths";
+  if(group==="multi") return "Multi Weight";
+  if(group==="classic") return "Classic";
+  if(group==="third-party") return "Third-party";
+  return "Other";
+}
 
-  function apply(f,el){
-    el.style.fontFamily='"'+family(f)+'","Noto Sans Telugu",sans-serif';
-    el.style.fontWeight=String(Number(f.weight)||400);
-    el.style.fontStyle=style(f);
-    if(f.variable){
-      const axes=["'wght' "+(Number(f.weight)||400)];
-      if(f.width)axes.push("'wdth' "+Number(f.width));
-      el.style.fontVariationSettings=axes.join(",");
-    }
-  }
-
-  async function verify(blob,type){
-    const b=new Uint8Array(await blob.slice(0,4).arrayBuffer());
-    const sig=Array.from(b).map(x=>x.toString(16).padStart(2,"0")).join("");
-    const ttf=["00010000","74727565","74797031"].includes(sig);
-    const otf=sig==="4f54544f";
-    if(String(type).toUpperCase()==="OTF"?!otf:!(ttf||otf))throw new Error("not a font binary");
-  }
-
-  async function download(f,button){
-    if(button.disabled)return;
-    button.disabled=true; const old=button.textContent; button.textContent="Downloading…";
-    try{
-      const r=await fetch(f.font_raw_url,{mode:"cors",cache:"force-cache"});
-      if(!r.ok)throw new Error("HTTP "+r.status);
-      const blob=await r.blob(); await verify(blob,f.download_type);
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement("a");
-      a.href=url;
-      a.download=(f.file_name||f.id+"."+String(f.download_type).toLowerCase()).replace(/[^A-Za-z0-9._-]+/g,"-");
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(()=>URL.revokeObjectURL(url),5000);
-    } finally { button.disabled=false; button.textContent=old; }
-  }
-
-  function render(fonts){
-    if(!list)return;
-    list.innerHTML="";
-    fonts.forEach((f,i)=>{
-      const card=document.createElement("article");
-      card.className="card"; card.dataset.id=f.id;
-      card.innerHTML='<div class="line1"><span class="serial">#'+(f.serial||i+1)+'</span><strong>'+esc(f.name)+'</strong> <span>'+esc(f.style||"Regular")+'</span></div>'+
-        '<div class="preview">'+esc(text())+'</div>'+
-        '<button class="download" type="button">Download .'+esc(f.download_type)+'</button>';
-      const p=$(".preview",card); apply(f,p);
-      const b=$(".download",card); b.addEventListener("click",()=>download(f,b));
-      list.appendChild(card); byId.set(f.id,f);
-      register(f);
-    });
-    if(count)count.textContent=fonts.length;
-  }
-
-  previewInput?.addEventListener("input",()=>document.querySelectorAll("#list .preview").forEach(x=>x.textContent=text()));
-
-  fetch(CATALOG_URL+"?v="+Date.now(),{cache:"no-store"})
-    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
-    .then(data=>{
-      const rows=(Array.isArray(data)?data:data.fonts||[]).filter(valid);
-      const seen=new Set(), clean=[];
-      for(const f of rows){
-        const k=[String(f.name).toLowerCase().replace(/[^a-z0-9]+/g,""),String(f.style||"Regular").toLowerCase().replace(/[^a-z0-9]+/g,""),Number(f.weight)||400,Number(f.width)||100].join("|");
-        if(seen.has(k))continue; seen.add(k); clean.push(f);
+async function loadFont(f){
+  if(state.loaded.has(f.id)) return true;
+  try{
+    const face=new FontFace(
+      familyName(f),
+      'url("'+String(f.font_raw_url).replace(/"/g,"%22")+'")',
+      {
+        style: styleValue(f),
+        weight: String(f.weight),
+        display: "swap"
       }
-      render(clean);
-    })
-    .catch(err=>console.error("Telugu font catalogue load failed",err));
+    );
+    const loaded=await face.load();
+    document.fonts.add(loaded);
+    state.loaded.add(f.id);
+    return true;
+  }catch(err){
+    console.warn("Font preview failed:",f.name,f.style,err);
+    return false;
+  }
+}
+
+function applyFont(el,f){
+  el.style.fontFamily='"'+familyName(f)+'","Noto Sans Telugu",sans-serif';
+  el.style.fontWeight=String(f.weight);
+  el.style.fontStyle=styleValue(f);
+  if(f.variable){
+    const axes=["'wght' "+f.weight];
+    if(f.width) axes.push("'wdth' "+f.width);
+    el.style.fontVariationSettings=axes.join(",");
+  }
+}
+
+function ensureVisibleCard(card){
+  const id=card.dataset.id;
+  const f=state.all.find(x=>x.id===id);
+  if(!f) return;
+  const pv=$(".preview",card);
+  loadFont(f).then(()=>applyFont(pv,f));
+}
+
+function setupObserver(){
+  if(state.io) state.io.disconnect();
+  if("IntersectionObserver" in window){
+    state.io=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          state.io.unobserve(entry.target);
+          ensureVisibleCard(entry.target);
+        }
+      });
+    },{rootMargin:"450px"});
+    $$(".card",list).forEach(c=>state.io.observe(c));
+  }else{
+    $$(".card",list).forEach(ensureVisibleCard);
+  }
+}
+
+function categoriesMatch(f,cat){
+  if(cat==="all") return true;
+  const cats=f.categories||[];
+  if(cat==="anek") return cats.includes("Anek Widths");
+  if(cat==="multi") return cats.includes("Multi Weight");
+  if(cat==="classic") return cats.includes("Classic");
+  if(cat==="thirdparty") return cats.includes("Third-party");
+  return true;
+}
+
+function applyFilter(){
+  const q=state.query.trim().toLowerCase();
+  state.filtered=state.all.filter(f=>{
+    if(!categoriesMatch(f,state.category)) return false;
+    if(!q) return true;
+    return [
+      f.name,f.style,f.author,f.download_type,
+      ...(f.categories||[])
+    ].join(" ").toLowerCase().includes(q);
+  });
+  render();
+}
+
+function localKey(kind,id){ return "aitech-fonts:"+kind+":"+id; }
+function likes(f){ return Number(localStorage.getItem(localKey("likes",f.id))||0); }
+function liked(f){ return localStorage.getItem(localKey("liked",f.id))==="1"; }
+function downloads(f){ return Number(localStorage.getItem(localKey("downloads",f.id))||0); }
+function fmt(n){ return n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n/1000).toFixed(1)+"K":String(n); }
+
+function cardHTML(f){
+  const third=(f.categories||[]).includes("Third-party");
+  const sourceTag=third ? '<span class="tag third">Third-party</span>' : '';
+  const width=f.group==="anek" ? '<span class="width-badge">↔ '+esc(f.width)+'</span>' : '';
+  return '<article class="card" data-id="'+esc(f.id)+'">'+
+    '<div class="card-top">'+
+      '<span class="serial">#'+esc(f.serial)+'</span>'+
+      '<div class="name-wrap"><div class="font-name">'+esc(f.name)+' <span>· '+esc(f.style)+'</span></div>'+
+      '<div class="font-meta">'+sourceTag+' '+width+' <span>'+esc(typeOf(f))+' · '+fmt(downloads(f))+' downloads</span></div></div>'+
+    '</div>'+
+    '<div class="preview">'+esc(currentText())+'</div>'+
+    '<div class="card-actions">'+
+      '<button class="mini like '+(liked(f)?'liked':'')+'" data-action="like" aria-label="Like">'+
+        '<i class="'+(liked(f)?'fas':'far')+' fa-heart"></i><span>'+fmt(likes(f))+'</span></button>'+
+      '<button class="mini link" data-action="link" aria-label="Copy direct page link"><i class="fas fa-link"></i></button>'+
+      '<button class="download" data-action="download"><i class="fas fa-download"></i><span>Download</span><b>.'+esc(typeOf(f))+'</b></button>'+
+    '</div>'+
+  '</article>';
+}
+
+function render(){
+  if(!list) return;
+  list.innerHTML=state.filtered.map(cardHTML).join("");
+  countPill.textContent=state.filtered.length;
+  empty.classList.toggle("show",state.filtered.length===0);
+  error.classList.remove("show");
+  setupObserver();
+}
+
+async function verifyBinary(blob,type){
+  const a=new Uint8Array(await blob.slice(0,4).arrayBuffer());
+  const sig=Array.from(a).map(x=>x.toString(16).padStart(2,"0")).join("");
+  const ttf=["00010000","74727565","74797031"].includes(sig);
+  const otf=sig==="4f54544f";
+  if(type==="OTF" ? !otf : !(ttf||otf)) throw new Error("Response is not a valid font binary");
+}
+
+async function directDownload(f,btn){
+  if(btn.classList.contains("busy")) return;
+  btn.classList.add("busy");
+  const label=$("span",btn); const old=label.textContent; label.textContent="Downloading…";
+  try{
+    const r=await fetch(f.font_raw_url,{mode:"cors",cache:"force-cache"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const blob=await r.blob();
+    await verifyBinary(blob,typeOf(f));
+    const objectUrl=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=objectUrl;
+    a.download=(f.file_name || (f.id+"."+typeOf(f).toLowerCase())).replace(/[\\/:*?"<>|]+/g,"-");
+    a.style.display="none";
+    document.body.appendChild(a);
+    a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(objectUrl),5000);
+    const n=downloads(f)+1;
+    localStorage.setItem(localKey("downloads",f.id),String(n));
+    const meta=$(".font-meta span:last-child",btn.closest(".card"));
+    if(meta) meta.textContent=typeOf(f)+" · "+fmt(n)+" downloads";
+  }catch(err){
+    console.error(err);
+    toast("Direct font download failed. Please retry.");
+  }finally{
+    btn.classList.remove("busy");
+    label.textContent=old;
+  }
+}
+
+async function copyDeepLink(f){
+  const url=SITE+"?font="+encodeURIComponent(f.id);
+  try{
+    await navigator.clipboard.writeText(url);
+    toast("Font link copied");
+  }catch(_){
+    const ta=document.createElement("textarea");
+    ta.value=url; ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");toast("Font link copied");}catch(e){}
+    ta.remove();
+  }
+}
+
+function toggleLike(f,card){
+  const on=!liked(f);
+  const n=Math.max(0,likes(f)+(on?1:-1));
+  localStorage.setItem(localKey("liked",f.id),on?"1":"0");
+  localStorage.setItem(localKey("likes",f.id),String(n));
+  const b=$(".like",card);
+  b.classList.toggle("liked",on);
+  $("i",b).className=(on?"fas":"far")+" fa-heart";
+  $("span",b).textContent=fmt(n);
+}
+
+list.addEventListener("click",e=>{
+  const b=e.target.closest("[data-action]");
+  if(!b) return;
+  const card=b.closest(".card");
+  const f=state.all.find(x=>x.id===card.dataset.id);
+  if(!f) return;
+  if(b.dataset.action==="download") directDownload(f,b);
+  if(b.dataset.action==="link") copyDeepLink(f);
+  if(b.dataset.action==="like") toggleLike(f,card);
+});
+
+$("#chips").addEventListener("click",e=>{
+  const b=e.target.closest(".chip");
+  if(!b) return;
+  state.category=b.dataset.cat;
+  $$(".chip",$("#chips")).forEach(c=>{
+    const on=c===b;
+    c.classList.toggle("active",on);
+    c.setAttribute("aria-pressed",on?"true":"false");
+  });
+  applyFilter();
+});
+
+input.addEventListener("input",()=>{
+  $$(".preview",list).forEach(p=>p.textContent=currentText());
+});
+
+$("#btnPaste")?.addEventListener("click",async()=>{
+  try{
+    const t=await navigator.clipboard.readText();
+    if(t){ input.value=t.slice(0,300); input.dispatchEvent(new Event("input")); }
+  }catch(_){ input.focus(); toast("Long-press the box and choose Paste"); }
+});
+
+function openSearch(){
+  header.classList.add("searching");
+  searchButton.innerHTML='<i class="fas fa-xmark"></i>';
+  searchInput.focus();
+}
+function closeSearch(){
+  header.classList.remove("searching");
+  searchButton.innerHTML='<i class="fas fa-search"></i>';
+  searchInput.value=""; state.query=""; searchClear.classList.remove("show");
+  applyFilter();
+}
+searchButton.addEventListener("click",()=>header.classList.contains("searching")?closeSearch():openSearch());
+searchInput.addEventListener("input",()=>{
+  state.query=searchInput.value;
+  searchClear.classList.toggle("show",!!searchInput.value);
+  applyFilter();
+});
+searchClear.addEventListener("click",()=>{
+  searchInput.value=""; state.query=""; searchClear.classList.remove("show"); applyFilter(); searchInput.focus();
+});
+
+let toastTimer;
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+function handleDeepLink(){
+  const id=new URLSearchParams(location.search).get("font");
+  if(!id) return;
+  const f=state.all.find(x=>x.id===id);
+  if(!f) return;
+  state.category="all";
+  $$(".chip",$("#chips")).forEach(c=>c.classList.toggle("active",c.dataset.cat==="all"));
+  applyFilter();
+  requestAnimationFrame(()=>{
+    const card=list.querySelector('[data-id="'+CSS.escape(id)+'"]');
+    if(card){ card.scrollIntoView({behavior:"smooth",block:"center"}); card.classList.add("highlight"); }
+  });
+}
+
+async function start(){
+  let rows=FALLBACK_FONTS;
+  try{
+    const r=await fetch(CATALOG_URL+"?v="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const data=await r.json();
+    const incoming=Array.isArray(data)?data:(data.fonts||[]);
+    if(incoming.length) rows=incoming;
+  }catch(err){
+    console.warn("Using embedded font catalogue fallback:",err);
+  }
+  state.all=normalize(rows);
+  state.filtered=state.all.slice();
+  applyFilter();
+  handleDeepLink();
+}
+
+start().catch(err=>{
+  console.error(err);
+  error.classList.add("show");
+});
 })();
