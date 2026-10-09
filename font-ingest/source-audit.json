@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "current_catalog_total": 121,
+  "current_catalog_unique_families": 46,
+  "sources": {
+    "siliconandhra": {
+      "status": "audited",
+      "known_ofl_families": [
+        "Ponnala",
+        "Ravi Prakash",
+        "Lakki Reddy",
+        "Potti Sreeramulu",
+        "Syamala Ramana",
+        "Gidugu",
+        "Gurajada",
+        "Suravaram",
+        "NTR",
+        "Mandali",
+        "NATS",
+        "Sree Krushnadevaraya",
+        "Peddana",
+        "Timmana",
+        "Tenali Ramakrishna",
+        "Suranna",
+        "Ramaraja",
+        "Mallanna",
+        "Dhurjati",
+        "Ramabhadra"
+      ],
+      "new_families_vs_current_catalog": 0,
+      "note": "The known SiliconAndhra OFL family set is already represented in the 121-font catalog."
+    },
+    "telugufonts_in": {
+      "status": "known-direct-archives-already-covered-by-current-catalog",
+      "known_archive_families": [
+        "BVSatyamurty",
+        "Seela Veerraju",
+        "SP Balasubrahmanyam",
+        "PV Narasimha Rao",
+        "Syamala Ramana",
+        "JIMS",
+        "Purushothamaa",
+        "KanakaDurga",
+        "Nandakam",
+        "Annamayya",
+        "Sree Krushnadevaraya",
+        "Mallanna",
+        "Ramabhadra",
+        "Dhurjati",
+        "Suranna",
+        "Mandali",
+        "NTR",
+        "Gurajada",
+        "Gidugu",
+        "NATS",
+        "Suravaram",
+        "Peddana",
+        "Ramaraja",
+        "Tenali Ramakrishna",
+        "Timmana",
+        "Ponnala",
+        "Lakki Reddy",
+        "Ravi Prakash",
+        "Ramaneeya",
+        "Chathura"
+      ],
+      "new_families_vs_current_catalog": 0,
+      "note": "All named archive families are already represented. The two share.google collections could not be resolved by the automated connector, so unlisted files inside those shares still require local/manual ingestion."
+    },
+    "gist_tlot": {
+      "status": "metadata-discovered-binaries-gated",
+      "verified_families": 16,
+      "verified_faces": 64,
+      "candidate_new_faces_vs_current_catalog": 64,
+      "note": "No GIST-TLOT family is currently in the 121 catalog. Pages require human verification and state non-commercial free usage; binary redistribution has not been established."
+    }
+  }
+}
