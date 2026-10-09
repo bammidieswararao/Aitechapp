@@ -70,26 +70,27 @@ jobs:
           still_pending = 0
           errors = []
 
+          gist_dir = ROOT / "fonts" / "gist"
+          uploaded = {}
+          if gist_dir.is_dir():
+              for candidate in gist_dir.glob("*.ttf"):
+                  data = candidate.read_bytes()
+                  uploaded[git_blob_sha(data)] = candidate
+
           for row in fonts:
               if "C-DAC GIST" not in (row.get("categories") or []):
                   continue
 
-              target = ROOT / str(row.get("target_path") or "")
-              if not target.is_file():
+              expected_blob = str(row.get("source_blob_sha") or "").lower()
+              target = uploaded.get(expected_blob)
+
+              if target is None:
                   row["pending_until_available"] = True
                   still_pending += 1
                   continue
 
               data = target.read_bytes()
-              expected_blob = str(row.get("source_blob_sha") or "").lower()
               actual_blob = git_blob_sha(data)
-
-              if expected_blob and actual_blob != expected_blob:
-                  errors.append(
-                      f"{target}: Git blob SHA mismatch "
-                      f"(expected {expected_blob}, got {actual_blob})"
-                  )
-                  continue
 
               try:
                   font = TTFont(target, lazy=False)
@@ -103,6 +104,14 @@ jobs:
               row["pending_until_available"] = False
               row["validated_after_upload"] = True
               row["validated_git_blob_sha"] = actual_blob
+              row["target_path"] = target.as_posix()
+              row["file_name"] = target.name
+              row["font_raw_url"] = (
+                  "https://raw.githubusercontent.com/"
+                  + "${{ github.repository }}"
+                  + "/main/"
+                  + target.as_posix()
+              )
               activated += 1
 
           if errors:
