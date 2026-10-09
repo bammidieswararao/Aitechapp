@@ -4490,7 +4490,6 @@
     "note": "Existing first 121 catalog rows preserved; additions appended."
   },
   "category_model": {
-    "removed_generic_label": "Third-party",
     "organization_categories": [
       "Google Fonts",
       "SiliconAndhra",
