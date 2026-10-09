@@ -67,7 +67,7 @@ main{padding:10px 12px 16px}
 .font-meta{display:flex;align-items:center;gap:5px;min-height:17px;margin-top:2px;color:var(--ios-text-muted);font-size:.58rem;font-weight:750;white-space:nowrap;overflow:hidden}
 .font-meta>span:last-child{overflow:hidden;text-overflow:ellipsis}
 .tag{flex:none;padding:2px 6px;border-radius:999px;font-size:.52rem;font-weight:900}
-.tag.third{background:rgba(175,82,222,.12);color:var(--ios-purple)}
+.tag.org{background:rgba(175,82,222,.12);color:var(--ios-purple)}
 .width-badge{flex:none;padding:2px 6px;border-radius:999px;background:rgba(0,122,255,.08);color:var(--ios-blue);font-size:.52rem;font-weight:900}
 .preview{height:35px;display:flex;align-items:center;padding:1px 2px;font-size:1.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:.5px solid var(--ios-border)}
 .card-actions{display:flex;align-items:center;gap:6px;padding-top:6px}
@@ -129,9 +129,10 @@ main{padding:10px 12px 16px}
       <button class="chip active" type="button" data-cat="all" aria-pressed="true">All Fonts</button>
       <button class="chip" type="button" data-cat="google" aria-pressed="false">Google Fonts</button>
       <button class="chip" type="button" data-cat="silicon" aria-pressed="false">SiliconAndhra</button>
-      <button class="chip" type="button" data-cat="telangana" aria-pressed="false">Telangana IT</button>
-      <button class="chip" type="button" data-cat="swecha" aria-pressed="false">Swecha</button>
-      <button class="chip" type="button" data-cat="thirdparty" aria-pressed="false">Third-party</button>
+      <button class="chip" type="button" data-cat="gist" aria-pressed="false">C-DAC GIST</button>
+      <button class="chip" type="button" data-cat="linux" aria-pressed="false">Linux / OFL</button>
+      <button class="chip" type="button" data-cat="multi" aria-pressed="false">Multi Weight</button>
+      <button class="chip" type="button" data-cat="classic" aria-pressed="false">Classic</button>
     </nav>
 
     <div id="list" aria-live="polite"></div>
@@ -170,6 +171,6 @@ main{padding:10px 12px 16px}
   </div>
 </div>
 <div class="toast" id="toast" role="status"></div>
-<script src="/telugu-fonts-client.js?v=169"></script>
+<script src="/telugu-fonts-client.js?v=169-org"></script>
 </body>
 </html>
