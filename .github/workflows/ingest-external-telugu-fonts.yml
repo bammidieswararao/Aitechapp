@@ -1,0 +1,130 @@
+name: Ingest External Telugu Fonts
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_gist_metadata_discovery:
+        description: "Scan public telugufont.com GIST metadata pages only (no CAPTCHA solving)"
+        required: true
+        type: boolean
+        default: false
+      fetch_existing_hashes:
+        description: "Fetch existing raw fonts for SHA-256/PostScript dedupe"
+        required: true
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - "fonts/incoming/**"
+      - "font-ingest/rehost-allowlist.json"
+      - "scripts/ingest_external_fonts.py"
+      - "scripts/sync_client_fallback.py"
+      - "scripts/check_telugu_fonts_ui.py"
+      - ".github/workflows/ingest-external-telugu-fonts.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: external-telugu-font-ingest-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Protect current UI markup
+        shell: bash
+        run: |
+          sha256sum telugu-fonts.html | awk '{print $1}' > /tmp/telugu-fonts-ui.sha256
+          python scripts/check_telugu_fonts_ui.py
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Discover GIST metadata only
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_gist_metadata_discovery }}
+        run: |
+          python scripts/discover_gist_pages.py             --start-id 737650             --end-id 737730             --output font-ingest/gist-discovery.json
+
+      - name: Ingest uploaded ZIP / TTF / OTF files
+        shell: bash
+        run: |
+          EXTRA=""
+          if [[ "${{ github.event_name }}" != "workflow_dispatch" || "${{ inputs.fetch_existing_hashes }}" == "true" ]]; then
+            EXTRA="--fetch-existing-hashes"
+          fi
+          python scripts/ingest_external_fonts.py             --repo "$GITHUB_REPOSITORY"             --branch "${GITHUB_REF_NAME:-main}"             $EXTRA
+
+      - name: Sync only the JS fallback catalogue
+        run: python scripts/sync_client_fallback.py
+
+      - name: Validate catalogue invariants
+        run: |
+          python - <<'PY'
+          import json, re, urllib.parse
+          doc=json.load(open("fonts-catalog.json",encoding="utf-8"))
+          fonts=doc["fonts"] if isinstance(doc,dict) else doc
+          ids=set(); faces=set(); bad=[]
+          for f in fonts:
+              fid=f.get("id")
+              if not fid or fid in ids: bad.append((fid,"duplicate/missing id"))
+              ids.add(fid)
+              if f.get("preview_ready") is not True: bad.append((fid,"preview_ready false"))
+              typ=str(f.get("download_type","")).upper()
+              if typ not in {"TTF","OTF"}: bad.append((fid,"bad type"))
+              url=urllib.parse.unquote(str(f.get("font_raw_url","")))
+              if "/blob/" in url or url.lower().endswith(".zip") or not re.search(r"\.(ttf|otf)(?:\?|$)",url,re.I):
+                  bad.append((fid,"not a direct font URL"))
+              face=(
+                  re.sub(r"[^a-z0-9]+","",str(f.get("name","")).casefold()),
+                  re.sub(r"[^a-z0-9]+","",str(f.get("style","Regular")).casefold()),
+                  int(f.get("weight",400) or 400),
+                  float(f.get("width",100) or 100),
+              )
+              if face in faces: bad.append((fid,"duplicate logical face"))
+              faces.add(face)
+          if bad:
+              raise SystemExit(repr(bad[:50]))
+          print("Validated",len(fonts),"unique direct preview-ready faces")
+          PY
+
+      - name: Confirm bottom navigation was not modified
+        shell: bash
+        run: |
+          python scripts/check_telugu_fonts_ui.py
+          BEFORE="$(cat /tmp/telugu-fonts-ui.sha256)"
+          AFTER="$(sha256sum telugu-fonts.html | awk '{print $1}')"
+          test "$BEFORE" = "$AFTER" || { echo "ERROR: telugu-fonts.html changed"; exit 1; }
+
+      - name: Commit generated catalogue and approved binaries
+        shell: bash
+        run: |
+          git config user.name "AiTechApp Font Bot"
+          git config user.email "font-bot@users.noreply.github.com"
+
+          git add -A fonts-catalog.json telugu-fonts-client.js font-ingest
+          [[ -d fonts/gist ]] && git add -A fonts/gist
+          [[ -d fonts/unicode ]] && git add -A fonts/unicode
+
+          if git diff --cached --quiet; then
+            echo "No approved font changes."
+            exit 0
+          fi
+
+          git commit -m "chore: ingest verified Telugu font binaries [skip ci]"
+          git push
