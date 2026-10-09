@@ -1,0 +1,447 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-09",
+  "requested_face_count": 64,
+  "source_repository": "mineshmathew/IndicSceneTextRendering",
+  "source_ref": "master",
+  "mirror_status": {
+    "matching_requested_faces_found": 43,
+    "requested_faces_missing": 21,
+    "source_tlot_ttf_files_total": 52
+  },
+  "redistribution_status": "blocked-pending-explicit-permission",
+  "reason": "The mirror README limits the font collection to non-commercial research and asks users to obtain explicit permission from the font developer for other uses. The telugufont.com metadata pages describe these C-DAC fonts as non-commercial free usage but do not grant redistribution/re-hosting permission.",
+  "action_taken": "No font binary was copied into bammidieswararao/Aitechapp and fonts-catalog.json was not modified.",
+  "available": [
+    {
+      "family": "GIST-TLOT Amma",
+      "style": "Regular",
+      "path": "Telugu/TLOTAmmaN_ship.ttf",
+      "blob_sha": "11850a12fc3904d7e87c1cd126b5c30259a36238",
+      "size": 313048,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAmmaN_ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Amma",
+      "style": "Bold",
+      "path": "Telugu/TLOTAmmaB_ship.ttf",
+      "blob_sha": "91b56b4ac898a6afeab07f3ad366d46e0bd5807d",
+      "size": 309572,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAmmaB_ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Amma",
+      "style": "Italic",
+      "path": "Telugu/TLOTAmmaI_ship.ttf",
+      "blob_sha": "47c78e409a9c8d1ef8c836501bac1564b2745f30",
+      "size": 333356,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAmmaI_ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Amma",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTAmmaBI_ship.ttf",
+      "blob_sha": "a7c4a74c64fc709a1d84f95233f3cb5e4fc01883",
+      "size": 334268,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAmmaBI_ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Amruta",
+      "style": "Bold",
+      "path": "Telugu/TLOTAmrutaB_Ship.ttf",
+      "blob_sha": "5837f7f6d57b1a65767bff8edff6cce66728cc47",
+      "size": 139476,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAmrutaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Amruta",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTAmrutaBI_Ship.ttf",
+      "blob_sha": "79bb7a6d4ff038880ace9ccae3528b9a6e891f96",
+      "size": 129948,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAmrutaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Atreya",
+      "style": "Regular",
+      "path": "Telugu/TLOTAtreyaN_Ship.ttf",
+      "blob_sha": "28f855ee8c34c31a1ca272396f955d411925ab07",
+      "size": 256028,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAtreyaN_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Atreya",
+      "style": "Bold",
+      "path": "Telugu/TLOTAtreyaB_Ship.ttf",
+      "blob_sha": "d032598d12dadc650f767bb71d398141b8dd906a",
+      "size": 257028,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAtreyaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Atreya",
+      "style": "Italic",
+      "path": "Telugu/TLOTAtreyaI_Ship.ttf",
+      "blob_sha": "44a2e301fcbfe2d6dc5128a584d678f7b2dabc2b",
+      "size": 315672,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAtreyaI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Atreya",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTAtreyaBI_Ship.ttf",
+      "blob_sha": "d81d6640223faa28579a0040ef192abd7d184e58",
+      "size": 303460,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTAtreyaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Chandana",
+      "style": "Bold",
+      "path": "Telugu/TLOTChandanaB_Ship.ttf",
+      "blob_sha": "5cef803d60e92622df5b0c46a23fba3b008625fc",
+      "size": 283984,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTChandanaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Chandana",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTChandanaBI_Ship.ttf",
+      "blob_sha": "e7e5c0fb3b95a794f1c707e7e21f19c454d128e6",
+      "size": 281112,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTChandanaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Deva",
+      "style": "Regular",
+      "path": "Telugu/TLOTDevaN_Ship.ttf",
+      "blob_sha": "2863788808f3c65a831cff5c65258c7a323d5f4d",
+      "size": 338052,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDevaN_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Deva",
+      "style": "Italic",
+      "path": "Telugu/TLOTDevaI_Ship.ttf",
+      "blob_sha": "eeaeea74a54a907553123e18c9c41bbb87f57742",
+      "size": 344044,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDevaI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Draupadi",
+      "style": "Regular",
+      "path": "Telugu/TLOTDraupadiN_Ship.ttf",
+      "blob_sha": "5072ba5a0a32366913c3a16df71af499f6535934",
+      "size": 256960,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDraupadiN_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Draupadi",
+      "style": "Bold",
+      "path": "Telugu/TLOTDraupadiB_ship.ttf",
+      "blob_sha": "906d19890bff63a8d0df47a505fea49ed96f5f31",
+      "size": 298424,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDraupadiB_ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Draupadi",
+      "style": "Italic",
+      "path": "Telugu/TLOTDraupadiI_Ship.ttf",
+      "blob_sha": "e0a798e0a74e4d48b13f1b68a35b3174af59bb55",
+      "size": 270036,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDraupadiI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Draupadi",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTDraupadiBI_Ship.ttf",
+      "blob_sha": "629478ce62c89b7e03c404b402c774734d305290",
+      "size": 300236,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDraupadiBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Golkonda",
+      "style": "Bold",
+      "path": "Telugu/TLOTGolkondaB_Ship.ttf",
+      "blob_sha": "879e49ed936f501d26948fd15a7212cef65d0fca",
+      "size": 396292,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTGolkondaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Golkonda",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTGolkondaBI_Ship.ttf",
+      "blob_sha": "0321c48ac443b9c446ce6b2029fbaab8c85c70e5",
+      "size": 408240,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTGolkondaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Krishna",
+      "style": "Regular",
+      "path": "Telugu/GIST-TLOTKrishna.ttf",
+      "blob_sha": "cbb702a776e9c88aad18f260a367c8f092f744e1",
+      "size": 305924,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/GIST-TLOTKrishna.ttf"
+    },
+    {
+      "family": "GIST-TLOT Krishna",
+      "style": "Bold",
+      "path": "Telugu/TLOTKrishnaB_Ship.ttf",
+      "blob_sha": "ac59b999523e6c67704a3520e6d37ad388c9c345",
+      "size": 304920,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTKrishnaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Krishna",
+      "style": "Italic",
+      "path": "Telugu/TLOTKrishnaI_Ship.ttf",
+      "blob_sha": "05c150f68c4495ce5919ea8881c3939699f75f8d",
+      "size": 307436,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTKrishnaI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Menaka",
+      "style": "Regular",
+      "path": "Telugu/TLOTMenakaN_Ship.ttf",
+      "blob_sha": "6ff8acbb57e857e61db2ea2da5abbf48791e0736",
+      "size": 306972,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTMenakaN_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Menaka",
+      "style": "Bold",
+      "path": "Telugu/TLOTMenakaB_Ship.ttf",
+      "blob_sha": "73d52ba30e44ee4799225020306e37b6fc8a270b",
+      "size": 297368,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTMenakaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Menaka",
+      "style": "Italic",
+      "path": "Telugu/TLOTMenakaI_Ship.ttf",
+      "blob_sha": "c91abb950a2165c23b1c96c9d76ba205bae09d25",
+      "size": 306372,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTMenakaI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Menaka",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTMenakaBI_Ship.ttf",
+      "blob_sha": "fb9bac47e14c31cc582075952aac4bf7fc316596",
+      "size": 304336,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTMenakaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Pavani",
+      "style": "Bold",
+      "path": "Telugu/TLOTPavaniB_Ship.ttf",
+      "blob_sha": "db3e04106a70d06140f5e3757b7d47c85e8f0304",
+      "size": 292584,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTPavaniB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Pavani",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTPavaniBI_Ship.ttf",
+      "blob_sha": "495c2a18fd0b0cf47101b72da0f4a31d05261e2f",
+      "size": 299088,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTPavaniBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Priya",
+      "style": "Bold",
+      "path": "Telugu/TLOTPriyaB_Ship.ttf",
+      "blob_sha": "1c224a51757bd915a8007562bec2f3394813cdab",
+      "size": 141172,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTPriyaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Priya",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTPriyaBI_Ship.ttf",
+      "blob_sha": "ed454f219c431401e05bc1bfd3b3962c1be7e32e",
+      "size": 142488,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTPriyaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Rajani",
+      "style": "Bold",
+      "path": "Telugu/TLOTRajaniB_Ship.ttf",
+      "blob_sha": "5f768db516962942801460682bf8a5d5234d7058",
+      "size": 284112,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTRajaniB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Rajani",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTRajaniBI_Ship.ttf",
+      "blob_sha": "37d38cee7b764b1f9bbedd8d69905e8c1f5705de",
+      "size": 303484,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTRajaniBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Sanjana",
+      "style": "Bold",
+      "path": "Telugu/TLOTSanjanaB_Ship.ttf",
+      "blob_sha": "e9bcd0083f8412dec87776c3935e87e5c548696f",
+      "size": 214868,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTSanjanaB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Sanjana",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTSanjanaBI_Ship.ttf",
+      "blob_sha": "566fd57a1f63d51aa9e147bc830198b8e4877a98",
+      "size": 207600,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTSanjanaBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Sitara",
+      "style": "Bold",
+      "path": "Telugu/TLOTSitaraB_Ship.ttf",
+      "blob_sha": "0bac0a2017266d52c7cd505647863a6f58f4b951",
+      "size": 359156,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTSitaraB_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Sitara",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTSitaraBI_Ship.ttf",
+      "blob_sha": "5ae7f3bd321c73cffadef651926eaa9c5cb40d15",
+      "size": 355240,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTSitaraBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Swami",
+      "style": "Bold",
+      "path": "Telugu/TLOTSwamiB.ttf",
+      "blob_sha": "0a2fa7a547119d008ecefdb257652de9581c369e",
+      "size": 381168,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTSwamiB.ttf"
+    },
+    {
+      "family": "GIST-TLOT Swami",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTSwamiBI_Ship.ttf",
+      "blob_sha": "3756376749520f14d7205087125c2efe6908d66d",
+      "size": 245352,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTSwamiBI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Vennela",
+      "style": "Regular",
+      "path": "Telugu/TLOTVennelaN_Ship.ttf",
+      "blob_sha": "adb3ca32c2003a8d1931241e8edcda94ce4b4088",
+      "size": 306568,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTVennelaN_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Vennela",
+      "style": "Bold",
+      "path": "Telugu/TLOTVennela1B_Ship.ttf",
+      "blob_sha": "f12c84550826483ef1709d92dba874681c977c78",
+      "size": 302044,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTVennela1B_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Vennela",
+      "style": "Italic",
+      "path": "Telugu/TLOTVennelaI_Ship.ttf",
+      "blob_sha": "d13da7886ceb48736f08070ae779bba56adc704a",
+      "size": 330880,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTVennelaI_Ship.ttf"
+    },
+    {
+      "family": "GIST-TLOT Vennela",
+      "style": "Bold Italic",
+      "path": "Telugu/TLOTVennelaBI_Ship.ttf",
+      "blob_sha": "f39cfe0926c93424fe6bcae6e4cf79bef9ee67e0",
+      "size": 318204,
+      "raw_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTVennelaBI_Ship.ttf"
+    }
+  ],
+  "missing": [
+    {
+      "family": "GIST-TLOT Amruta",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Amruta",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Chandana",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Chandana",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Deva",
+      "style": "Bold"
+    },
+    {
+      "family": "GIST-TLOT Deva",
+      "style": "Bold Italic"
+    },
+    {
+      "family": "GIST-TLOT Golkonda",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Golkonda",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Krishna",
+      "style": "Bold Italic"
+    },
+    {
+      "family": "GIST-TLOT Pavani",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Pavani",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Priya",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Priya",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Rajani",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Rajani",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Sanjana",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Sanjana",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Sitara",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Sitara",
+      "style": "Italic"
+    },
+    {
+      "family": "GIST-TLOT Swami",
+      "style": "Regular"
+    },
+    {
+      "family": "GIST-TLOT Swami",
+      "style": "Italic"
+    }
+  ]
+}
