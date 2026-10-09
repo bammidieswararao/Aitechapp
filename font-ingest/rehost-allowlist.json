@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "note": "Optional explicit approvals for fonts whose embedded metadata does not itself show a permissive redistribution licence. Add only when you have the right to re-host that exact binary.",
+  "entries": []
+}
