@@ -22,11 +22,12 @@
       "variable": false,
       "source": "seed",
       "serial": 1,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "sree-krushnadevaraya",
@@ -43,11 +44,12 @@
       "variable": false,
       "source": "seed",
       "serial": 2,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "suravaram",
@@ -64,11 +66,12 @@
       "variable": false,
       "source": "seed",
       "serial": 3,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "timmana",
@@ -85,11 +88,12 @@
       "variable": false,
       "source": "seed",
       "serial": 4,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "ravi-prakash",
@@ -106,11 +110,12 @@
       "variable": false,
       "source": "seed",
       "serial": 5,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "dhurjati",
@@ -127,11 +132,12 @@
       "variable": false,
       "source": "seed",
       "serial": 6,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "gidugu",
@@ -148,11 +154,12 @@
       "variable": false,
       "source": "seed",
       "serial": 7,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "gurajada",
@@ -169,11 +176,12 @@
       "variable": false,
       "source": "seed",
       "serial": 8,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "lakki-reddy",
@@ -190,11 +198,12 @@
       "variable": false,
       "source": "seed",
       "serial": 9,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "mallanna",
@@ -211,11 +220,12 @@
       "variable": false,
       "source": "seed",
       "serial": 10,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "mandali",
@@ -232,11 +242,12 @@
       "variable": false,
       "source": "seed",
       "serial": 11,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "ntr",
@@ -253,11 +264,12 @@
       "variable": false,
       "source": "seed",
       "serial": 12,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "peddana",
@@ -274,11 +286,12 @@
       "variable": false,
       "source": "seed",
       "serial": 13,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "ramabhadra",
@@ -295,11 +308,12 @@
       "variable": false,
       "source": "seed",
       "serial": 14,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "ramaraja",
@@ -316,11 +330,12 @@
       "variable": false,
       "source": "seed",
       "serial": 15,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "suranna",
@@ -337,11 +352,12 @@
       "variable": false,
       "source": "seed",
       "serial": 16,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "tenali-ramakrishna",
@@ -358,11 +374,12 @@
       "variable": false,
       "source": "seed",
       "serial": 17,
-      "category": "Classic",
+      "category": "SiliconAndhra",
       "categories": [
         "Classic",
-        "Third-party"
-      ]
+        "SiliconAndhra"
+      ],
+      "organization": "SiliconAndhra"
     },
     {
       "id": "tiro-telugu",
@@ -379,10 +396,13 @@
       "variable": false,
       "source": "seed",
       "serial": 18,
-      "category": "Classic",
+      "category": "Google Fonts",
       "categories": [
-        "Classic"
-      ]
+        "Classic",
+        "Google Fonts",
+        "Linux / OFL"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "vemana2000",
@@ -399,10 +419,12 @@
       "variable": false,
       "source": "seed",
       "serial": 19,
-      "category": "Classic",
+      "category": "Linux / OFL",
       "categories": [
-        "Classic"
-      ]
+        "Classic",
+        "Linux / OFL"
+      ],
+      "organization": "Linux / OFL"
     },
     {
       "id": "pothana2000",
@@ -419,10 +441,12 @@
       "variable": false,
       "source": "seed",
       "serial": 20,
-      "category": "Classic",
+      "category": "Linux / OFL",
       "categories": [
-        "Classic"
-      ]
+        "Classic",
+        "Linux / OFL"
+      ],
+      "organization": "Linux / OFL"
     },
     {
       "id": "anek-telugu-condensed-100",
@@ -439,10 +463,13 @@
       "variable": true,
       "source": "seed",
       "serial": 21,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-200",
@@ -459,10 +486,13 @@
       "variable": true,
       "source": "seed",
       "serial": 22,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-300",
@@ -479,10 +509,13 @@
       "variable": true,
       "source": "seed",
       "serial": 23,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-400",
@@ -499,10 +532,13 @@
       "variable": true,
       "source": "seed",
       "serial": 24,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-500",
@@ -519,10 +555,13 @@
       "variable": true,
       "source": "seed",
       "serial": 25,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-600",
@@ -539,10 +578,13 @@
       "variable": true,
       "source": "seed",
       "serial": 26,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-700",
@@ -559,10 +601,13 @@
       "variable": true,
       "source": "seed",
       "serial": 27,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-condensed-800",
@@ -579,10 +624,13 @@
       "variable": true,
       "source": "seed",
       "serial": 28,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-100",
@@ -599,10 +647,13 @@
       "variable": true,
       "source": "seed",
       "serial": 29,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-200",
@@ -619,10 +670,13 @@
       "variable": true,
       "source": "seed",
       "serial": 30,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-300",
@@ -639,10 +693,13 @@
       "variable": true,
       "source": "seed",
       "serial": 31,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-400",
@@ -659,10 +716,13 @@
       "variable": true,
       "source": "seed",
       "serial": 32,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-500",
@@ -679,10 +739,13 @@
       "variable": true,
       "source": "seed",
       "serial": 33,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-600",
@@ -699,10 +762,13 @@
       "variable": true,
       "source": "seed",
       "serial": 34,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-700",
@@ -719,10 +785,13 @@
       "variable": true,
       "source": "seed",
       "serial": 35,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semicondensed-800",
@@ -739,10 +808,13 @@
       "variable": true,
       "source": "seed",
       "serial": 36,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-100",
@@ -759,10 +831,13 @@
       "variable": true,
       "source": "seed",
       "serial": 37,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-200",
@@ -779,10 +854,13 @@
       "variable": true,
       "source": "seed",
       "serial": 38,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-300",
@@ -799,10 +877,13 @@
       "variable": true,
       "source": "seed",
       "serial": 39,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-400",
@@ -819,10 +900,13 @@
       "variable": true,
       "source": "seed",
       "serial": 40,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-500",
@@ -839,10 +923,13 @@
       "variable": true,
       "source": "seed",
       "serial": 41,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-600",
@@ -859,10 +946,13 @@
       "variable": true,
       "source": "seed",
       "serial": 42,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-700",
@@ -879,10 +969,13 @@
       "variable": true,
       "source": "seed",
       "serial": 43,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-normal-800",
@@ -899,10 +992,13 @@
       "variable": true,
       "source": "seed",
       "serial": 44,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-100",
@@ -919,10 +1015,13 @@
       "variable": true,
       "source": "seed",
       "serial": 45,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-200",
@@ -939,10 +1038,13 @@
       "variable": true,
       "source": "seed",
       "serial": 46,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-300",
@@ -959,10 +1061,13 @@
       "variable": true,
       "source": "seed",
       "serial": 47,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-400",
@@ -979,10 +1084,13 @@
       "variable": true,
       "source": "seed",
       "serial": 48,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-500",
@@ -999,10 +1107,13 @@
       "variable": true,
       "source": "seed",
       "serial": 49,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-600",
@@ -1019,10 +1130,13 @@
       "variable": true,
       "source": "seed",
       "serial": 50,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-700",
@@ -1039,10 +1153,13 @@
       "variable": true,
       "source": "seed",
       "serial": 51,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-semiexpanded-800",
@@ -1059,10 +1176,13 @@
       "variable": true,
       "source": "seed",
       "serial": 52,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-100",
@@ -1079,10 +1199,13 @@
       "variable": true,
       "source": "seed",
       "serial": 53,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-200",
@@ -1099,10 +1222,13 @@
       "variable": true,
       "source": "seed",
       "serial": 54,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-300",
@@ -1119,10 +1245,13 @@
       "variable": true,
       "source": "seed",
       "serial": 55,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-400",
@@ -1139,10 +1268,13 @@
       "variable": true,
       "source": "seed",
       "serial": 56,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-500",
@@ -1159,10 +1291,13 @@
       "variable": true,
       "source": "seed",
       "serial": 57,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-600",
@@ -1179,10 +1314,13 @@
       "variable": true,
       "source": "seed",
       "serial": 58,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-700",
@@ -1199,10 +1337,13 @@
       "variable": true,
       "source": "seed",
       "serial": 59,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "anek-telugu-expanded-800",
@@ -1219,10 +1360,13 @@
       "variable": true,
       "source": "seed",
       "serial": 60,
-      "category": "Anek Widths",
+      "category": "Google Fonts",
       "categories": [
-        "Anek Widths"
-      ]
+        "Anek Widths",
+        "Google Fonts",
+        "Multi Weight"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "hind-guntur-300",
@@ -1239,10 +1383,12 @@
       "variable": false,
       "source": "seed",
       "serial": 61,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "hind-guntur-400",
@@ -1259,10 +1405,12 @@
       "variable": false,
       "source": "seed",
       "serial": 62,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "hind-guntur-500",
@@ -1279,10 +1427,12 @@
       "variable": false,
       "source": "seed",
       "serial": 63,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "hind-guntur-600",
@@ -1299,10 +1449,12 @@
       "variable": false,
       "source": "seed",
       "serial": 64,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "hind-guntur-700",
@@ -1319,10 +1471,12 @@
       "variable": false,
       "source": "seed",
       "serial": 65,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "chathura-100",
@@ -1339,11 +1493,12 @@
       "variable": false,
       "source": "seed",
       "serial": 66,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
         "Multi Weight",
-        "Third-party"
-      ]
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "chathura-300",
@@ -1360,11 +1515,12 @@
       "variable": false,
       "source": "seed",
       "serial": 67,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
         "Multi Weight",
-        "Third-party"
-      ]
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "chathura-400",
@@ -1381,11 +1537,12 @@
       "variable": false,
       "source": "seed",
       "serial": 68,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
         "Multi Weight",
-        "Third-party"
-      ]
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "chathura-700",
@@ -1402,11 +1559,12 @@
       "variable": false,
       "source": "seed",
       "serial": 69,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
         "Multi Weight",
-        "Third-party"
-      ]
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "chathura-800",
@@ -1423,11 +1581,12 @@
       "variable": false,
       "source": "seed",
       "serial": 70,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
         "Multi Weight",
-        "Third-party"
-      ]
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-100",
@@ -1444,10 +1603,12 @@
       "variable": true,
       "source": "seed",
       "serial": 71,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-200",
@@ -1464,10 +1625,12 @@
       "variable": true,
       "source": "seed",
       "serial": 72,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-300",
@@ -1484,10 +1647,12 @@
       "variable": true,
       "source": "seed",
       "serial": 73,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-400",
@@ -1504,10 +1669,12 @@
       "variable": true,
       "source": "seed",
       "serial": 74,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-500",
@@ -1524,10 +1691,12 @@
       "variable": true,
       "source": "seed",
       "serial": 75,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-600",
@@ -1544,10 +1713,12 @@
       "variable": true,
       "source": "seed",
       "serial": 76,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-700",
@@ -1564,10 +1735,12 @@
       "variable": true,
       "source": "seed",
       "serial": 77,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-800",
@@ -1584,10 +1757,12 @@
       "variable": true,
       "source": "seed",
       "serial": 78,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-900",
@@ -1604,10 +1779,12 @@
       "variable": true,
       "source": "seed",
       "serial": 79,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "baloo-tammudu-2-400",
@@ -1624,10 +1801,12 @@
       "variable": true,
       "source": "seed",
       "serial": 80,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "baloo-tammudu-2-500",
@@ -1644,10 +1823,12 @@
       "variable": true,
       "source": "seed",
       "serial": 81,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "baloo-tammudu-2-600",
@@ -1664,10 +1845,12 @@
       "variable": true,
       "source": "seed",
       "serial": 82,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "baloo-tammudu-2-700",
@@ -1684,10 +1867,12 @@
       "variable": true,
       "source": "seed",
       "serial": 83,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "baloo-tammudu-2-800",
@@ -1704,10 +1889,12 @@
       "variable": true,
       "source": "seed",
       "serial": 84,
-      "category": "Multi Weight",
+      "category": "Google Fonts",
       "categories": [
-        "Multi Weight"
-      ]
+        "Multi Weight",
+        "Google Fonts"
+      ],
+      "organization": "Google Fonts"
     },
     {
       "id": "annamayya-italic-400",
@@ -1715,10 +1902,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1740,10 +1927,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1765,10 +1952,10 @@
       "style": "Bold",
       "weight": 700,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1790,10 +1977,10 @@
       "style": "Bold Italic",
       "weight": 700,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1815,10 +2002,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1840,10 +2027,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1857,7 +2044,8 @@
       "source_path": "public/Fonts/Dhurjati-Italic.otf",
       "upstream_sha": "d93ea5e32ad09cc29ce44e111bd5364863d6d0cc",
       "upstream_size": 825292,
-      "serial": 90
+      "serial": 90,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "gidugu-italic-400",
@@ -1865,10 +2053,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1882,7 +2070,8 @@
       "source_path": "public/Fonts/Gidugu-Italic.otf",
       "upstream_sha": "f3fb02d8fb41564fd5abf1ed18cdaee6926f910a",
       "upstream_size": 244472,
-      "serial": 91
+      "serial": 91,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "jims-italic-400",
@@ -1890,10 +2079,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1915,10 +2104,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1940,10 +2129,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1965,10 +2154,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -1990,10 +2179,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2007,7 +2196,8 @@
       "source_path": "public/Fonts/Mallanna-Italic.otf",
       "upstream_sha": "de838f14f077a112a55d45f6482c0dada3337b44",
       "upstream_size": 461636,
-      "serial": 96
+      "serial": 96,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "mandali-italic-400",
@@ -2015,10 +2205,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2032,7 +2222,8 @@
       "source_path": "public/Fonts/Mandali-Italic.otf",
       "upstream_sha": "d69b65f34af10b8f7467af9bc00a6a4414ec4bd1",
       "upstream_size": 461244,
-      "serial": 97
+      "serial": 97,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "mandali-bold-700",
@@ -2040,10 +2231,10 @@
       "style": "Bold",
       "weight": 700,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2057,7 +2248,8 @@
       "source_path": "public/Fonts/Mandali-Bold.otf",
       "upstream_sha": "ffe199a1e8aebdb8184c327390029c64ff607869",
       "upstream_size": 439888,
-      "serial": 98
+      "serial": 98,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "mandali-bold-italic-700",
@@ -2065,10 +2257,10 @@
       "style": "Bold Italic",
       "weight": 700,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2082,7 +2274,8 @@
       "source_path": "public/Fonts/Mandali-Bold Italic.otf",
       "upstream_sha": "73bbae1a9777bf697c380af83678a678f5786864",
       "upstream_size": 472988,
-      "serial": 99
+      "serial": 99,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "nandakam-italic-400",
@@ -2090,10 +2283,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2115,10 +2308,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2140,10 +2333,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2157,7 +2350,8 @@
       "source_path": "public/Fonts/NATS-Italic.otf",
       "upstream_sha": "854624d568c340237f2929a0a09460265a83f412",
       "upstream_size": 238832,
-      "serial": 102
+      "serial": 102,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "nats-regular-400",
@@ -2165,10 +2359,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2182,7 +2376,8 @@
       "source_path": "public/Fonts/NATS.otf",
       "upstream_sha": "7c21de9a9d4d92e205588b5408243cf5d6644808",
       "upstream_size": 222020,
-      "serial": 103
+      "serial": 103,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "potti-sreeramulu-regular-400",
@@ -2190,10 +2385,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2207,7 +2402,8 @@
       "source_path": "public/Fonts/Potti Sreeramulu.otf",
       "upstream_sha": "1641bf07d4f1e1a6763a84dcccbf9a5c40f3a724",
       "upstream_size": 468320,
-      "serial": 104
+      "serial": 104,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "purushothamaa-italic-400",
@@ -2215,10 +2411,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2240,10 +2436,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2265,10 +2461,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2290,10 +2486,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2307,7 +2503,8 @@
       "source_path": "public/Fonts/Ramabhadra-Italic.otf",
       "upstream_sha": "33fe3efd6d043e5217ac92112dc6e3cd698443dc",
       "upstream_size": 402316,
-      "serial": 108
+      "serial": 108,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "ramaneeya-regular-400",
@@ -2315,10 +2512,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2340,10 +2537,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2365,10 +2562,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2390,10 +2587,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2415,10 +2612,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2432,7 +2629,8 @@
       "source_path": "public/Fonts/Sree Krushnadevaraya-Italic.otf",
       "upstream_sha": "8904a73433da09fab9ba9645b1fc46a186693b85",
       "upstream_size": 586792,
-      "serial": 113
+      "serial": 113,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "suranna-italic-400",
@@ -2440,10 +2638,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2457,7 +2655,8 @@
       "source_path": "public/Fonts/Suranna-Italic.otf",
       "upstream_sha": "88f311dd677d462d8d1cb6aeb4c3e777b3cd7b17",
       "upstream_size": 467936,
-      "serial": 114
+      "serial": 114,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "suranna-bold-700",
@@ -2465,10 +2664,10 @@
       "style": "Bold",
       "weight": 700,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2482,7 +2681,8 @@
       "source_path": "public/Fonts/Suranna Bold.otf",
       "upstream_sha": "55933cf2fbf56a599ae67c970455b760c97a2697",
       "upstream_size": 441540,
-      "serial": 115
+      "serial": 115,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "suranna-bold-italic-700",
@@ -2490,10 +2690,10 @@
       "style": "Bold Italic",
       "weight": 700,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2507,7 +2707,8 @@
       "source_path": "public/Fonts/Suranna Bold Italic.otf",
       "upstream_sha": "b5b76a991cf6b3241a57a3f2985e0b779662fccf",
       "upstream_size": 467704,
-      "serial": 116
+      "serial": 116,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "suravaram-italic-400",
@@ -2515,10 +2716,10 @@
       "style": "Italic",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2532,7 +2733,8 @@
       "source_path": "public/Fonts/Suravaram-Italic.otf",
       "upstream_sha": "b9017fcef958c430ce123e3dd75c91c71592f5be",
       "upstream_size": 242124,
-      "serial": 117
+      "serial": 117,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "syamala-ramana-regular-400",
@@ -2540,10 +2742,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "SiliconAndhra",
       "categories": [
-        "Third-party"
+        "SiliconAndhra"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2557,7 +2759,8 @@
       "source_path": "public/Fonts/Syamala Ramana.otf",
       "upstream_sha": "4e0b44315cf4de40064246059ec34f76d816d03e",
       "upstream_size": 455080,
-      "serial": 118
+      "serial": 118,
+      "organization": "SiliconAndhra"
     },
     {
       "id": "tana-regular-400",
@@ -2565,10 +2768,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2590,10 +2793,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2615,10 +2818,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Classic",
       "categories": [
-        "Third-party"
+        "Classic"
       ],
       "author": "External GitHub source",
       "license": "See upstream source terms",
@@ -2643,7 +2846,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2661,7 +2865,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 122
+      "serial": 122,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-200",
@@ -2672,7 +2877,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2690,7 +2896,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 123
+      "serial": 123,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-300",
@@ -2701,7 +2908,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2719,7 +2927,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 124
+      "serial": 124,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-400",
@@ -2730,7 +2939,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2748,7 +2958,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 125
+      "serial": 125,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-500",
@@ -2759,7 +2970,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2777,7 +2989,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 126
+      "serial": 126,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-600",
@@ -2788,7 +3001,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2806,7 +3020,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 127
+      "serial": 127,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-700",
@@ -2817,7 +3032,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2835,7 +3051,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 128
+      "serial": 128,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-800",
@@ -2846,7 +3063,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2864,7 +3082,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 129
+      "serial": 129,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-serif-telugu-900",
@@ -2875,7 +3094,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2893,7 +3113,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notoseriftelugu/NotoSerifTelugu[wght].ttf",
-      "serial": 130
+      "serial": 130,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-100",
@@ -2904,7 +3125,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2927,7 +3149,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 131
+      "serial": 131,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-200",
@@ -2938,7 +3161,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2961,7 +3185,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 132
+      "serial": 132,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-300",
@@ -2972,7 +3197,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -2995,7 +3221,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 133
+      "serial": 133,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-400",
@@ -3006,7 +3233,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3029,7 +3257,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 134
+      "serial": 134,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-500",
@@ -3040,7 +3269,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3063,7 +3293,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 135
+      "serial": 135,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-600",
@@ -3074,7 +3305,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3097,7 +3329,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 136
+      "serial": 136,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-700",
@@ -3108,7 +3341,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3131,7 +3365,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 137
+      "serial": 137,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-800",
@@ -3142,7 +3377,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3165,7 +3401,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 138
+      "serial": 138,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-extracondensed-900",
@@ -3176,7 +3413,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3199,7 +3437,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 139
+      "serial": 139,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-100",
@@ -3210,7 +3449,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3233,7 +3473,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 140
+      "serial": 140,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-200",
@@ -3244,7 +3485,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3267,7 +3509,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 141
+      "serial": 141,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-300",
@@ -3278,7 +3521,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3301,7 +3545,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 142
+      "serial": 142,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-400",
@@ -3312,7 +3557,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3335,7 +3581,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 143
+      "serial": 143,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-500",
@@ -3346,7 +3593,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3369,7 +3617,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 144
+      "serial": 144,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-600",
@@ -3380,7 +3629,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3403,7 +3653,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 145
+      "serial": 145,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-700",
@@ -3414,7 +3665,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3437,7 +3689,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 146
+      "serial": 146,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-800",
@@ -3448,7 +3701,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3471,7 +3725,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 147
+      "serial": 147,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-condensed-900",
@@ -3482,7 +3737,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3505,7 +3761,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 148
+      "serial": 148,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-100",
@@ -3516,7 +3773,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3539,7 +3797,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 149
+      "serial": 149,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-200",
@@ -3550,7 +3809,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3573,7 +3833,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 150
+      "serial": 150,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-300",
@@ -3584,7 +3845,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3607,7 +3869,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 151
+      "serial": 151,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-400",
@@ -3618,7 +3881,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3641,7 +3905,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 152
+      "serial": 152,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-500",
@@ -3652,7 +3917,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3675,7 +3941,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 153
+      "serial": 153,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-600",
@@ -3686,7 +3953,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3709,7 +3977,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 154
+      "serial": 154,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-700",
@@ -3720,7 +3989,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3743,7 +4013,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 155
+      "serial": 155,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-800",
@@ -3754,7 +4025,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3777,7 +4049,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 156
+      "serial": 156,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-semicondensed-900",
@@ -3788,7 +4061,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3811,7 +4085,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 157
+      "serial": 157,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-100",
@@ -3822,7 +4097,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3845,7 +4121,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 158
+      "serial": 158,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-200",
@@ -3856,7 +4133,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3879,7 +4157,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 159
+      "serial": 159,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-300",
@@ -3890,7 +4169,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3913,7 +4193,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 160
+      "serial": 160,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-400",
@@ -3924,7 +4205,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3947,7 +4229,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 161
+      "serial": 161,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-500",
@@ -3958,7 +4241,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -3981,7 +4265,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 162
+      "serial": 162,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-600",
@@ -3992,7 +4277,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -4015,7 +4301,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 163
+      "serial": 163,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-700",
@@ -4026,7 +4313,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -4049,7 +4337,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 164
+      "serial": 164,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-800",
@@ -4060,7 +4349,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -4083,7 +4373,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 165
+      "serial": 165,
+      "organization": "Google Fonts"
     },
     {
       "id": "noto-sans-telugu-ui-normal-900",
@@ -4094,7 +4385,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Multi Weight"
       ],
       "author": "Google / Noto",
       "license": "SIL OFL 1.1",
@@ -4117,7 +4409,8 @@
       "source": "Google Fonts / Noto",
       "source_repository": "google/fonts",
       "source_path": "ofl/notosansteluguui/NotoSansTeluguUI[wdth,wght].ttf",
-      "serial": 166
+      "serial": 166,
+      "organization": "Google Fonts"
     },
     {
       "id": "akaya-telivigala-regular",
@@ -4139,7 +4432,8 @@
       "source": "Google Fonts",
       "source_repository": "google/fonts",
       "source_path": "ofl/akayatelivigala/AkayaTelivigala-Regular.ttf",
-      "serial": 167
+      "serial": 167,
+      "organization": "Google Fonts"
     },
     {
       "id": "tiro-telugu-italic",
@@ -4150,7 +4444,8 @@
       "group": "google",
       "category": "Google Fonts",
       "categories": [
-        "Google Fonts"
+        "Google Fonts",
+        "Linux / OFL"
       ],
       "author": "Tiro Typeworks",
       "license": "SIL OFL 1.1",
@@ -4161,7 +4456,8 @@
       "source": "Google Fonts",
       "source_repository": "google/fonts",
       "source_path": "ofl/tirotelugu/TiroTelugu-Italic.ttf",
-      "serial": 168
+      "serial": 168,
+      "organization": "Google Fonts"
     },
     {
       "id": "lohit-telugu-regular",
@@ -4169,10 +4465,10 @@
       "style": "Regular",
       "weight": 400,
       "width": 100,
-      "group": "third-party",
-      "category": "Third-party",
+      "group": "archive",
+      "category": "Linux / OFL",
       "categories": [
-        "Third-party"
+        "Linux / OFL"
       ],
       "author": "Lohit Fonts Project / Red Hat / Fedora community",
       "license": "SIL OFL 1.1",
@@ -4183,7 +4479,8 @@
       "source": "Lohit Fonts Project",
       "source_repository": "xin3liang/platform_external_lohit-fonts",
       "source_path": "lohit-telugu-ttf/Lohit-Telugu.ttf",
-      "serial": 169
+      "serial": 169,
+      "organization": "Linux / OFL"
     }
   ],
   "open_source_expansion": {
@@ -4191,5 +4488,19 @@
     "added_unique_binaries": 5,
     "validation": "SFNT + Telugu Unicode cmap U+0C00–U+0C7F + OFL text verified before commit",
     "note": "Existing first 121 catalog rows preserved; additions appended."
+  },
+  "category_model": {
+    "removed_generic_label": "Third-party",
+    "organization_categories": [
+      "Google Fonts",
+      "SiliconAndhra",
+      "C-DAC GIST",
+      "Linux / OFL"
+    ],
+    "style_categories": [
+      "Multi Weight",
+      "Classic"
+    ],
+    "note": "C-DAC GIST remains empty until redistributable GIST binaries are available."
   }
 }
