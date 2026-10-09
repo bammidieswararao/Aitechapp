@@ -1,0 +1,93 @@
+name: Sync Telugu Font Binaries
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_rehosting:
+        description: "I confirmed I have permission to re-host the third-party font binaries"
+        required: true
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "sources.json"
+      - "scripts/build_font_catalog.py"
+      - "requirements.txt"
+      - ".github/workflows/sync-telugu-fonts.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telugu-font-catalog-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Build direct TTF/OTF catalogue
+        shell: bash
+        run: |
+          EXTRA=""
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.confirm_rehosting }}" == "true" ]]; then
+            EXTRA="--confirm-all-rehosting"
+          fi
+          python scripts/build_font_catalog.py \
+            --repo "$GITHUB_REPOSITORY" \
+            --branch "${GITHUB_REF_NAME:-main}" \
+            $EXTRA
+
+      - name: Validate direct-font catalogue
+        run: |
+          python - <<'PY'
+          import json,re,urllib.parse
+          d=json.load(open("fonts-catalog.json",encoding="utf-8"))
+          bad=[]; ids=set(); faces=set()
+          for f in d.get("fonts",[]):
+              fid=f.get("id")
+              if not fid or fid in ids: bad.append((fid,"duplicate/missing id"))
+              ids.add(fid)
+              if f.get("preview_ready") is not True: bad.append((fid,"preview_ready false"))
+              typ=str(f.get("download_type","")).upper()
+              if typ not in {"TTF","OTF"}: bad.append((fid,"bad type"))
+              u=urllib.parse.unquote(str(f.get("font_raw_url","")))
+              if "/blob/" in u or u.lower().endswith(".zip") or not re.search(r"\.(ttf|otf)(?:\?|$)",u,re.I):
+                  bad.append((fid,"not raw font URL"))
+              face=("".join(c for c in str(f.get("name","")).lower() if c.isalnum()),
+                    "".join(c for c in str(f.get("style","Regular")).lower() if c.isalnum()),
+                    int(f.get("weight",400) or 400))
+              if face in faces: bad.append((fid,"duplicate face"))
+              faces.add(face)
+          if bad: raise SystemExit(repr(bad[:25]))
+          print("Validated",len(d.get("fonts",[])),"direct preview-ready rows")
+          PY
+
+      - name: Commit generated binaries and catalogue
+        shell: bash
+        run: |
+          if git diff --quiet -- fonts/third-party fonts-catalog.json font-import-report.json; then
+            echo "No generated changes."
+            exit 0
+          fi
+          git config user.name "AiTechApp Font Bot"
+          git config user.email "font-bot@users.noreply.github.com"
+          git add fonts/third-party fonts-catalog.json font-import-report.json
+          git commit -m "chore: sync direct Telugu font binaries [skip ci]"
+          git push
