@@ -5670,5 +5670,6 @@
     "pending_count": 43,
     "behavior": "Client probes pending raw GitHub URLs; cards stay hidden until the matching TTF exists, then activate automatically on reload.",
     "target_directory": "fonts/gist/"
-  }
+  },
+  "active_total": 169
 }
