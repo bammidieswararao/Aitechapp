@@ -1,0 +1,166 @@
+name: Activate Uploaded GIST Fonts
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gist-upload-activation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Protect existing Telugu Fonts UI
+        shell: bash
+        run: |
+          sha256sum telugu-fonts.html | awk '{print $1}' > /tmp/telugu-fonts-ui.sha256
+          python scripts/check_telugu_fonts_ui.py
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install validation dependency
+        run: python -m pip install fonttools
+
+      - name: Validate and activate uploaded GIST files
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          from pathlib import Path
+          from fontTools.ttLib import TTFont
+
+          ROOT = Path(".")
+          CATALOG = ROOT / "fonts-catalog.json"
+          doc = json.loads(CATALOG.read_text(encoding="utf-8"))
+          fonts = doc["fonts"]
+
+          def git_blob_sha(data: bytes) -> str:
+              header = f"blob {len(data)}\0".encode("ascii")
+              return hashlib.sha1(header + data).hexdigest()
+
+          def has_telugu(font: TTFont) -> bool:
+              if "cmap" not in font:
+                  return False
+              for table in font["cmap"].tables:
+                  if not table.isUnicode():
+                      continue
+                  for cp in table.cmap.keys():
+                      if 0x0C00 <= cp <= 0x0C7F:
+                          return True
+              return False
+
+          activated = 0
+          still_pending = 0
+          errors = []
+
+          for row in fonts:
+              if "C-DAC GIST" not in (row.get("categories") or []):
+                  continue
+
+              target = ROOT / str(row.get("target_path") or "")
+              if not target.is_file():
+                  row["pending_until_available"] = True
+                  still_pending += 1
+                  continue
+
+              data = target.read_bytes()
+              expected_blob = str(row.get("source_blob_sha") or "").lower()
+              actual_blob = git_blob_sha(data)
+
+              if expected_blob and actual_blob != expected_blob:
+                  errors.append(
+                      f"{target}: Git blob SHA mismatch "
+                      f"(expected {expected_blob}, got {actual_blob})"
+                  )
+                  continue
+
+              try:
+                  font = TTFont(target, lazy=False)
+                  if not has_telugu(font):
+                      errors.append(f"{target}: no Unicode Telugu cmap coverage")
+                      continue
+              except Exception as exc:
+                  errors.append(f"{target}: invalid font: {exc}")
+                  continue
+
+              row["pending_until_available"] = False
+              row["validated_after_upload"] = True
+              row["validated_git_blob_sha"] = actual_blob
+              activated += 1
+
+          if errors:
+              raise SystemExit("\n".join(errors))
+
+          active_total = sum(
+              1 for f in fonts
+              if f.get("pending_until_available") is not True
+          )
+
+          doc["active_total"] = active_total
+          doc["pending_auto_activation_count"] = still_pending
+          CATALOG.write_text(
+              json.dumps(doc, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          print(
+              f"Validated GIST uploads: {activated}; "
+              f"active catalog: {active_total}; "
+              f"still pending: {still_pending}"
+          )
+          PY
+
+      - name: Sync embedded fallback
+        run: python scripts/sync_client_fallback.py
+
+      - name: Re-check protected bottom navigation
+        shell: bash
+        run: |
+          python scripts/check_telugu_fonts_ui.py
+          BEFORE="$(cat /tmp/telugu-fonts-ui.sha256)"
+          AFTER="$(sha256sum telugu-fonts.html | awk '{print $1}')"
+          test "$BEFORE" = "$AFTER" || {
+            echo "ERROR: telugu-fonts.html changed"
+            exit 1
+          }
+
+      - name: Rebuild deployment ZIP
+        run: |
+          python scripts/build_deployment_zip.py \
+            --output downloads/AiTechApp-Telugu-Fonts-Final.zip
+
+      - name: Commit validated activation state
+        shell: bash
+        run: |
+          git config user.name "AiTechApp Font Bot"
+          git config user.email "font-bot@users.noreply.github.com"
+
+          git add -A \
+            fonts-catalog.json \
+            telugu-fonts-client.js \
+            downloads/AiTechApp-Telugu-Fonts-Final.zip
+
+          if git diff --cached --quiet; then
+            echo "No activation-state changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: activate validated uploaded GIST fonts [skip ci]"
+          git push
