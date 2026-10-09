@@ -57,8 +57,15 @@ main{padding:10px 12px 16px}
 /* Slim font cards */
 #list{display:flex;flex-direction:column;gap:6px}
 .card{background:#fff;border:1px solid var(--ios-border);border-radius:17px;padding:8px 9px 7px;box-shadow:0 3px 13px rgba(0,0,0,.045);scroll-margin-top:85px}
-.card.highlight{animation:flash 1s ease 3;border-color:rgba(52,199,89,.65)}
-@keyframes flash{50%{box-shadow:0 0 0 5px rgba(52,199,89,.18)}}
+.card.highlight{position:relative;z-index:2;animation:font-card-glow 3.8s ease-out both;border-color:rgba(0,122,255,.85)}
+@keyframes font-card-glow{
+  0%{transform:scale(1);box-shadow:0 0 0 0 rgba(0,122,255,.55),0 3px 13px rgba(0,0,0,.045)}
+  18%{transform:scale(1.012);box-shadow:0 0 0 6px rgba(0,122,255,.22),0 0 24px rgba(94,92,230,.35)}
+  40%{transform:scale(1);box-shadow:0 0 0 2px rgba(175,82,222,.30),0 0 18px rgba(0,122,255,.28)}
+  68%{box-shadow:0 0 0 7px rgba(52,199,89,.14),0 0 22px rgba(94,92,230,.22)}
+  100%{transform:scale(1);box-shadow:0 3px 13px rgba(0,0,0,.045);border-color:var(--ios-border)}
+}
+.download{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
 .card-top{display:flex;align-items:flex-start;gap:7px}
 .serial{flex:none;min-width:38px;height:28px;border-radius:11px;display:grid;place-items:center;background:rgba(0,122,255,.09);color:#0780db;font-size:.72rem;font-weight:950}
 .name-wrap{flex:1;min-width:0}
@@ -171,6 +178,6 @@ main{padding:10px 12px 16px}
   </div>
 </div>
 <div class="toast" id="toast" role="status"></div>
-<script src="/telugu-fonts-client.js?v=212-pending43"></script>
+<script src="/telugu-fonts-client.js?v=209-active-3-pending"></script>
 </body>
 </html>
