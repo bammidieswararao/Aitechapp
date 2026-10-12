@@ -33,16 +33,38 @@ jobs:
           doc=json.loads((root/'fonts-catalog.json').read_text())
           fonts=doc['fonts']
           assert len(fonts)==212, len(fonts)
-          assert len([f for f in fonts if not f.get('pending_until_available')])==209
+          assert len([f for f in fonts if not f.get('pending_until_available')])==212
           assert doc['active_total_before_gist_upload']==169
           h=(root/'telugu-fonts.html').read_text()
           js=(root/'telugu-fonts-client.js').read_text()
-          assert 'telugu-fonts-client.js?v=20261012-blob-glow-v2' in h
+          assert 'telugu-fonts-client.js?v=20261012-gist43-activated' in h
           assert 'window.addEventListener("hashchange",handleDeepLink)' in js
           assert 'URL.createObjectURL(blob)' in js
           assert 'oncontextmenu="return false;"' in js
           assert not re.search(r'<a[^>]+href=["\']https?://raw\.githubusercontent\.com',h,re.I)
           print('Catalog and direct Blob download checks passed')
+          PY
+      - name: Validate 43 uploaded GIST TTF Unicode and SHA-1
+        run: |
+          python -m pip install "fonttools>=4.50,<5"
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          from fontTools.ttLib import TTFont
+          cat=json.loads(Path('fonts-catalog.json').read_text('utf-8'))
+          rows=[f for f in cat['fonts'] if 'C-DAC GIST' in f.get('categories',[])]
+          assert len(rows)==43, f'Expected 43 GIST faces, got {len(rows)}'
+          assert all(f.get('pending_until_available') is False for f in rows)
+          for f in rows:
+              path=Path(f['target_path'])
+              assert path.is_file(), f'Missing '+str(path)
+              data=path.read_bytes()
+              sha=hashlib.sha1(f'blob {len(data)}\\0'.encode('ascii')+data).hexdigest()
+              assert sha==f['source_blob_sha']==f['validated_git_blob_sha'],f['id']
+              ft=TTFont(path)
+              assert any(t.isUnicode() and any(0x0C00<=cp<=0x0C7F for cp in t.cmap) for t in ft['cmap'].tables),f['id']
+              ft.close()
+          print('Validated 43 GIST binaries, hashes and Telugu cmap coverage')
           PY
       - name: Rebuild Final ZIP
         run: python scripts/build_deployment_zip.py --output downloads/AiTechApp-Telugu-Fonts-Final.zip

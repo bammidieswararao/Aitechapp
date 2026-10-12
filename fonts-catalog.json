@@ -4885,19 +4885,22 @@
       ],
       "author": "C-DAC GIST",
       "license_note": "User-supplied/manual archive activation; source mirror file is not bundled by AiTechApp.",
-      "font_raw_url": "https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/fonts/gist/GIST-TLOT-Deva-Italic.ttf",
+      "font_raw_url": "https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/fonts/gist/TLOTDevaI_Ship.ttf",
       "download_type": "TTF",
       "preview_ready": true,
       "variable": false,
-      "pending_until_available": true,
-      "target_path": "fonts/gist/GIST-TLOT-Deva-Italic.ttf",
-      "file_name": "GIST-TLOT-Deva-Italic.ttf",
+      "pending_until_available": false,
+      "target_path": "fonts/gist/TLOTDevaI_Ship.ttf",
+      "file_name": "TLOTDevaI_Ship.ttf",
       "source_download_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDevaI_Ship.ttf",
       "source_repository": "mineshmathew/IndicSceneTextRendering",
       "source_path": "Telugu/TLOTDevaI_Ship.ttf",
       "source_blob_sha": "eeaeea74a54a907553123e18c9c41bbb87f57742",
       "source_size": 344044,
-      "serial": 183
+      "serial": 183,
+      "validated_git_blob_sha": "eeaeea74a54a907553123e18c9c41bbb87f57742",
+      "validated_after_upload": true,
+      "validation_note": "Exact audited Git blob SHA match. Unicode cmap verification is enforced by the packaging workflow."
     },
     {
       "id": "gist-tlot-draupadi-regular",
@@ -4912,19 +4915,22 @@
       ],
       "author": "C-DAC GIST",
       "license_note": "User-supplied/manual archive activation; source mirror file is not bundled by AiTechApp.",
-      "font_raw_url": "https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/fonts/gist/GIST-TLOT-Draupadi-Regular.ttf",
+      "font_raw_url": "https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/fonts/gist/TLOTDraupadiN_Ship.ttf",
       "download_type": "TTF",
       "preview_ready": true,
       "variable": false,
-      "pending_until_available": true,
-      "target_path": "fonts/gist/GIST-TLOT-Draupadi-Regular.ttf",
-      "file_name": "GIST-TLOT-Draupadi-Regular.ttf",
+      "pending_until_available": false,
+      "target_path": "fonts/gist/TLOTDraupadiN_Ship.ttf",
+      "file_name": "TLOTDraupadiN_Ship.ttf",
       "source_download_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDraupadiN_Ship.ttf",
       "source_repository": "mineshmathew/IndicSceneTextRendering",
       "source_path": "Telugu/TLOTDraupadiN_Ship.ttf",
       "source_blob_sha": "5072ba5a0a32366913c3a16df71af499f6535934",
       "source_size": 256960,
-      "serial": 184
+      "serial": 184,
+      "validated_git_blob_sha": "5072ba5a0a32366913c3a16df71af499f6535934",
+      "validated_after_upload": true,
+      "validation_note": "Exact audited Git blob SHA match. Unicode cmap verification is enforced by the packaging workflow."
     },
     {
       "id": "gist-tlot-draupadi-bold",
@@ -4939,19 +4945,22 @@
       ],
       "author": "C-DAC GIST",
       "license_note": "User-supplied/manual archive activation; source mirror file is not bundled by AiTechApp.",
-      "font_raw_url": "https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/fonts/gist/GIST-TLOT-Draupadi-Bold.ttf",
+      "font_raw_url": "https://raw.githubusercontent.com/bammidieswararao/Aitechapp/main/fonts/gist/TLOTDraupadiB_ship.ttf",
       "download_type": "TTF",
       "preview_ready": true,
       "variable": false,
-      "pending_until_available": true,
-      "target_path": "fonts/gist/GIST-TLOT-Draupadi-Bold.ttf",
-      "file_name": "GIST-TLOT-Draupadi-Bold.ttf",
+      "pending_until_available": false,
+      "target_path": "fonts/gist/TLOTDraupadiB_ship.ttf",
+      "file_name": "TLOTDraupadiB_ship.ttf",
       "source_download_url": "https://raw.githubusercontent.com/mineshmathew/IndicSceneTextRendering/master/Telugu/TLOTDraupadiB_ship.ttf",
       "source_repository": "mineshmathew/IndicSceneTextRendering",
       "source_path": "Telugu/TLOTDraupadiB_ship.ttf",
       "source_blob_sha": "906d19890bff63a8d0df47a505fea49ed96f5f31",
       "source_size": 298424,
-      "serial": 185
+      "serial": 185,
+      "validated_git_blob_sha": "906d19890bff63a8d0df47a505fea49ed96f5f31",
+      "validated_after_upload": true,
+      "validation_note": "Exact audited Git blob SHA match. Unicode cmap verification is enforced by the packaging workflow."
     },
     {
       "id": "gist-tlot-draupadi-italic",
@@ -5784,7 +5793,7 @@
     "note": "C-DAC GIST remains empty until redistributable GIST binaries are available."
   },
   "active_total_before_gist_upload": 169,
-  "pending_auto_activation_count": 3,
+  "pending_auto_activation_count": 0,
   "gist_manual_activation": {
     "category": "C-DAC GIST",
     "pending_count": 3,
@@ -5793,17 +5802,14 @@
     "active_count": 40,
     "last_audit": "2026-10-09"
   },
-  "active_total": 209,
+  "active_total": 212,
   "gist_binary_audit": {
     "target": 43,
-    "activated": 40,
-    "missing": 3,
+    "uploaded": 43,
+    "activated": 43,
+    "missing": 0,
     "checked_date": "2026-10-12",
     "repo_path": "fonts/gist/",
-    "missing_ids": [
-      "gist-tlot-deva-italic",
-      "gist-tlot-draupadi-regular",
-      "gist-tlot-draupadi-bold"
-    ]
+    "method": "Git blob SHA matched to upload map; pipeline verifies Unicode Telugu coverage."
   }
 }
