@@ -7,6 +7,8 @@
 <meta name="description" content="212 Telugu font styles including 43 GIST with live preview and direct TTF/OTF download.">
 <meta name="theme-color" content="#F2F2F7">
 <link rel="canonical" href="https://aitechapp.in/telugu-fonts.html">
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+
 <link rel="icon" href="/logo.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -107,6 +109,30 @@ main{padding:10px 12px 16px}
 .btn-action-sub{font-size:.45rem;font-weight:600;text-align:center;line-height:1.1;color:#8E8E93}
 .btn-action-badge{position:absolute;top:0;right:0;color:#fff;font-size:.45rem;font-weight:800;padding:2px 5px;border-bottom-left-radius:8px;letter-spacing:.2px}
 .badge-1{background:var(--ios-blue)}.badge-2{background:var(--ios-orange)}.badge-3{background:var(--ios-purple)}.badge-4{background:var(--ios-green)}
+
+/* Premium iOS refinement; the original five-button bottom dock is untouched. */
+.app{background:linear-gradient(180deg,#f3f4fc 0,#f2f2f7 340px)}
+.app-header{background:rgba(244,246,253,.94)}
+.preview-box{box-shadow:0 5px 18px rgba(30,59,103,.06)}
+.card{border-color:rgba(75,95,155,.11);box-shadow:0 4px 16px rgba(43,62,106,.065);transition:border-color .2s,box-shadow .2s}
+.preview{font-synthesis:none;color:#17283e;transition:opacity .17s}
+.preview:not(.font-ready){opacity:.77}
+.preview.font-ready{opacity:1}
+.card .download{background:linear-gradient(110deg,#0589FF,#0872EF);box-shadow:0 4px 12px rgba(0,122,255,.19)}
+.card .mini.link{background:rgba(0,122,255,.075)}
+.share-sheet{position:fixed;inset:0;z-index:90;display:none;align-items:flex-end;justify-content:center;background:rgba(7,17,44,.67);padding:16px 12px calc(16px + env(safe-area-inset-bottom,0px))}
+.share-sheet.show{display:flex}
+.share-panel{background:#fff;border-radius:28px;padding:16px;max-width:420px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.34)}
+.share-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.share-head strong{font-size:1.03rem;color:#1C2540}
+.share-head button{border:0;border-radius:50%;background:#eff2f8;width:36px;height:36px;font-size:18px}
+.share-panel img{display:block;margin:12px auto 6px;width:min(100%,275px);aspect-ratio:1;object-fit:contain;border-radius:15px;border:1px solid #dce5f5}
+.share-desc{text-align:center;color:#64748b;font-size:.74rem;margin:6px 0 14px}
+.share-acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.share-acts button{border:0;border-radius:13px;padding:12px 7px;font-size:.8rem;font-weight:800;color:#1162bd;background:#e9f3ff}
+.share-acts .share-native{grid-column:1/-1;background:linear-gradient(100deg,#007AFF,#6059E8);color:white;font-size:.88rem}
+.share-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.card,.preview{transition:none}}
 </style>
 </head>
 <body>
@@ -179,7 +205,19 @@ main{padding:10px 12px 16px}
     </div>
   </div>
 </div>
+<div class="share-sheet" id="shareSheet" role="dialog" aria-modal="true" aria-label="Share Telugu font preview" aria-hidden="true">
+  <div class="share-panel">
+    <div class="share-head"><strong>Share Telugu Font Preview</strong><button type="button" id="btnShareClose" aria-label="Close">&times;</button></div>
+    <img id="shareCardImage" alt="Premium Telugu font preview PNG with free download callout">
+    <div class="share-desc" id="shareCardStatus">Loading font preview…</div>
+    <div class="share-acts">
+      <button type="button" class="share-native" id="btnShareNative"><i class="fas fa-share-nodes"></i> Share Image + Link</button>
+      <button type="button" id="btnShareSave"><i class="fas fa-image"></i> Save PNG</button>
+      <button type="button" id="btnShareCopy"><i class="fas fa-link"></i> Copy Deep Link</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast" role="status"></div>
-<script src="/telugu-fonts-client.js?v=20261012-gist43-activated"></script>
+<script src="/telugu-fonts-client.js?v=20261012-premium-speed-share"></script>
 </body>
 </html>

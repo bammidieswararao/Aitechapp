@@ -37,7 +37,7 @@ jobs:
           assert doc['active_total_before_gist_upload']==169
           h=(root/'telugu-fonts.html').read_text()
           js=(root/'telugu-fonts-client.js').read_text()
-          assert 'telugu-fonts-client.js?v=20261012-gist43-activated' in h
+          assert 'telugu-fonts-client.js?v=20261012-premium-speed-share' in h
           assert 'window.addEventListener("hashchange",handleDeepLink)' in js
           assert 'URL.createObjectURL(blob)' in js
           assert 'oncontextmenu="return false;"' in js
@@ -65,6 +65,24 @@ jobs:
               assert any(t.isUnicode() and any(0x0C00<=cp<=0x0C7F for cp in t.cmap) for t in ft['cmap'].tables),f['id']
               ft.close()
           print('Validated 43 GIST binaries, hashes and Telugu cmap coverage')
+          PY
+      - name: JavaScript and share-feature regression checks
+        run: |
+          node --check telugu-fonts-client.js
+          python - <<'PY'
+          from pathlib import Path
+          h=Path('telugu-fonts.html').read_text()
+          j=Path('telugu-fonts-client.js').read_text()
+          assert 'id="shareSheet"' in h and 'id="shareCardImage"' in h
+          assert 'fontTask' in j or 'getPreviewJob' in j
+          assert 'FONT_LIMIT' in j and 'IntersectionObserver' in j
+          assert 'makeShareImage' in j and 'sendFontShare' in j
+          assert 'navigator.share' in j and 'canvas.toBlob' in j
+          assert 'URL.createObjectURL(blob)' in j
+          assert 'oncontextmenu="return false;"' in j
+          assert 'window.addEventListener("hashchange",handleDeepLink)' in j
+          assert all(s in h for s in ('badge-1','badge-2','fab-circle','badge-3','badge-4'))
+          print('Share image, font pool and dock contracts passed')
           PY
       - name: Rebuild Final ZIP
         run: python scripts/build_deployment_zip.py --output downloads/AiTechApp-Telugu-Fonts-Final.zip

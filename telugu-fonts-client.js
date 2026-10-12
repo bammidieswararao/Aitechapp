@@ -97,64 +97,91 @@ function categoryFromGroup(group){
   return "Other";
 }
 
-async function loadFont(f){
-  if(state.loaded.has(f.id)) return true;
-  try{
-    const face=new FontFace(
-      familyName(f),
-      'url("'+String(f.font_raw_url).replace(/"/g,"%22")+'")',
-      {
-        style: styleValue(f),
-        weight: String(f.weight),
-        display: "swap"
-      }
-    );
-    const loaded=await face.load();
-    document.fonts.add(loaded);
-    state.loaded.add(f.id);
-    return true;
-  }catch(err){
-    console.warn("Font preview failed:",f.name,f.style,err);
-    return false;
+/* Fast previews: only visible/nearby fonts, 3 simultaneous requests, reuse one
+ * FontFace per identical TTF/OTF URL. Deep links get highest priority. */
+const previewJobs=new Map(),urgentJobs=[],nearbyJobs=[];
+let previewRunning=0,previewIndex=0;
+const FONT_LIMIT=(navigator.connection&&navigator.connection.saveData)?1:3;
+function getPreviewJob(f,priority=false){
+  let job=previewJobs.get(f.font_raw_url);
+  if(!job){
+    job={font:f,family:"AiT_Preview_"+(++previewIndex),started:false,ready:false};
+    job.promise=new Promise(resolve=>job.resolve=resolve);
+    previewJobs.set(f.font_raw_url,job);
+    nearbyJobs.push(job);
+  }
+  if(priority&&!job.started)urgentJobs.unshift(job);
+  drainPreviewJobs();
+  return job;
+}
+function drainPreviewJobs(){
+  while(previewRunning<FONT_LIMIT){
+    const job=urgentJobs.shift()||nearbyJobs.shift();
+    if(!job)return;
+    if(job.started)continue;
+    job.started=true;previewRunning++;
+    let alarm;
+    (async()=>{
+      try{
+        const face=new FontFace(job.family,'url("'+String(job.font.font_raw_url).replace(/"/g,"%22")+'")',
+          {style:"normal",weight:job.font.variable?"100 900":"normal",display:"swap"});
+        await Promise.race([face.load(),new Promise((_,reject)=>{
+          alarm=setTimeout(()=>reject(new Error("Font load timeout")),18000);
+        })]);
+        document.fonts.add(face);job.ready=true;job.resolve(true);
+      }catch(err){
+        console.warn("Font preview retry available",job.font.id,err);
+        previewJobs.delete(job.font.font_raw_url);job.resolve(false);
+      }finally{clearTimeout(alarm);previewRunning--;drainPreviewJobs();}
+    })();
   }
 }
-
+function loadFont(f,priority=false){
+  if(!("FontFace" in window))return Promise.resolve(false);
+  return getPreviewJob(f,priority).promise;
+}
 function applyFont(el,f){
-  el.style.fontFamily='"'+familyName(f)+'","Noto Sans Telugu",sans-serif';
-  el.style.fontWeight=String(f.weight);
-  el.style.fontStyle=styleValue(f);
+  const job=previewJobs.get(f.font_raw_url);
+  if(!job?.ready)return;
+  el.style.fontFamily='"'+job.family+'","Noto Sans Telugu",sans-serif';
+  el.style.fontWeight=f.variable?String(f.weight):"normal";
+  el.style.fontStyle="normal"; // italic/bold encoded in the TTF/OTF itself
+  el.style.fontSynthesis="none";
   if(f.variable){
-    const declared=(f.axes && typeof f.axes==="object") ? Object.keys(f.axes) : [];
-    const axes=[];
-    if(!declared.length || declared.includes("wght")) axes.push("'wght' "+f.weight);
-    if((!declared.length || declared.includes("wdth")) && f.width) axes.push("'wdth' "+f.width);
-    if(axes.length) el.style.fontVariationSettings=axes.join(",");
-  }
+    const axes=f.axes&&typeof f.axes==="object"?Object.keys(f.axes):[];
+    const values=[];
+    if(!axes.length||axes.includes("wght"))values.push("'wght' "+f.weight);
+    if((!axes.length||axes.includes("wdth"))&&f.width)values.push("'wdth' "+f.width);
+    el.style.fontVariationSettings=values.join(",")||"normal";
+  }else el.style.fontVariationSettings="normal";
 }
-
-function ensureVisibleCard(card){
-  const id=card.dataset.id;
-  const f=state.all.find(x=>x.id===id);
-  if(!f) return;
+function ensureVisibleCard(card,priority=false){
+  const f=state.all.find(x=>x.id===card.dataset.id);
+  if(!f)return;
   const pv=$(".preview",card);
-  loadFont(f).then(()=>applyFont(pv,f));
+  if(!pv||pv.classList.contains("font-ready"))return;
+  if(pv.dataset.queued&&!priority)return;
+  pv.dataset.queued="1";
+  loadFont(f,priority).then(ok=>{
+    if(!pv.isConnected||card.dataset.id!==f.id)return;
+    if(ok){applyFont(pv,f);pv.classList.add("font-ready");}
+    else{pv.dataset.queued="";pv.classList.add("font-unavailable");}
+  });
 }
-
 function setupObserver(){
-  if(state.io) state.io.disconnect();
+  if(state.io)state.io.disconnect();
+  const cards=$(".card",list);
   if("IntersectionObserver" in window){
     state.io=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          state.io.unobserve(entry.target);
-          ensureVisibleCard(entry.target);
-        }
-      });
-    },{rootMargin:"450px"});
-    $$(".card",list).forEach(c=>state.io.observe(c));
-  }else{
-    $$(".card",list).forEach(ensureVisibleCard);
-  }
+      entries.filter(e=>e.isIntersecting)
+        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)
+        .forEach(e=>{
+          state.io.unobserve(e.target);
+          ensureVisibleCard(e.target,e.intersectionRatio>.05);
+        });
+    },{rootMargin:"140px 0px",threshold:[0,.05,.5]});
+    cards.forEach(c=>state.io.observe(c));
+  }else cards.slice(0,12).forEach((c,i)=>ensureVisibleCard(c,i<4));
 }
 
 const SILICONANDHRA_FAMILIES = new Set([
@@ -210,7 +237,7 @@ function cardHTML(f){
     '<div class="card-actions">'+
       '<button class="mini like '+(liked(f)?'liked':'')+'" data-action="like" aria-label="Like">'+
         '<i class="'+(liked(f)?'fas':'far')+' fa-heart"></i><span>'+fmt(likes(f))+'</span></button>'+
-      '<button class="mini link" data-action="link" aria-label="Copy direct page link"><i class="fas fa-link"></i></button>'+
+      '<button class="mini link" data-action="share" aria-label="Share font image with direct deep link"><i class="fas fa-share-nodes"></i></button>'+
       '<button type="button" class="download" data-action="download" oncontextmenu="return false;" draggable="false" aria-label="Download '+esc(f.name)+' as '+esc(typeOf(f))+'"><i class="fas fa-download"></i><span>Download</span><b>.'+esc(typeOf(f))+'</b></button>'+
     '</div>'+
   '</article>';
@@ -287,6 +314,150 @@ async function copyDeepLink(f){
   }
 }
 
+/* Premium share image: uses the same loaded font face as the actual preview. */
+const shareSheet=$("#shareSheet"),shareImg=$("#shareCardImage"),shareDesc=$("#shareCardStatus");
+let preparedShare=null,shareBlobURL="";
+function fontPageURL(f){return SITE+"?font="+encodeURIComponent(f.id);}
+function rounded(ctx,x,y,w,h,r){
+  ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
+}
+function cropText(ctx,text,width){
+  let s=String(text);
+  if(ctx.measureText(s).width<=width)return s;
+  while(s.length>1&&ctx.measureText(s+"…").width>width)s=s.slice(0,-1);
+  return s+"…";
+}
+function splitTelugu(ctx,text,maxWidth,limit){
+  const words=text.replace(/\s+/g," ").trim().split(" ");
+  const lines=[];let line="";
+  for(const word of words){
+    const candidate=line?line+" "+word:word;
+    if(ctx.measureText(candidate).width<=maxWidth){line=candidate;continue;}
+    if(line){lines.push(line);line=word;}
+    else{lines.push(cropText(ctx,word,maxWidth));line="";}
+    if(lines.length>=limit)break;
+  }
+  if(line&&lines.length<limit)lines.push(line);
+  return lines.slice(0,limit);
+}
+async function makeShareImage(f){
+  if(!await loadFont(f,true))throw new Error("Preview font cannot load");
+  const job=previewJobs.get(f.font_raw_url);
+  if(!job?.ready)throw new Error("Preview font unavailable");
+  await new Promise(resolve=>requestAnimationFrame(resolve));
+  const canvas=document.createElement("canvas");
+  canvas.width=1080;canvas.height=1080;
+  const ctx=canvas.getContext("2d",{alpha:false});
+  if(!ctx)throw new Error("Canvas unavailable");
+  const bg=ctx.createLinearGradient(0,0,1080,1080);
+  bg.addColorStop(0,"#0A1B3D");bg.addColorStop(.56,"#173B75");bg.addColorStop(1,"#49388A");
+  ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1080);
+  ctx.globalAlpha=.15;ctx.fillStyle="#72C6FF";
+  ctx.beginPath();ctx.arc(985,65,245,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle="#C08CFF";ctx.beginPath();ctx.arc(90,900,300,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=1;
+  ctx.fillStyle="#FFFFFF";ctx.font="800 44px system-ui,sans-serif";ctx.fillText("AiTechApp",77,108);
+  ctx.fillStyle="#B9D2FF";ctx.font="600 25px system-ui,sans-serif";
+  ctx.fillText("TELUGU FONTS  •  STYLE PREVIEW",79,157);
+  ctx.fillStyle="#76D5FF";rounded(ctx,750,71,249,59,29);ctx.fill();
+  ctx.fillStyle="#10366C";ctx.textAlign="center";ctx.font="800 24px system-ui,sans-serif";
+  ctx.fillText("100% FREE",875,108);ctx.textAlign="left";
+  ctx.shadowColor="rgba(1,9,39,.32)";ctx.shadowBlur=38;ctx.shadowOffsetY=15;
+  ctx.fillStyle="#FFFFFF";rounded(ctx,64,203,952,662,52);ctx.fill();
+  ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+  ctx.fillStyle="#0878E8";ctx.font="800 25px system-ui,sans-serif";ctx.fillText("ORIGINAL FONT PREVIEW",106,274);
+  ctx.fillStyle="#16294A";ctx.font="800 47px system-ui,sans-serif";
+  ctx.fillText(cropText(ctx,f.name,864),106,340);
+  ctx.fillStyle="#64728B";ctx.font="600 27px system-ui,sans-serif";
+  ctx.fillText(cropText(ctx,(f.style||"Regular")+"  •  "+typeOf(f),854),106,394);
+  const fontFamily='"'+job.family+'","Noto Sans Telugu",sans-serif';
+  let size=86,lines=[];
+  for(;size>=44;size-=3){
+    ctx.font=(f.variable?String(f.weight):"400")+" "+size+"px "+fontFamily;
+    lines=splitTelugu(ctx,currentText(),846,3);
+    if(lines.length<=3&&!lines.some(s=>s.endsWith("…"))&&lines.length*size*1.5<332)break;
+  }
+  ctx.fillStyle="#172944";
+  const stride=Math.ceil(size*1.55),y=523+Math.floor((3-lines.length)*stride/3);
+  lines.forEach((s,i)=>ctx.fillText(s,106,y+i*stride));
+  ctx.fillStyle="#E6F2FF";rounded(ctx,106,761,867,57,18);ctx.fill();
+  ctx.fillStyle="#1268BE";ctx.font="700 24px system-ui,sans-serif";
+  ctx.fillText("TRUE TTF / OTF  •  DIRECT DOWNLOAD  •  NO ADS",127,797);
+  const btn=ctx.createLinearGradient(80,895,1000,1000);
+  btn.addColorStop(0,"#058FFF");btn.addColorStop(1,"#6259E8");
+  ctx.fillStyle=btn;rounded(ctx,78,887,924,100,30);ctx.fill();
+  ctx.fillStyle="#FFFFFF";ctx.textAlign="center";ctx.font="800 38px system-ui,sans-serif";
+  ctx.fillText("DOWNLOAD FREE   ↗",540,952);
+  ctx.fillStyle="#CBD8EE";ctx.font="500 22px system-ui,sans-serif";
+  ctx.fillText("aitechapp.in  •  Open the shared link to get this font",540,1034);
+  ctx.textAlign="left";
+  const blob=await new Promise((resolve,reject)=>{
+    canvas.toBlob(b=>b?resolve(b):reject(new Error("Image generation failed")),"image/png");
+  });
+  return {blob,file:new File([blob],"AiTechApp-"+f.id+".png",{type:"image/png"}),
+    url:fontPageURL(f),name:f.name,style:f.style};
+}
+function closeFontShare(){
+  shareSheet.classList.remove("show");shareSheet.setAttribute("aria-hidden","true");
+  document.body.classList.remove("share-open");
+  if(shareBlobURL){URL.revokeObjectURL(shareBlobURL);shareBlobURL="";}
+  preparedShare=null;
+}
+function showFontShare(info){
+  preparedShare=info;
+  shareBlobURL=URL.createObjectURL(info.blob);
+  shareImg.src=shareBlobURL;
+  shareDesc.textContent=info.name+" · "+(info.style||"Regular");
+  shareSheet.classList.add("show");shareSheet.setAttribute("aria-hidden","false");
+  document.body.classList.add("share-open");
+}
+function sendFontShare(info){
+  if(!navigator.share||!navigator.canShare||!navigator.canShare({files:[info.file]}))return null;
+  return navigator.share({title:"AiTechApp Telugu Fonts",files:[info.file],
+    text:"🎨 "+info.name+" • "+info.style+"\n⬇️ Download this Telugu font FREE:\n"+info.url});
+}
+async function shareFont(f){
+  toast("Preparing premium preview image…");
+  try{
+    const info=await makeShareImage(f);
+    try{
+      const result=sendFontShare(info);
+      if(result){await result;return;}
+    }catch(e){if(e.name==="AbortError")return;}
+    showFontShare(info); // Native share unavailable or activation expired
+  }catch(e){
+    console.warn("PNG share error",e);
+    await copyDeepLink(f);
+    toast("Image unavailable; link copied instead");
+  }
+}
+$("#btnShareClose").addEventListener("click",closeFontShare);
+shareSheet.addEventListener("click",e=>{if(e.target===shareSheet)closeFontShare();});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&shareSheet.classList.contains("show"))closeFontShare();
+});
+$("#btnShareNative").addEventListener("click",()=>{
+  if(!preparedShare)return;
+  try{
+    const p=sendFontShare(preparedShare);
+    if(p)p.then(closeFontShare).catch(e=>{
+      if(e.name!=="AbortError")toast("Use Save Image + Copy Link");
+    });
+    else toast("Use Save Image + Copy Link");
+  }catch(e){toast("Use Save Image + Copy Link");}
+});
+$("#btnShareSave").addEventListener("click",()=>{
+  if(!preparedShare)return;
+  const a=document.createElement("a");a.href=shareBlobURL;
+  a.download=preparedShare.file.name;document.body.appendChild(a);a.click();a.remove();
+  toast("Premium PNG saved");
+});
+$("#btnShareCopy").addEventListener("click",()=>{
+  if(!preparedShare)return;
+  copyDeepLink({id:preparedShare.url.split("?font=")[1]?decodeURIComponent(preparedShare.url.split("?font=")[1]):""});
+});
+
 function toggleLike(f,card){
   const on=!liked(f);
   const n=Math.max(0,likes(f)+(on?1:-1));
@@ -312,7 +483,7 @@ list.addEventListener("click",e=>{
   const f=state.all.find(x=>x.id===card.dataset.id);
   if(!f) return;
   if(b.dataset.action==="download") directDownload(f,b);
-  if(b.dataset.action==="link") copyDeepLink(f);
+  if(b.dataset.action==="share") shareFont(f);
   if(b.dataset.action==="like") toggleLike(f,card);
 });
 
@@ -391,7 +562,7 @@ function handleDeepLink(){
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const card=$(".card",list).find(el=>el.dataset.id===id);
     if(!card) return;
-    ensureVisibleCard(card);
+    ensureVisibleCard(card,true);
     const reduced=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     card.scrollIntoView({behavior:reduced?"auto":"smooth",block:"center",inline:"nearest"});
     if(cardGlowTimer) clearTimeout(cardGlowTimer);
