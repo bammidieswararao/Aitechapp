@@ -5793,5 +5793,17 @@
     "active_count": 40,
     "last_audit": "2026-10-09"
   },
-  "active_total": 209
+  "active_total": 209,
+  "gist_binary_audit": {
+    "target": 43,
+    "activated": 40,
+    "missing": 3,
+    "checked_date": "2026-10-12",
+    "repo_path": "fonts/gist/",
+    "missing_ids": [
+      "gist-tlot-deva-italic",
+      "gist-tlot-draupadi-regular",
+      "gist-tlot-draupadi-bold"
+    ]
+  }
 }

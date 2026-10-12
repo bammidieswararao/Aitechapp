@@ -211,7 +211,7 @@ function cardHTML(f){
       '<button class="mini like '+(liked(f)?'liked':'')+'" data-action="like" aria-label="Like">'+
         '<i class="'+(liked(f)?'fas':'far')+' fa-heart"></i><span>'+fmt(likes(f))+'</span></button>'+
       '<button class="mini link" data-action="link" aria-label="Copy direct page link"><i class="fas fa-link"></i></button>'+
-      '<button class="download" data-action="download" oncontextmenu="return false;" draggable="false"><i class="fas fa-download"></i><span>Download</span><b>.'+esc(typeOf(f))+'</b></button>'+
+      '<button type="button" class="download" data-action="download" oncontextmenu="return false;" draggable="false" aria-label="Download '+esc(f.name)+' as '+esc(typeOf(f))+'"><i class="fas fa-download"></i><span>Download</span><b>.'+esc(typeOf(f))+'</b></button>'+
     '</div>'+
   '</article>';
 }
@@ -238,10 +238,20 @@ async function directDownload(f,btn){
   btn.classList.add("busy");
   const label=$("span",btn); const old=label.textContent; label.textContent="Downloading…";
   try{
-    const r=await fetch(f.font_raw_url,{mode:"cors",cache:"force-cache"});
-    if(!r.ok) throw new Error("HTTP "+r.status);
-    const blob=await r.blob();
-    await verifyBinary(blob,typeOf(f));
+    // The HTML button deliberately contains no raw backend href/data-url.
+    // URLs remain discoverable in browser Network/JS: public endpoints are not secret.
+    const endpoint=new URL(f.font_raw_url);
+    if(endpoint.protocol!=="https:") throw new Error("Only HTTPS font assets are supported");
+    const controller=new AbortController();
+    const expiry=setTimeout(()=>controller.abort(),30000);
+    let blob;
+    try{
+      const r=await fetch(endpoint.href,{method:"GET",mode:"cors",cache:"force-cache",signal:controller.signal});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      blob=await r.blob();
+      if(blob.size<1024 || blob.size>32*1024*1024) throw new Error("Unexpected font size");
+      await verifyBinary(blob,typeOf(f));
+    }finally{clearTimeout(expiry);}
     const objectUrl=URL.createObjectURL(blob);
     const a=document.createElement("a");
     a.href=objectUrl;
@@ -289,6 +299,9 @@ function toggleLike(f,card){
 }
 
 list.addEventListener("contextmenu",e=>{
+  if(e.target.closest('[data-action="download"]')) e.preventDefault();
+});
+list.addEventListener("dragstart",e=>{
   if(e.target.closest('[data-action="download"]')) e.preventDefault();
 });
 
@@ -353,35 +366,43 @@ function toast(msg){
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
 }
 
+/* AiTechApp deep-link v2: query/hash, filter reset, 3.8-second card pulse. */
+let cardGlowTimer=0;
 function deepLinkFontId(){
-  const q=new URLSearchParams(location.search).get("font");
-  if(q) return q;
-  const hash=decodeURIComponent(String(location.hash||"").replace(/^#/,"")).trim();
-  return hash || "";
+  const query=new URLSearchParams(location.search).get("font");
+  const raw=query || String(location.hash||"").replace(/^#/,"");
+  if(!raw) return "";
+  try{return decodeURIComponent(raw).trim();}catch(_){return raw.trim();}
 }
 
 function handleDeepLink(){
   const id=deepLinkFontId();
-  if(!id) return;
-  const f=state.all.find(x=>x.id===id);
-  if(!f) return;
+  if(!id || !state.all.some(f=>f.id===id)) return;
   state.category="all";
+  state.query="";
+  searchInput.value="";
+  searchClear.classList.remove("show");
   $(".chip",$("#chips")).forEach(c=>{
     const on=c.dataset.cat==="all";
     c.classList.toggle("active",on);
     c.setAttribute("aria-pressed",on?"true":"false");
   });
   applyFilter();
-  requestAnimationFrame(()=>{
-    const card=list.querySelector('[data-id="'+CSS.escape(id)+'"]');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const card=$(".card",list).find(el=>el.dataset.id===id);
     if(!card) return;
-    card.scrollIntoView({behavior:"smooth",block:"center"});
-    card.classList.remove("highlight");
-    void card.offsetWidth;
+    ensureVisibleCard(card);
+    const reduced=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    card.scrollIntoView({behavior:reduced?"auto":"smooth",block:"center",inline:"nearest"});
+    if(cardGlowTimer) clearTimeout(cardGlowTimer);
+    $(".card.highlight",list).forEach(el=>el.classList.remove("highlight"));
+    void card.offsetWidth; // Restart CSS animation even for the same deep link
     card.classList.add("highlight");
-    setTimeout(()=>card.classList.remove("highlight"),3900);
-  });
+    cardGlowTimer=setTimeout(()=>card.classList.remove("highlight"),3800);
+  }));
 }
+window.addEventListener("hashchange",handleDeepLink);
+window.addEventListener("popstate",handleDeepLink);
 
 async function probePendingFont(f){
   try{

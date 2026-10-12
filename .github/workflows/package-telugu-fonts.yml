@@ -1,0 +1,70 @@
+name: Build Final Telugu Fonts ZIP
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'telugu-fonts.html'
+      - 'telugu-fonts-client.js'
+      - 'fonts-catalog.json'
+      - '.github/workflows/package-telugu-fonts.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: package-final-telugu-fonts
+  cancel-in-progress: false
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify catalog and preserve original five-button dock
+        run: |
+          python scripts/check_telugu_fonts_ui.py
+          python - <<'PY'
+          import json,re,pathlib
+          root=pathlib.Path('.')
+          doc=json.loads((root/'fonts-catalog.json').read_text())
+          fonts=doc['fonts']
+          assert len(fonts)==212, len(fonts)
+          assert len([f for f in fonts if not f.get('pending_until_available')])==209
+          assert doc['active_total_before_gist_upload']==169
+          h=(root/'telugu-fonts.html').read_text()
+          js=(root/'telugu-fonts-client.js').read_text()
+          assert 'telugu-fonts-client.js?v=20261012-blob-glow-v2' in h
+          assert 'window.addEventListener("hashchange",handleDeepLink)' in js
+          assert 'URL.createObjectURL(blob)' in js
+          assert 'oncontextmenu="return false;"' in js
+          assert not re.search(r'<a[^>]+href=["\']https?://raw\.githubusercontent\.com',h,re.I)
+          print('Catalog and direct Blob download checks passed')
+          PY
+      - name: Rebuild Final ZIP
+        run: python scripts/build_deployment_zip.py --output downloads/AiTechApp-Telugu-Fonts-Final.zip
+      - name: Verify archive entries
+        run: |
+          python - <<'PY'
+          from zipfile import ZipFile
+          import pathlib
+          archive=pathlib.Path('downloads/AiTechApp-Telugu-Fonts-Final.zip')
+          with ZipFile(archive) as z:
+              assert z.testzip() is None
+              assert z.namelist()==['telugu-fonts.html','telugu-fonts-client.js','fonts-catalog.json']
+              for file in z.namelist():
+                  assert z.read(file)==pathlib.Path(file).read_bytes()
+          print('Final ZIP validated:',archive.stat().st_size,'bytes')
+          PY
+      - name: Publish rebuilt ZIP
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/AiTechApp-Telugu-Fonts-Final.zip
+          if ! git diff --staged --quiet; then
+            git commit -m "build: refresh AiTechApp Fonts Final ZIP [skip ci]"
+            git push
+          fi
