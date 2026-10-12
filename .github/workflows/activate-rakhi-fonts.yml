@@ -6,6 +6,7 @@ on:
     paths:
       - "fonts/rakhi/incoming/**"
       - "fonts/rakhi/*.ttf"
+      - "fonts/rakhi/OFL.txt"
       - "scripts/verify_rakhi.py"
       - "scripts/ingest_rakhi_fonts.py"
       - ".github/workflows/activate-rakhi-fonts.yml"
@@ -40,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add fonts/rakhi/*.ttf fonts-catalog.json telugu-fonts-client.js
+          git add -A -- fonts/rakhi fonts-catalog.json telugu-fonts-client.js
           if ! git diff --cached --quiet; then
             git commit -m "feat(fonts): activate verified Rakhi Ornamental font family [skip ci]"
             git push

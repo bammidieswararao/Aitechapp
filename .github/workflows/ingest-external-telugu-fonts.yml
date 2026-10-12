@@ -22,7 +22,6 @@ on:
       - "scripts/sync_client_fallback.py"
       - "scripts/check_telugu_fonts_ui.py"
       - "scripts/build_deployment_zip.py"
-      - ".github/workflows/ingest-external-telugu-fonts.yml"
 
 permissions:
   contents: write
@@ -85,6 +84,7 @@ jobs:
               fid=f.get("id")
               if not fid or fid in ids: bad.append((fid,"duplicate/missing id"))
               ids.add(fid)
+              if f.get("pending_until_available") is True: continue
               if f.get("preview_ready") is not True: bad.append((fid,"preview_ready false"))
               typ=str(f.get("download_type","")).upper()
               if typ not in {"TTF","OTF"}: bad.append((fid,"bad type"))

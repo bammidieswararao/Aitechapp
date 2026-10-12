@@ -25,6 +25,13 @@ def main():
     if zips:
         archive=zips[0]
         with zipfile.ZipFile(archive) as z:
+            license_files=[n for n in z.namelist() if Path(n).name.lower() in ("ofl.txt","license.ofl","open_font_license.txt")]
+            if len(license_files)!=1:
+                raise SystemExit("Rakhi ZIP must include its original Mandali OFL.txt")
+            license_bytes=z.read(license_files[0])
+            lic=license_bytes.decode("utf-8-sig",errors="replace")
+            if "SIL OPEN FONT LICENSE Version 1.1" not in lic or "Copyright" not in lic:
+                raise SystemExit("Original OFL 1.1 license and copyright are required")
             items=[n for n in z.namelist() if n.lower().endswith(".ttf") and not n.endswith("/")]
             if len(items)!=20:raise SystemExit("Expected exactly 20 TTF binaries in ZIP, found "+str(len(items)))
             if any(n.startswith("/") or ".." in Path(n).parts for n in items):
@@ -50,15 +57,27 @@ def main():
                 finally:
                     scratch.unlink(missing_ok=True)
             if len(styles)!=20:raise SystemExit("Expected 20 distinct styles")
+        # Validate everything before making the license and binaries visible.
         for f in expected:
             (ROOT/f["target_path"]).write_bytes(styles[f["id"]])
+        (BASE/"OFL.txt").write_bytes(license_bytes)
+    # Direct TTF uploads must supply the actual upstream OFL license separately.
     # Support canonical direct TTF uploads, but activate only after all 20 pass.
     files=[ROOT/f["target_path"] for f in expected]
     if not all(p.is_file() for p in files):
         print("Rakhi scaffold ready; awaiting 20 validated TTF files")
         return
+    license_path=BASE/"OFL.txt"
+    if not license_path.is_file():
+        raise SystemExit("Original Mandali OFL.txt is required with the 20 TTF files")
+    source_license=license_path.read_text(encoding="utf-8-sig")
+    if "SIL OPEN FONT LICENSE Version 1.1" not in source_license or "Copyright" not in source_license:
+        raise SystemExit("Missing valid upstream OFL license copyright")
     for f,path in zip(expected,files):
         verify(path,expected_style=f["style"])
+    digests=[__import__("hashlib").sha256(p.read_bytes()).hexdigest() for p in files]
+    if len(set(digests))!=20:
+        raise SystemExit("20 distinct styles must not reuse identical binaries")
     for f in expected:
         f["pending_until_available"]=False
         f["preview_ready"]=True

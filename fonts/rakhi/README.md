@@ -1,7 +1,7 @@
 # Rakhi Ornamental — AiTechApps (pending font source)
 **Prepared:** 20 planned named TTF styles. None uploaded yet.
 
-Upload one ZIP of all 20 licensed TrueType fonts into `fonts/rakhi/incoming/` via GitHub's Add file → Upload files, or upload all 20 canonical `RakhiOrnamental-<Style>.ttf` files to `fonts/rakhi/`.
+Upload one ZIP of all 20 licensed TrueType fonts (including the authentic upstream `OFL.txt` file) into `fonts/rakhi/incoming/` via GitHub's Add file → Upload files, or upload the authentic `fonts/rakhi/OFL.txt` and all 20 canonical `RakhiOrnamental-<Style>.ttf` files to `fonts/rakhi/`.
 
 Workflow `Activate Rakhi Ornamental` validates `GSUB` / `GPOS`, Telugu cmap and HarfBuzz shaping, preserves the original copyright, and adds **Bammidi Eswara Rao / AiTechApps** modifications credit. Only after all 20 pass does it make the pending catalog entries previewable and directly downloadable.
 
@@ -12,3 +12,5 @@ Planned styles (not proof of supplied contents): Thin, ExtraLight, Light, Regula
 **No PAT required:** GitHub Actions runs with its scoped `GITHUB_TOKEN`; never paste a personal access token into this repository or chat.
 
 **Policy:** All 20 fonts stay hidden from the public gallery while pending. The five-button bottom navigation and existing 212 active font entries are unchanged.
+
+**Source-package restriction:** the workflow refuses public activation without authentic upstream OFL.txt and original copyright. No font ZIP or source binaries were included in the user's latest attachment.
