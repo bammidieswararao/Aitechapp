@@ -59,7 +59,7 @@ jobs:
               path=Path(f['target_path'])
               assert path.is_file(), f'Missing '+str(path)
               data=path.read_bytes()
-              sha=hashlib.sha1(f'blob {len(data)}\\0'.encode('ascii')+data).hexdigest()
+              sha=hashlib.sha1(('blob '+str(len(data))).encode('ascii')+bytes([0])+data).hexdigest()
               assert sha==f['source_blob_sha']==f['validated_git_blob_sha'],f['id']
               ft=TTFont(path)
               assert any(t.isUnicode() and any(0x0C00<=cp<=0x0C7F for cp in t.cmap) for t in ft['cmap'].tables),f['id']
