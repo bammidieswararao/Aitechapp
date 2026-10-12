@@ -42,6 +42,10 @@ def main() -> int:
             raise SystemExit(f"Duplicate or missing id: {fid!r}")
         ids.add(fid)
 
+        if row.get("pending_until_available") is True:
+            if row.get("preview_ready") is True:
+                raise SystemExit(f"Pending font improperly preview-ready: {fid}")
+            continue
         if row.get("preview_ready") is not True:
             raise SystemExit(f"Font not preview-ready: {fid}")
 

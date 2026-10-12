@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Verify catalog and preserve original five-button dock
@@ -32,12 +32,12 @@ jobs:
           root=pathlib.Path('.')
           doc=json.loads((root/'fonts-catalog.json').read_text())
           fonts=doc['fonts']
-          assert len(fonts)==212, len(fonts)
-          assert len([f for f in fonts if not f.get('pending_until_available')])==212
+          assert len(fonts)==232, len(fonts)
+          assert len([f for f in fonts if not f.get('pending_until_available')]) in (212,232)
           assert doc['active_total_before_gist_upload']==169
           h=(root/'telugu-fonts.html').read_text()
           js=(root/'telugu-fonts-client.js').read_text()
-          assert 'telugu-fonts-client.js?v=20261012-premium-speed-share' in h
+          assert 'telugu-fonts-client.js?v=rakhi-scaffold-20261012' in h
           assert 'window.addEventListener("hashchange",handleDeepLink)' in js
           assert 'URL.createObjectURL(blob)' in js
           assert 'oncontextmenu="return false;"' in js

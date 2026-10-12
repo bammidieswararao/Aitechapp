@@ -1,0 +1,47 @@
+name: Activate Rakhi Ornamental
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "fonts/rakhi/incoming/**"
+      - "fonts/rakhi/*.ttf"
+      - "scripts/verify_rakhi.py"
+      - "scripts/ingest_rakhi_fonts.py"
+      - ".github/workflows/activate-rakhi-fonts.yml"
+permissions:
+  contents: write
+concurrency:
+  group: rakhi-ornamental-activation
+  cancel-in-progress: false
+jobs:
+  activate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install font shaping verification dependencies
+        run: python -m pip install "fonttools>=4.58,<5" "uharfbuzz>=0.51,<1"
+      - name: Validate source license and 20 real font binaries
+        run: |
+          python scripts/check_telugu_fonts_ui.py
+          python scripts/ingest_rakhi_fonts.py
+      - name: Synchronize offline font catalogue and assert navigation
+        run: |
+          python scripts/sync_client_fallback.py
+          python scripts/check_telugu_fonts_ui.py
+          node --check telugu-fonts-client.js
+      - name: Commit activated binaries and catalog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fonts/rakhi/*.ttf fonts-catalog.json telugu-fonts-client.js
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(fonts): activate verified Rakhi Ornamental font family [skip ci]"
+            git push
+          fi
